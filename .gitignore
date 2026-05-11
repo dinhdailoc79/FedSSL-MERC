@@ -1,0 +1,66 @@
+# ============================================================
+# FedSSL-MERC .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (too large for git)
+data/raw/
+data/processed/
+data/downloads/
+*.csv
+*.tsv
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# Model Checkpoints
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Experiment Logs
+wandb/
+runs/
+logs/
+*.log
+
+# Results (large files)
+results/figures/*.png
+results/figures/*.pdf
+results/tables/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+*.key
