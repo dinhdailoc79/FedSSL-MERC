@@ -1,0 +1,29 @@
+# ============================================================
+# FedAvg Configuration
+# ============================================================
+# Federated Averaging (McMahan et al., 2017)
+
+federated:
+  strategy: "fedavg"
+  num_clients: 5
+  num_rounds: 100
+  clients_per_round: 3                # Fraction of clients per round
+  local_epochs: 5                     # Local training epochs per round
+
+  # Data partition
+  partition:
+    strategy: "dirichlet"             # "iid", "dirichlet", "speaker", "quantity"
+    alpha: 0.5                        # Dirichlet concentration (lower = more non-IID)
+
+  # Semi-supervised
+  ssl:
+    label_ratio: 0.1                  # 10% labeled, 90% unlabeled per client
+
+  # Communication
+  communication:
+    compress: false
+    quantize: false
+
+  # Aggregation
+  aggregation:
+    weighted_average: true            # Weight by client data size

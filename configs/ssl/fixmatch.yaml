@@ -1,0 +1,30 @@
+# ============================================================
+# FixMatch Configuration
+# ============================================================
+# FixMatch (Sohn et al., NeurIPS 2020)
+# Semi-supervised learning with consistency regularization
+
+ssl:
+  method: "fixmatch"
+
+  # Pseudo-labeling
+  confidence_threshold: 0.95          # Only use pseudo-labels above this confidence
+  temperature: 1.0                    # Sharpening temperature
+
+  # Loss weights
+  lambda_u: 1.0                       # Weight for unsupervised loss
+  rampup_epochs: 5                    # Gradually increase lambda_u
+
+  # Augmentation
+  weak_augment:
+    noise_std: 0.01                   # Gaussian noise for weak augmentation
+    dropout_rate: 0.1
+  strong_augment:
+    noise_std: 0.05                   # Stronger noise
+    dropout_rate: 0.3
+    mask_ratio: 0.15                  # Random token masking (text)
+    time_mask: 5                      # Time masking (audio)
+
+  # EMA Teacher (optional)
+  use_ema: true
+  ema_decay: 0.999

@@ -1,0 +1,60 @@
+# ============================================================
+# FedSSL-MERC: Default Configuration
+# ============================================================
+# Centralized baseline training config for DialogueRNN on MELD
+# GPU: T4 (16GB) — Use smaller batch size
+# For A100 (80GB): increase batch_size to 64, accumulation to 1
+
+# --- Data ---
+data:
+  dataset: "meld"
+  data_dir: "data/raw/MELD"
+  modalities: ["text"]                # Start with text-only baseline
+  # modalities: ["text", "audio"]     # Phase 2: add audio
+  # modalities: ["text", "audio", "video"]  # Phase 3: full multimodal
+  text_model: "roberta-base"
+  max_length: 128
+
+# --- Model ---
+model:
+  backbone: "dialogue_rnn"
+  text_dim: 768                       # RoBERTa base hidden dim
+  audio_dim: 82                       # MFCC(40) + std(40) + pitch + energy
+  video_dim: 2048                     # ResNet50 feature dim
+  hidden_dim: 256
+  num_classes: 7                      # MELD: 7 emotion classes
+  dropout: 0.3
+
+  # DialogueRNN specific
+  dialogue_rnn:
+    global_dim: 256
+    party_dim: 256
+    emotion_dim: 256
+    context_attention: true
+
+# --- Training ---
+training:
+  epochs: 50
+  batch_size: 16                      # T4-friendly
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 3
+  gradient_accumulation: 2            # Effective batch = 32
+  early_stopping_patience: 10
+  use_class_weights: true             # Handle emotion class imbalance
+
+# --- Hardware ---
+hardware:
+  device: "cuda"
+  num_workers: 2
+  pin_memory: true
+  mixed_precision: true               # FP16 for T4
+
+# --- Logging ---
+logging:
+  wandb_project: "fedssl-merc"
+  log_interval: 50
+  save_dir: "checkpoints"
+  save_best: true
