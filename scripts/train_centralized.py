@@ -39,24 +39,34 @@ logger = logging.getLogger(__name__)
 # ============================================================
 
 class DialogueDataset(Dataset):
-    """Wraps MELD dialogues into a PyTorch Dataset."""
+    """Wraps MELD dialogues into a PyTorch Dataset with pre-extracted features."""
 
-    def __init__(self, dialogues, text_dim: int = 768):
+    def __init__(self, dialogues, feature_cache: dict = None, text_dim: int = 768):
         """
         Args:
             dialogues: List of Dialogue objects from MELDDataset
+            feature_cache: Dict mapping utterance_id -> feature vector (numpy)
             text_dim: Dimension of text features (768 for RoBERTa)
         """
         self.dialogues = dialogues
         self.text_dim = text_dim
+        self.feature_cache = feature_cache or {}
 
-        # Build speaker vocabulary per dialogue is not needed,
-        # we map speakers to indices per dialogue
+        # Build speaker vocabulary per dialogue
         self.speaker_maps = []
         for d in dialogues:
             speakers = list(set(u.speaker for u in d.utterances))
             smap = {s: i for i, s in enumerate(speakers)}
             self.speaker_maps.append(smap)
+
+        # Log cache hit rate
+        total = sum(len(d.utterances) for d in dialogues)
+        hits = sum(
+            1 for d in dialogues for u in d.utterances
+            if f"{u.dialogue_id}_{u.utterance_id}" in self.feature_cache
+        )
+        if total > 0:
+            logger.info(f"  Feature cache hit rate: {hits}/{total} ({hits/total*100:.1f}%)")
 
     def __len__(self):
         return len(self.dialogues)
@@ -70,12 +80,14 @@ class DialogueDataset(Dataset):
         labels = []
 
         for utt in dialogue.utterances:
-            # Use pre-extracted features if available, else random placeholder
-            if utt.text_features is not None:
+            # Use cached features with composite key (dialogue_id + utterance_id)
+            cache_key = f"{utt.dialogue_id}_{utt.utterance_id}"
+            if cache_key in self.feature_cache:
+                texts.append(self.feature_cache[cache_key])
+            elif utt.text_features is not None:
                 texts.append(utt.text_features)
             else:
-                # Placeholder: use simple text encoding (will be replaced)
-                texts.append(np.random.randn(self.text_dim).astype(np.float32))
+                texts.append(np.zeros(self.text_dim, dtype=np.float32))
 
             speaker_ids.append(smap[utt.speaker])
             labels.append(utt.emotion_idx)
@@ -215,11 +227,13 @@ def main():
 
     parser = argparse.ArgumentParser(description="Train DialogueRNN baseline on MELD")
     parser.add_argument("--data_dir", type=str, default="data/raw/MELD")
+    parser.add_argument("--feature_cache", type=str, default="data/features/meld_text_roberta.pt",
+                        help="Path to pre-extracted feature cache (.pt)")
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--batch_size", type=int, default=16)
-    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--hidden_dim", type=int, default=256)
-    parser.add_argument("--text_dim", type=int, default=100)  # Placeholder dim
+    parser.add_argument("--text_dim", type=int, default=768)  # RoBERTa-base
     parser.add_argument("--dropout", type=float, default=0.3)
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--save_dir", type=str, default="checkpoints")
@@ -241,10 +255,47 @@ def main():
     logger.info(f"Dev:   {len(dev_dialogues)} dialogues")
     logger.info(f"Test:  {len(test_dialogues)} dialogues")
 
+    # 1b. Load pre-extracted features
+    feature_caches = {}
+    feature_path = Path(args.feature_cache)
+    if feature_path.exists():
+        logger.info(f"Loading cached features from {feature_path}...")
+        cached = torch.load(feature_path, weights_only=False)
+        for split in ["train", "dev", "test"]:
+            if split in cached:
+                feats = cached[split]["features"].numpy()  # (N, 768)
+                utt_ids = cached[split]["utterance_ids"]    # Tensor of int IDs
+                # Build lookup: utterance_id -> feature vector
+                cache = {}
+                # MELD uses integer utterance_ids matching the Dialogue objects
+                dia_ids = cached[split]["dialogue_ids"]
+                texts = cached[split].get("texts", [])
+                for i in range(len(feats)):
+                    # Key = (dialogue_id, utterance_id) as string
+                    key = f"{dia_ids[i].item()}_{utt_ids[i].item()}"
+                    cache[key] = feats[i]
+                feature_caches[split] = cache
+                logger.info(f"  {split}: {len(cache)} features loaded")
+        args.text_dim = feats.shape[1]  # Update dim from actual features
+    else:
+        logger.warning(f"No feature cache at {feature_path}, using random features!")
+
     # 2. Create datasets and dataloaders
-    train_dataset = DialogueDataset(train_dialogues, text_dim=args.text_dim)
-    dev_dataset = DialogueDataset(dev_dialogues, text_dim=args.text_dim)
-    test_dataset = DialogueDataset(test_dialogues, text_dim=args.text_dim)
+    train_dataset = DialogueDataset(
+        train_dialogues,
+        feature_cache=feature_caches.get("train", {}),
+        text_dim=args.text_dim,
+    )
+    dev_dataset = DialogueDataset(
+        dev_dialogues,
+        feature_cache=feature_caches.get("dev", {}),
+        text_dim=args.text_dim,
+    )
+    test_dataset = DialogueDataset(
+        test_dialogues,
+        feature_cache=feature_caches.get("test", {}),
+        text_dim=args.text_dim,
+    )
 
     train_loader = DataLoader(
         train_dataset, batch_size=args.batch_size,
@@ -280,7 +331,7 @@ def main():
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode="max", factor=0.5, patience=5, verbose=True,
+        optimizer, mode="max", factor=0.5, patience=5,
     )
 
     # 5. Training loop

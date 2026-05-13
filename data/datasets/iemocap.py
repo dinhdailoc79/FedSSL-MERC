@@ -59,6 +59,7 @@ IEMOCAP_EMOTIONS_4 = ["happy", "sad", "angry", "neutral"]
 
 # Map raw IEMOCAP labels to standardized labels
 RAW_LABEL_MAP = {
+    # Full names (from Categorical annotations)
     "neutral state": "neutral",
     "neutral": "neutral",
     "happiness": "happy",
@@ -76,6 +77,16 @@ RAW_LABEL_MAP = {
     "disgust": "disgust",
     "other": "other",
     "xxx": "other",
+    # Abbreviated names (from EmoEvaluation consensus files)
+    "neu": "neutral",
+    "hap": "happy",
+    "sad": "sad",
+    "ang": "angry",
+    "fru": "frustrated",
+    "exc": "excited",
+    "fea": "fear",
+    "sur": "surprise",
+    "dis": "disgust",
 }
 
 # For 4-class: merge excited → happy, drop frustrated
@@ -232,32 +243,88 @@ class IEMOCAPDataset:
         return self._dialogues
 
     def _load_session(self, session_id: int, session_dir: Path):
-        """Load all dialogues from a single session."""
-        emo_dir = session_dir / "dialog" / "EmoEvaluation" / "Categorical"
+        """
+        Load all dialogues from a single session.
 
-        if not emo_dir.exists():
-            # Some releases have annotations directly in EmoEvaluation/
-            emo_dir = session_dir / "dialog" / "EmoEvaluation"
+        Uses the consensus EmoEvaluation files (not Categorical, which has
+        per-annotator labels causing duplicates).
+        """
+        # Use main EmoEvaluation dir (consensus labels)
+        emo_dir = session_dir / "dialog" / "EmoEvaluation"
 
         if not emo_dir.exists():
             logger.warning(f"EmoEvaluation not found in Session{session_id}")
             return
 
-        # Parse all categorical emotion files
-        for emo_file in sorted(emo_dir.glob("*_cat.txt")):
-            self._parse_emotion_file(session_id, emo_file)
+        # Load transcriptions first
+        transcriptions = self._load_transcriptions(session_dir)
 
-        # If no *_cat.txt files found, try .txt files with standard format
-        if not any(emo_dir.glob("*_cat.txt")):
-            for emo_file in sorted(emo_dir.glob("*.txt")):
-                if emo_file.stem.startswith("Ses"):
-                    self._parse_emotion_file(session_id, emo_file)
+        # Parse consensus emotion files (Ses*.txt in EmoEvaluation root)
+        emo_files = sorted(emo_dir.glob("Ses*.txt"))
+        if not emo_files:
+            logger.warning(f"No emotion files found in {emo_dir}")
+            return
 
-    def _parse_emotion_file(self, session_id: int, emo_file: Path):
+        for emo_file in emo_files:
+            self._parse_emotion_file(session_id, emo_file, transcriptions)
+
+        # Sort utterances within each dialogue by utterance_id
+        for d in self._dialogues.values():
+            if d.session == session_id:
+                d.utterances.sort(key=lambda u: u.utterance_id)
+
+    def _load_transcriptions(self, session_dir: Path) -> Dict[str, str]:
         """
-        Parse a categorical emotion annotation file.
+        Load transcription text for all utterances in a session.
 
-        Format: "Ses01F_impro06_F000 :Neutral state; ()"
+        Reads from Session*/dialog/transcriptions/*.txt
+        Format: "Ses01F_impro01_F000 [006.2901-008.2357]: Excuse me."
+
+        Returns:
+            Dictionary mapping utterance_id -> transcription text
+        """
+        trans_dir = session_dir / "dialog" / "transcriptions"
+        transcriptions: Dict[str, str] = {}
+
+        if not trans_dir.exists():
+            logger.warning(f"Transcriptions not found at {trans_dir}")
+            return transcriptions
+
+        for trans_file in sorted(trans_dir.glob("*.txt")):
+            try:
+                lines = trans_file.read_text(encoding="utf-8", errors="ignore").strip().split("\n")
+            except Exception as e:
+                logger.warning(f"Failed to read {trans_file}: {e}")
+                continue
+
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+
+                # Format: "Ses01F_impro01_F000 [start-end]: text"
+                match = re.match(
+                    r"(Ses\S+)\s+\[[\d.]+-[\d.]+\]:\s*(.*)",
+                    line,
+                )
+                if match:
+                    utt_id = match.group(1)
+                    text = match.group(2).strip()
+                    transcriptions[utt_id] = text
+
+        logger.info(f"  Loaded {len(transcriptions)} transcriptions from {trans_dir.parent.parent.name}")
+        return transcriptions
+
+    def _parse_emotion_file(
+        self, session_id: int, emo_file: Path, transcriptions: Dict[str, str]
+    ):
+        """
+        Parse a consensus emotion annotation file.
+
+        Standard format (EmoEvaluation/Ses*.txt):
+            [start - end]\tutterance_id\temotion\t[v, a, d]
+
+        Each utterance appears once with the consensus label.
         """
         try:
             lines = emo_file.read_text(encoding="utf-8", errors="ignore").strip().split("\n")
@@ -267,25 +334,21 @@ class IEMOCAPDataset:
 
         for line in lines:
             line = line.strip()
-            if not line or line.startswith("#"):
+            if not line or line.startswith("%") or line.startswith("#"):
                 continue
 
-            # Parse format: "utterance_id :emotion_label; (notes)"
-            match = re.match(r"(\S+)\s*:\s*(.+?)\s*;\s*\(.*\)", line)
+            # Parse consensus format: "[start - end]\tutt_id\temotion\t[v, a, d]"
+            match = re.match(
+                r"\[([\d.]+)\s*-\s*([\d.]+)\]\s+(\S+)\s+(\S+)\s+\[.*\]",
+                line,
+            )
             if not match:
-                # Try alternate format: "[time] utterance_id emotion [v,a,d]"
-                match2 = re.match(
-                    r"\[[\d.]+ - [\d.]+\]\s+(\S+)\s+(\S+)\s+\[.*\]",
-                    line,
-                )
-                if match2:
-                    utt_id = match2.group(1)
-                    emotion_raw = match2.group(2).lower()
-                else:
-                    continue
-            else:
-                utt_id = match.group(1)
-                emotion_raw = match.group(2).strip().lower()
+                continue
+
+            start_time = float(match.group(1))
+            end_time = float(match.group(2))
+            utt_id = match.group(3)
+            emotion_raw = match.group(4).lower()
 
             # Map to standardized emotion
             emotion = RAW_LABEL_MAP.get(emotion_raw, "other")
@@ -314,16 +377,28 @@ class IEMOCAPDataset:
             speaker_char = parts[1][0]  # F or M
             speaker = f"Ses{session_id:02d}_{speaker_char}"
 
+            # Get transcription text
+            text = transcriptions.get(utt_id, "")
+
+            # Build wav path
+            wav_path = str(
+                self.data_dir / f"Session{session_id}" / "sentences" / "wav"
+                / dialogue_id / f"{utt_id}.wav"
+            )
+
             # Create utterance
             utt = IEMOCAPUtterance(
                 utterance_id=utt_id,
                 dialogue_id=dialogue_id,
-                text="",  # Will be filled from transcription if available
+                text=text,
                 speaker=speaker,
                 emotion_raw=emotion_raw,
                 emotion=emotion,
                 emotion_idx=self.emotion_to_idx[emotion],
                 session=session_id,
+                start_time=start_time,
+                end_time=end_time,
+                wav_path=wav_path,
             )
 
             # Build dialogue
@@ -333,10 +408,6 @@ class IEMOCAPDataset:
                     session=session_id,
                 )
             self._dialogues[dialogue_id].add_utterance(utt)
-
-        # Sort utterances within dialogue by utterance_id
-        for d in self._dialogues.values():
-            d.utterances.sort(key=lambda u: u.utterance_id)
 
     # ----------------------------------------------------------
     # Session-based Splits (Standard Protocol)
@@ -468,17 +539,17 @@ class IEMOCAPDataset:
         print(f"  Avg Dialog Len: {stats['avg_dialogue_length']:.1f}")
 
         print(f"\n  Emotion Distribution:")
-        print(f"  {'─'*40}")
+        print(f"  {'-'*40}")
         total = stats["num_utterances"] or 1
         for emo in self.emotions:
             count = stats["emotion_distribution"].get(emo, 0)
             pct = count / total * 100
-            bar = "█" * int(pct / 2)
+            bar = "#" * int(pct / 2)
             print(f"    {emo:<12} {count:>5} ({pct:5.1f}%) {bar}")
 
         if stats["session_distribution"]:
             print(f"\n  Session Distribution:")
-            print(f"  {'─'*40}")
+            print(f"  {'-'*40}")
             for sid in sorted(stats["session_distribution"].keys()):
                 cnt = stats["session_distribution"][sid]
                 print(f"    Session {sid}: {cnt} dialogues")

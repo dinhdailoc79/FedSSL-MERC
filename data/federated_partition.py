@@ -255,13 +255,13 @@ class FederatedPartitioner:
     def print_partition(self, clients: List[ClientData]):
         """Print formatted partition summary."""
         print(f"\n{'='*60}")
-        print(f"  Federated Partition — {self.strategy.upper()}")
+        print(f"  Federated Partition - {self.strategy.upper()}")
         print(f"  alpha={self.alpha}, num_clients={self.num_clients}")
         print(f"{'='*60}")
 
         for c in clients:
             labeled_pct = c.num_labeled / max(c.num_dialogues, 1) * 100
-            bar = "█" * (c.num_dialogues // 5)
+            bar = "#" * (c.num_dialogues // 5)
             print(
                 f"  Client {c.client_id}: {c.num_dialogues:>4} dialogues "
                 f"[{c.num_labeled:>3}L / {c.num_unlabeled:>3}U] "
@@ -269,6 +269,6 @@ class FederatedPartitioner:
             )
 
         total = sum(c.num_dialogues for c in clients)
-        print(f"  {'─'*50}")
+        print(f"  {'-'*50}")
         print(f"  Total: {total} dialogues across {len(clients)} clients")
         print(f"{'='*60}\n")
