@@ -1,5 +1,5 @@
 """
-Evidential Losses for Fed-Evidence
+Evidential Losses for LucBinh
 ====================================
 Implements two core loss functions:
 
@@ -14,7 +14,7 @@ Implements two core loss functions:
 
 References:
 - Sensoy et al. (NeurIPS 2018) for supervised evidential loss
-- Fed-Evidence proposal for ECR formulation
+- LucBinh proposal for ECR formulation
 """
 
 import torch
@@ -254,7 +254,7 @@ class EvidentialConsistencyRegularization(nn.Module):
 
 class FedEvidenceLoss(nn.Module):
     """
-    Combined loss for Fed-Evidence framework.
+    Combined loss for LucBinh framework.
 
     L_client = L_sup + λ_u · L_ecr
 
@@ -313,7 +313,7 @@ class FedEvidenceLoss(nn.Module):
         unlabeled_mask: Optional[torch.Tensor] = None,
     ) -> Tuple[torch.Tensor, Dict]:
         """
-        Compute combined Fed-Evidence loss.
+        Compute combined LucBinh loss.
 
         Args:
             alpha_labeled: (N_l, C) Dirichlet params for labeled data

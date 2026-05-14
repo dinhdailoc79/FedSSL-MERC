@@ -1,5 +1,5 @@
 """
-Fed-Evidence Federated Training Script
+LucBinh Federated Training Script
 =========================================
 Train EvidentialDialogueRNN with EAFA aggregation.
 
@@ -134,7 +134,7 @@ def evaluate_edl(model, loader, loss_fn, device, emotion_names=None):
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="Fed-Evidence: EAFA federated training")
+    parser = argparse.ArgumentParser(description="LucBinh: EAFA federated training")
     parser.add_argument("--data_dir", type=str, default="data/raw/MELD")
     parser.add_argument("--feature_cache", type=str, default="data/features/meld_text_roberta.pt")
     # FL
@@ -162,7 +162,7 @@ def main():
 
     mode = "EAFA" if args.beta > 0 else "FedAvg (EDL)"
     logger.info(f"\n{'='*60}")
-    logger.info(f"  Fed-Evidence: {mode} (beta={args.beta})")
+    logger.info(f"  LucBinh: {mode} (beta={args.beta})")
     logger.info(f"  {args.num_clients} clients, alpha={args.alpha}")
     logger.info(f"{'='*60}")
 
