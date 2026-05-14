@@ -1,0 +1,75 @@
+=== PARAGRAPHS ===
+P0: [Normal] 
+P1: [Normal] 
+P2: [Normal] 
+P3: [Normal] 
+P4: [Normal] Summary/weekly reflection for Week # 1:
+P5: [Normal] 
+P6: [Normal] -Key tasks done:
+1. Completed data pipeline: Downloaded, verified, and extracted RoBERTa features for both MELD and IEMOCAP datasets
+2. Established centralized baseline: DialogueRNN achieves WF1=0.5442 on MELD test set
+3. Implemented full Federated Learning infrastructure (FedAvg + FedProx) with Dirichlet non-IID partitioning
+4. Validated FL performance: FedAvg WF1=0.5419, FedProx WF1=0.5412 (only 0.4-0.6% gap vs centralized)
+5. Implemented FixMatch SSL with feature-level augmentation and curriculum threshold
+6. All code committed and pushed to GitHub repository
+P7: [Normal] 
+P8: [Normal] -Key things learned:
+1. Federated Learning simulation: How to simulate distributed training on a single GPU using client/server architecture with parameter aggregation
+2. Non-IID data challenges: Dirichlet partitioning (alpha=0.5) creates heterogeneous data distributions that are realistic for real-world scenarios
+3. Semi-supervised learning challenges in ERC: FixMatch's softmax-based pseudo-labeling struggles with dialogue-level emotion recognition due to confirmation bias
+4. Feature extraction pipeline: Pre-extracting RoBERTa embeddings (768-dim) saves significant computation during training iterations
+5. GPU memory management: Batch size tuning and gradient clipping are essential for stable training on consumer GPUs (RTX 4050, 6GB VRAM)
+P9: [Normal] 
+P10: [Normal] -Literature read and key things learned:
+1. McMahan et al. (2017) "Communication-Efficient Learning of Deep Networks from Decentralized Data" - FedAvg algorithm
+2. Li et al. (2020) "Federated Optimization in Heterogeneous Networks" - FedProx proximal term for non-IID
+3. Sohn et al. (2020) "FixMatch: Simplifying Semi-Supervised Learning" - Confidence thresholding insufficient for ERC
+4. Sensoy et al. (2018) "Evidential Deep Learning to Quantify Classification Uncertainty" - Dirichlet-based uncertainty
+5. Han et al. (2021) "Trusted Multi-View Classification" - Dempster-Shafer combination for multi-modal fusion
+6. Ghosal et al. (2019) "DialogueGCN" and Majumder et al. (2019) "DialogueRNN" - Conversational context modeling
+P11: [Normal] 
+P12: [Normal] -Issues/problems/Challenges:
+1. UnicodeEncodeError on Windows console - Fixed by converting special chars to ASCII
+2. Python built-in 'ssl' module name conflicts with our package - Renamed to 'semi_supervised/'
+3. FixMatch produces 0 pseudo-labels initially (threshold too high) - Added curriculum warmup but noise remains
+4. IEMOCAP loader needed fixes: consensus annotation parsing + transcription file loading
+5. Key finding: FixMatch at 20% labels (WF1=0.4141) underperforms supervised-only (WF1=0.4736) - validates Poison Amplification hypothesis
+P13: [Normal] 
+P14: [Normal] 
+P15: [Normal] Plan for the next week:
+1. Implement Evidential Deep Learning (EDL) module: Dirichlet head (softplus -> evidence -> belief + uncertainty)
+2. Implement Evidential Loss: Type-II MLE + KL regularization
+3. Implement Evidential Consistency Regularization (ECR): certainty-weighted Dirichlet KL
+4. Implement EAFA aggregation: uncertainty-aware server weights
+5. Extract WavLM audio features for multimodal experiments
+6. Begin Dempster-Shafer fusion module
+P16: [Normal] 
+
+=== TABLES ===
+
+--- Table 0 (3 rows x 2 cols) ---
+  Row 0: PROJECT NAME: || Fed-Evidence: Uncertainty-Aware Federated Semi-Supervised Learning for Multimodal Emotion Recognition in Conversations
+  Row 1: STUDENT NAME: || Dinh Dai Loc
+  Row 2: STUDENT ID: || 22110046
+
+--- Table 1 (12 rows x 4 cols) ---
+  Row 0: WEEK # || 1 || 1 || 1
+  Row 1: Dates covered: || 15/05/2026 || 15/05/2026 || 15/05/2026
+  Row 2: TASKS || STATUS || TIME SPENT || ACTION ITEM/NOTE/EVIDENCE
+  Row 3: Download & verify MELD dataset (1,432 dialogues, 13,708 utterances, 7 emotions) and IEMOCAP dataset (151 sessions, 5,531 utterances, 4 emotions) || Completed || 3h || data/raw/MELD/, data/raw/IEMOCAP/ verified
+  Row 4: Extract RoBERTa-base text features for MELD (9,989+1,109+2,610 utts) and IEMOCAP (5,531 utts) || Completed || 2h || meld_text_roberta.pt (43.4MB), iemocap_text_roberta_4class.pt (17.8MB)
+  Row 5: Train centralized DialogueRNN baseline on MELD (50 epochs, early stopping) || Completed || 2h || Test WF1=0.5442, epoch 27/50. Checkpoint saved.
+  Row 6: Implement FL infrastructure: FedAvg, FedProx, client, server || Completed || 5h || federated/aggregation/fedavg.py, fedprox.py, client.py, server.py
+  Row 7: Run FedAvg (5 clients, alpha=0.5, 30 rounds) and FedProx (mu=0.01) || Completed || 1h || FedAvg WF1=0.5419, FedProx WF1=0.5412 (~0.5% gap vs centralized)
+  Row 8: Implement FixMatch SSL: augmentation, curriculum threshold, train script || Completed || 4h || semi_supervised/augmentation.py, fixmatch.py, scripts/train_ssl.py
+  Row 9: Run SSL experiments at 10% and 20% label ratios || Completed || 1h || 20% SSL WF1=0.4141 vs Supervised WF1=0.4736. Validates Poison Amplification.
+  Row 10: Review proposal Fed-Evidence, gap analysis vs implementation || Completed || 2h || Baselines done. Next: EDL module (core contribution).
+  Row 11: TOTAL WEEKLY TIME SPENT ||  || ~20h || 
+
+--- Table 2 (6 rows x 2 cols) ---
+  Row 0: TASKS PLANNED FOR NEXT WEEK || EXPECTED COMPLETION
+  Row 1: Implement EDL module (Dirichlet head + evidential loss) || Week 2 (May 22)
+  Row 2: Implement ECR loss (certainty-weighted Dirichlet KL) || Week 2 (May 22)
+  Row 3: Implement EAFA aggregation (uncertainty-aware) || Week 2 (May 20)
+  Row 4: Extract WavLM audio features for MELD || Week 2 (May 19)
+  Row 5: Begin DS fusion module for multimodal evidence || Week 2-3 (May 25)

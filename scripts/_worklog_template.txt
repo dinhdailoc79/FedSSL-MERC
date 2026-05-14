@@ -1,0 +1,40 @@
+=== PARAGRAPHS ===
+P0: [Normal] 
+P1: [Normal] 
+P2: [Normal] 
+P3: [Normal] 
+P4: [Normal] Summary/weekly reflection for Week # 1:
+P5: [Normal] 
+P6: [Normal] -key tasks done / things attended
+P7: [Normal] 
+P8: [Normal] -key things learned about Computing Technology projects
+P9: [Normal] 
+P10: [Normal] -any literature read and key things learned
+P11: [Normal] 
+P12: [Normal] -Issues/problems/Challenges
+P13: [Normal] 
+P14: [Normal] 
+P15: [Normal] Plan for the next week:
+P16: [Normal] 
+
+=== TABLES ===
+
+--- Table 0 (3 rows x 2 cols) ---
+  Row 0: PROJECT NAME: | 
+  Row 1: STUDENT NAME: | 
+  Row 2: STUDENT ID: | 
+
+--- Table 1 (8 rows x 4 cols) ---
+  Row 0: WEEK # | 1 | 1 | 1
+  Row 1: Dates covered: |  |  | 
+  Row 2: TASKS | STATUS | TIME SPENT | ACTION ITEM/NOTE/EVIDENCE
+  Row 3:  | Completed |  | 
+  Row 4:  | Not started |  | 
+  Row 5:  | On hold |  | Check with xyz
+  Row 6:  |  |  | 
+  Row 7: TOTAL WEEKLY TIME SPENT |  |  | 
+
+--- Table 2 (3 rows x 2 cols) ---
+  Row 0: TASKS PLANNED FOR NEXT WEEK | EXPECTED COMPLETION
+  Row 1:  | 
+  Row 2:  | 
