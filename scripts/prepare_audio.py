@@ -162,25 +162,35 @@ def extract_all_audio(raw_dir: str, audio_dir: str, sample_rate: int = 16000):
     raw_dir = Path(raw_dir)
     audio_dir = Path(audio_dir)
 
-    # MELD.Raw structure:
-    #   MELD.Raw/train/train_splits/dia{X}_utt{Y}.mp4
-    #   MELD.Raw/dev/dev_splits_complete/dia{X}_utt{Y}.mp4
-    #   MELD.Raw/test/output_repeated_splits_test/dia{X}_utt{Y}.mp4
+    # MELD.Raw structure (actual after extraction):
+    #   MELD.Raw/train_splits/dia{X}_utt{Y}.mp4
+    #   MELD.Raw/dev_splits_complete/dia{X}_utt{Y}.mp4
+    #   MELD.Raw/output_repeated_splits_test/dia{X}_utt{Y}.mp4
     split_dirs = {
-        "train": raw_dir / "train" / "train_splits",
-        "dev": raw_dir / "dev" / "dev_splits_complete",
-        "test": raw_dir / "test" / "output_repeated_splits_test",
+        "train": raw_dir / "train_splits",
+        "dev": raw_dir / "dev_splits_complete",
+        "test": raw_dir / "output_repeated_splits_test",
     }
 
-    # Try alternative paths
-    for split, sdir in split_dirs.items():
+    # Fallback: search for mp4 files if default paths don't exist
+    for split, sdir in list(split_dirs.items()):
         if not sdir.exists():
-            # Search for mp4 files under the split directory
-            alt = raw_dir / split
-            if alt.exists():
-                for subdir in alt.rglob("*.mp4"):
-                    split_dirs[split] = subdir.parent
+            # Try nested paths (train/train_splits, etc.)
+            alt_paths = [
+                raw_dir / split / "train_splits",
+                raw_dir / split / "dev_splits_complete",
+                raw_dir / split / "output_repeated_splits_test",
+                raw_dir / split,
+            ]
+            for alt in alt_paths:
+                if alt.exists() and list(alt.glob("*.mp4")):
+                    split_dirs[split] = alt
                     break
+            else:
+                # Last resort: search recursively
+                mp4s = list(raw_dir.rglob(f"*{split}*/*.mp4"))
+                if mp4s:
+                    split_dirs[split] = mp4s[0].parent
 
     total_stats = {"success": 0, "failed": 0, "skipped": 0}
 
