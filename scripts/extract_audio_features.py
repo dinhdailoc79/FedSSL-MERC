@@ -27,7 +27,7 @@ from typing import Dict
 
 import numpy as np
 import torch
-import torchaudio
+import soundfile as sf
 from tqdm import tqdm
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
@@ -37,19 +37,20 @@ logger = logging.getLogger(__name__)
 
 
 def load_audio(audio_path: str, target_sr: int = 16000):
-    """Load audio file and resample if needed."""
-    waveform, sr = torchaudio.load(audio_path)
+    """Load audio file using soundfile (avoids torchaudio DLL issues on Windows)."""
+    data, sr = sf.read(audio_path, dtype="float32")
 
     # Convert to mono
-    if waveform.shape[0] > 1:
-        waveform = waveform.mean(dim=0, keepdim=True)
+    if len(data.shape) > 1:
+        data = data.mean(axis=1)
 
-    # Resample
+    # Simple resample if needed (linear interpolation)
     if sr != target_sr:
-        resampler = torchaudio.transforms.Resample(sr, target_sr)
-        waveform = resampler(waveform)
+        import scipy.signal
+        num_samples = int(len(data) * target_sr / sr)
+        data = scipy.signal.resample(data, num_samples)
 
-    return waveform.squeeze(0)  # (num_samples,)
+    return torch.from_numpy(data)  # (num_samples,)
 
 
 def parse_filename(filename: str):
@@ -106,7 +107,7 @@ def extract_wavlm_features(
             logger.warning(f"Split dir not found: {split_dir}")
             continue
 
-        wav_files = sorted(split_dir.glob("*.wav"))
+        wav_files = sorted([f for f in split_dir.glob("*.wav") if not f.name.startswith("._")])
         if not wav_files:
             logger.warning(f"No wav files in {split_dir}")
             continue
@@ -126,6 +127,11 @@ def extract_wavlm_features(
 
             for wf in batch_files:
                 try:
+                    dia_id, utt_id = parse_filename(wf.name)
+                    if dia_id is None or utt_id is None:
+                        failed += 1
+                        continue
+
                     waveform = load_audio(str(wf), target_sr)
 
                     # Truncate
@@ -133,9 +139,12 @@ def extract_wavlm_features(
                     if waveform.shape[0] > max_len:
                         waveform = waveform[:max_len]
 
-                    batch_waveforms.append(waveform.numpy())
+                    # Skip very short audio (< 0.1 seconds)
+                    if waveform.shape[0] < target_sr * 0.1:
+                        failed += 1
+                        continue
 
-                    dia_id, utt_id = parse_filename(wf.name)
+                    batch_waveforms.append(waveform.numpy())
                     batch_dia.append(dia_id)
                     batch_utt.append(utt_id)
                 except Exception as e:
@@ -157,16 +166,18 @@ def extract_wavlm_features(
             )
 
             with torch.no_grad():
-                inputs = {k: v.to(device) for k, v in inputs.items()}
-                outputs = model(**inputs)
+                input_values = inputs["input_values"].to(device)
+                # WavLM expects input_values, attention_mask is at sample level
+                # but hidden states are at frame level (downsampled ~320x)
+                # Pass only input_values and use simple mean pooling
+                attention_mask = inputs.get("attention_mask", None)
+                if attention_mask is not None:
+                    attention_mask = attention_mask.to(device)
+                outputs = model(input_values, attention_mask=attention_mask)
                 # Mean pool over time dimension → (batch, 768)
-                hidden_states = outputs.last_hidden_state
-                # Use attention mask to exclude padding
-                if "attention_mask" in inputs:
-                    mask = inputs["attention_mask"].unsqueeze(-1)
-                    pooled = (hidden_states * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1)
-                else:
-                    pooled = hidden_states.mean(dim=1)
+                hidden_states = outputs.last_hidden_state  # (batch, T_frames, 768)
+                # Simple mean pool (model internally handles masking)
+                pooled = hidden_states.mean(dim=1)
 
             all_features.append(pooled.cpu())
             all_dia_ids.extend(batch_dia)
