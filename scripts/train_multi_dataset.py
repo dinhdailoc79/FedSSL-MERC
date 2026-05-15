@@ -101,7 +101,7 @@ def load_meld(finetuned=False):
     return train, dev, test, MELD_EMOTIONS, weights, cache, 10
 
 
-def load_iemocap():
+def load_iemocap(finetuned=False):
     from data.datasets.iemocap import IEMOCAPDataset, IEMOCAP_EMOTIONS_6
     ds = IEMOCAPDataset(data_dir="data/raw/IEMOCAP/IEMOCAP_full_release", num_classes=6)
     ds.load()
@@ -112,8 +112,14 @@ def load_iemocap():
     train_dias = [d for d in train_dias if d.session != 4]
     weights = ds.get_emotion_weights()
 
-    # Load features (stored by session)
-    cache = _load_iemocap_cache("data/features/iemocap_text_roberta.pt")
+    if finetuned:
+        feat_file = "data/features/iemocap_text_roberta_finetuned.pt"
+        logger.info(f"  Features: {feat_file}")
+        cache = _load_iemocap_finetuned_cache(feat_file)
+    else:
+        feat_file = "data/features/iemocap_text_roberta.pt"
+        logger.info(f"  Features: {feat_file}")
+        cache = _load_iemocap_cache(feat_file)
     return train_dias, dev_dias, test_dias, IEMOCAP_EMOTIONS_6, weights, cache, 10
 
 
@@ -172,6 +178,25 @@ def _load_iemocap_cache(path):
 
     for split, c in caches.items():
         logger.info(f"  IEMOCAP {split}: {len(c)} features loaded")
+    return caches
+
+
+def _load_iemocap_finetuned_cache(path):
+    """IEMOCAP finetuned features stored by split (train/dev/test)."""
+    caches = {"train": {}, "dev": {}, "test": {}}
+    if not Path(path).exists():
+        return caches
+    cached = torch.load(path, weights_only=False)
+    for split in ["train", "dev", "test"]:
+        if split not in cached:
+            continue
+        data = cached[split]
+        feats = data["features"].numpy() if torch.is_tensor(data["features"]) else data["features"]
+        dia_strs = data.get("dia_id_strs", [str(d) for d in data["dialogue_ids"]])
+        utt_strs = data.get("utt_id_strs", [str(u) for u in data["utterance_ids"]])
+        for i in range(len(feats)):
+            caches[split][f"{dia_strs[i]}_{utt_strs[i]}"] = feats[i]
+        logger.info(f"  IEMOCAP {split}: {len(caches[split])} features loaded")
     return caches
 
 
@@ -449,10 +474,7 @@ def main():
         logger.info(f"{'#'*60}")
 
         load_fn = loaders[ds_name]
-        if ds_name in ("meld", "dailydialog"):
-            train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
-        else:
-            train, dev, test, emotions, weights, cache, num_spk = load_fn()
+        train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
 
         if args.mode in ("centralized", "both"):
             wf1_c, u_c = train_centralized(
