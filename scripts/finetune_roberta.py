@@ -109,30 +109,32 @@ def load_meld_data(data_dir):
 
 
 def load_iemocap_data(data_dir):
-    """Load IEMOCAP using existing loader."""
-    import sys
-    sys.path.insert(0, str(Path(data_dir).parent.parent.parent))
-    from data.datasets.iemocap import IEMOCAPDataset, IEMOCAP_EMOTIONS_6
-
-    ds = IEMOCAPDataset(data_dir=data_dir, num_classes=6)
-    ds.load()
-    train_dias, test_dias = ds.get_session_split(test_session=5)
-    dev_dias = [d for d in train_dias if d.session == 4]
-    train_dias = [d for d in train_dias if d.session != 4]
+    """Load IEMOCAP from CSV files (exported by export_iemocap_csv.py)."""
+    emotions = ["happy", "sad", "neutral", "angry", "excited", "frustrated"]
+    emo2idx = {e: i for i, e in enumerate(emotions)}
 
     splits = {}
-    for split_name, dias in [("train", train_dias), ("dev", dev_dias), ("test", test_dias)]:
-        texts, labels, dia_ids, utt_ids = [], [], [], []
-        for d in dias:
-            for u in d.utterances:
-                texts.append(u.text if u.text else " ")
-                labels.append(u.emotion_idx)
-                dia_ids.append(d.dialogue_id)
-                utt_ids.append(u.utterance_id)
-        splits[split_name] = {"texts": texts, "labels": labels,
-                              "dialogue_ids": dia_ids, "utterance_ids": utt_ids}
+    for split_name, file_name in [("train", "train.csv"),
+                                   ("dev", "dev.csv"),
+                                   ("test", "test.csv")]:
+        path = Path(data_dir) / file_name
+        if not path.exists():
+            logger.warning(f"Not found: {path}")
+            continue
+        df = pd.read_csv(path)
+        texts = df["Utterance"].astype(str).tolist()
+        labels = [emo2idx.get(e.lower(), -1) for e in df["Emotion"]]
+        valid = [(t, l, d, u) for t, l, d, u in
+                 zip(texts, labels, df["Dialogue_ID"].tolist(), df["Utterance_ID"].tolist())
+                 if l >= 0]
+        if valid:
+            texts, labels, dia_ids, utt_ids = zip(*valid)
+        else:
+            texts, labels, dia_ids, utt_ids = [], [], [], []
+        splits[split_name] = {"texts": list(texts), "labels": list(labels),
+                              "dialogue_ids": list(dia_ids), "utterance_ids": list(utt_ids)}
 
-    return splits, IEMOCAP_EMOTIONS_6
+    return splits, emotions
 
 
 def load_dailydialog_data(data_dir):
@@ -299,22 +301,19 @@ def extract_all_utterances(model, tokenizer, dataset_name, data_dir, device, bat
         return extract_features(model, all_splits, tokenizer, device, batch_size)
 
     elif dataset_name == "iemocap":
-        import sys
-        sys.path.insert(0, str(Path(data_dir).parent.parent.parent))
-        from data.datasets.iemocap import IEMOCAPDataset
-        ds = IEMOCAPDataset(data_dir=data_dir, num_classes=6)
-        ds.load()
+        # Load from CSV files (all sessions)
         all_splits = {}
-        for session in range(1, 6):
-            dias = ds.get_dialogues(session=session)
-            texts, dia_ids, utt_ids = [], [], []
-            for d in dias:
-                for u in d.utterances:
-                    texts.append(u.text if u.text else " ")
-                    dia_ids.append(d.dialogue_id)
-                    utt_ids.append(u.utterance_id)
-            all_splits[f"session{session}"] = {
-                "texts": texts, "dialogue_ids": dia_ids, "utterance_ids": utt_ids,
+        for split_name, file_name in [("train", "train.csv"),
+                                       ("dev", "dev.csv"),
+                                       ("test", "test.csv")]:
+            path = Path(data_dir) / file_name
+            if not path.exists():
+                continue
+            df = pd.read_csv(path)
+            all_splits[split_name] = {
+                "texts": df["Utterance"].astype(str).tolist(),
+                "dialogue_ids": df["Dialogue_ID"].tolist(),
+                "utterance_ids": df["Utterance_ID"].tolist(),
             }
         return extract_features(model, all_splits, tokenizer, device, batch_size)
 

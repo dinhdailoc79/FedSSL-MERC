@@ -88,14 +88,16 @@ def collate_dialogues(batch):
 # -------------------------------------------------------
 # Dataset loaders
 # -------------------------------------------------------
-def load_meld():
+def load_meld(finetuned=False):
     from data.datasets.meld import MELDDataset, MELD_EMOTIONS
     meld = MELDDataset(data_dir="data/raw/MELD")
     train = meld.get_dialogues("train")
     dev = meld.get_dialogues("dev")
     test = meld.get_dialogues("test")
     weights = meld.get_emotion_weights("train")
-    cache = _load_cache("data/features/meld_text_roberta.pt", ["train", "dev", "test"])
+    feat_file = "data/features/meld_text_roberta_finetuned.pt" if finetuned else "data/features/meld_text_roberta.pt"
+    logger.info(f"  Features: {feat_file}")
+    cache = _load_cache(feat_file, ["train", "dev", "test"])
     return train, dev, test, MELD_EMOTIONS, weights, cache, 10
 
 
@@ -115,14 +117,16 @@ def load_iemocap():
     return train_dias, dev_dias, test_dias, IEMOCAP_EMOTIONS_6, weights, cache, 10
 
 
-def load_dailydialog():
+def load_dailydialog(finetuned=False):
     from data.datasets.dailydialog import DailyDialogDataset, DAILYDIALOG_EMOTIONS
     ds = DailyDialogDataset(data_dir="data/raw/DailyDialog")
     train = ds.get_dialogues("train")
     dev = ds.get_dialogues("dev")
     test = ds.get_dialogues("test")
     weights = ds.get_emotion_weights("train")
-    cache = _load_cache("data/features/dailydialog_text_roberta.pt", ["train", "dev", "test"])
+    feat_file = "data/features/dailydialog_text_roberta_finetuned.pt" if finetuned else "data/features/dailydialog_text_roberta.pt"
+    logger.info(f"  Features: {feat_file}")
+    cache = _load_cache(feat_file, ["train", "dev", "test"])
     return train, dev, test, DAILYDIALOG_EMOTIONS, weights, cache, 2
 
 
@@ -428,6 +432,7 @@ def main():
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--save_dir", type=str, default="checkpoints")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--finetuned", action="store_true", help="Use fine-tuned RoBERTa features")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -443,7 +448,11 @@ def main():
         logger.info(f"  Dataset: {ds_name.upper()}")
         logger.info(f"{'#'*60}")
 
-        train, dev, test, emotions, weights, cache, num_spk = loaders[ds_name]()
+        load_fn = loaders[ds_name]
+        if ds_name in ("meld", "dailydialog"):
+            train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
+        else:
+            train, dev, test, emotions, weights, cache, num_spk = load_fn()
 
         if args.mode in ("centralized", "both"):
             wf1_c, u_c = train_centralized(
