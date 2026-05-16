@@ -2,6 +2,10 @@
 # FedSSL-MERC .gitignore
 # ============================================================
 
+# Downloaded papers (private, do not push)
+docs/papers/
+docs/papers_txt/
+
 # Python
 __pycache__/
 *.py[cod]

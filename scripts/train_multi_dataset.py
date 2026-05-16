@@ -29,6 +29,7 @@ from sklearn.metrics import f1_score, classification_report
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from models.evidential.evidential_dialogue_rnn import EvidentialDialogueRNN
+from models.erc.dialogue_rnn import DialogueRNN
 from models.evidential.losses import SupervisedEvidentialLoss
 from federated.aggregation.eafa import EAFAAggregator
 from data.federated_partition import FederatedPartitioner
@@ -204,7 +205,7 @@ def _load_iemocap_finetuned_cache(path):
 # Training & Evaluation
 # -------------------------------------------------------
 @torch.no_grad()
-def evaluate(model, loader, device, emotion_names=None):
+def evaluate(model, loader, device, emotion_names=None, dataset_name=None):
     model.eval()
     all_preds, all_labels, all_u = [], [], []
     for batch in loader:
@@ -213,17 +214,31 @@ def evaluate(model, loader, device, emotion_names=None):
         labels = batch["labels"].to(device)
         out = model(feats, speakers)
         mask = labels != -1
-        preds = out["belief"][mask].argmax(dim=-1).cpu().numpy()
+        if isinstance(out, dict):
+            # EDL model
+            preds = out["belief"][mask].argmax(dim=-1).cpu().numpy()
+            all_u.extend(out["uncertainty"][mask].cpu().numpy())
+        else:
+            # CE model (base DialogueRNN returns logits tensor)
+            preds = out[mask].argmax(dim=-1).cpu().numpy()
         all_preds.extend(preds)
         all_labels.extend(labels[mask].cpu().numpy())
-        all_u.extend(out["uncertainty"][mask].cpu().numpy())
 
     wf1 = f1_score(all_labels, all_preds, average="weighted", zero_division=0)
     mean_u = np.mean(all_u) if all_u else 1.0
+
+    # DailyDialog: also compute Micro F1 (excl. neutral) — standard protocol
+    micro_f1 = None
+    if dataset_name == "dailydialog" and emotion_names is not None:
+        # In DailyDialog, emotions are: anger, disgust, fear, happiness, sadness, surprise
+        # no_emotion/neutral is already excluded from labels by the loader
+        # But "happiness" is the dominant class. Papers compute micro-F1 over all 6.
+        micro_f1 = f1_score(all_labels, all_preds, average="micro", zero_division=0)
+
     report = classification_report(
         all_labels, all_preds, target_names=emotion_names, digits=4, zero_division=0,
     ) if emotion_names else ""
-    return wf1, mean_u, report
+    return wf1, mean_u, report, micro_f1
 
 
 def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
@@ -245,27 +260,38 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False,
                              collate_fn=collate_dialogues, num_workers=0)
 
-    model = EvidentialDialogueRNN(
-        input_dim=768, hidden_dim=args.hidden_dim,
-        num_classes=num_classes, num_speakers=num_speakers,
-        dropout=args.dropout,
-    ).to(device)
+    use_edl = args.loss_type == "edl"
 
-    loss_fn = SupervisedEvidentialLoss(
-        num_classes=num_classes, annealing_epochs=args.annealing_epochs,
-        class_weights=class_weights,
-    )
+    if use_edl:
+        model = EvidentialDialogueRNN(
+            input_dim=768, hidden_dim=args.hidden_dim,
+            num_classes=num_classes, num_speakers=num_speakers,
+            dropout=args.dropout,
+        ).to(device)
+        loss_fn = SupervisedEvidentialLoss(
+            num_classes=num_classes, annealing_epochs=args.annealing_epochs,
+            class_weights=class_weights,
+        )
+    else:
+        model = DialogueRNN(
+            input_dim=768, hidden_dim=args.hidden_dim,
+            num_classes=num_classes, num_speakers=num_speakers,
+            dropout=args.dropout,
+        ).to(device)
+        loss_fn = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
 
+    loss_label = f"{args.loss_type.upper()} Centralized"
     logger.info(f"\n{'='*60}")
-    logger.info(f"  EDL Centralized — {dataset_name.upper()} ({num_classes} classes)")
+    logger.info(f"  {loss_label} — {dataset_name.upper()} ({num_classes} classes)")
     logger.info(f"  Train: {len(train_dias)} dias, Dev: {len(dev_dias)}, Test: {len(test_dias)}")
     logger.info(f"{'='*60}\n")
 
     best_wf1, patience_cnt = 0.0, 0
     for epoch in range(1, args.epochs + 1):
         model.train()
-        loss_fn.set_epoch(epoch)
+        if use_edl:
+            loss_fn.set_epoch(epoch)
         total_loss, total_samples = 0, 0
         start = time.time()
 
@@ -275,7 +301,10 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
             labels = batch["labels"].to(device)
             out = model(feats, speakers)
             mask = labels != -1
-            loss, _ = loss_fn(out["alpha"][mask], labels[mask])
+            if use_edl:
+                loss, _ = loss_fn(out["alpha"][mask], labels[mask])
+            else:
+                loss = loss_fn(out[mask], labels[mask])
             optimizer.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)
@@ -283,7 +312,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
             total_loss += loss.item() * mask.sum().item()
             total_samples += mask.sum().item()
 
-        dev_wf1, dev_u, _ = evaluate(model, dev_loader, device)
+        dev_wf1, dev_u, _, _ = evaluate(model, dev_loader, device)
         elapsed = time.time() - start
         logger.info(f"Epoch {epoch:3d}/{args.epochs} | Loss: {total_loss/max(total_samples,1):.4f} | "
                     f"Dev WF1: {dev_wf1:.4f} u={dev_u:.3f} | {elapsed:.1f}s")
@@ -305,24 +334,28 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
     ckpt = Path(args.save_dir) / f"best_edl_{dataset_name}.pt"
     if ckpt.exists():
         model.load_state_dict(torch.load(ckpt, weights_only=False)["model_state_dict"])
-    test_wf1, test_u, test_report = evaluate(model, test_loader, device, emotions)
+    test_wf1, test_u, test_report, micro_f1 = evaluate(model, test_loader, device, emotions, dataset_name)
 
     logger.info(f"\n{'='*60}")
     logger.info(f"  RESULT: EDL Centralized — {dataset_name.upper()}")
     logger.info(f"{'='*60}")
     logger.info(f"\n{test_report}")
     logger.info(f"  Test WF1 = {test_wf1:.4f}, u = {test_u:.4f}")
+    if micro_f1 is not None:
+        logger.info(f"  Micro F1 (excl. neutral) = {micro_f1:.4f}")
     logger.info(f"{'='*60}")
 
-    return test_wf1, test_u
+    return test_wf1, test_u, micro_f1
 
 
 def train_federated(dataset_name, train_dias, dev_dias, test_dias,
                     emotions, weights, cache, num_speakers, args):
-    """Train EAFA federated on one dataset."""
+    """Train federated on one dataset. Supports EAFA/FedAvg + EDL/CE."""
     device = args.device
     num_classes = len(emotions)
     class_weights = torch.from_numpy(weights.astype(np.float32)).to(device)
+    use_edl = args.loss_type == "edl"
+    use_eafa = args.aggregation == "eafa"
 
     # Partition
     partitioner = FederatedPartitioner(
@@ -344,20 +377,31 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False,
                              collate_fn=collate_dialogues, num_workers=0)
 
-    global_model = EvidentialDialogueRNN(
-        input_dim=768, hidden_dim=args.hidden_dim,
-        num_classes=num_classes, num_speakers=num_speakers, dropout=args.dropout,
-    ).to(device)
+    if use_edl:
+        global_model = EvidentialDialogueRNN(
+            input_dim=768, hidden_dim=args.hidden_dim,
+            num_classes=num_classes, num_speakers=num_speakers, dropout=args.dropout,
+        ).to(device)
+        loss_fn = SupervisedEvidentialLoss(
+            num_classes=num_classes, annealing_epochs=args.annealing_epochs,
+            class_weights=class_weights,
+        )
+    else:
+        global_model = DialogueRNN(
+            input_dim=768, hidden_dim=args.hidden_dim,
+            num_classes=num_classes, num_speakers=num_speakers, dropout=args.dropout,
+        ).to(device)
+        loss_fn = nn.CrossEntropyLoss(weight=class_weights)
 
-    loss_fn = SupervisedEvidentialLoss(
-        num_classes=num_classes, annealing_epochs=args.annealing_epochs,
-        class_weights=class_weights,
-    )
-    aggregator = EAFAAggregator(beta=args.beta)
+    # FedAvg = EAFA with beta=0 (pure size-weighted averaging)
+    effective_beta = args.beta if use_eafa else 0.0
+    aggregator = EAFAAggregator(beta=effective_beta)
 
+    agg_label = "EAFA" if use_eafa else "FedAvg"
+    loss_label = args.loss_type.upper()
     logger.info(f"\n{'='*60}")
-    logger.info(f"  EAFA Federated — {dataset_name.upper()} ({num_classes} classes)")
-    logger.info(f"  {args.num_clients} clients, alpha={args.alpha}, beta={args.beta}")
+    logger.info(f"  {agg_label} Federated ({loss_label}) — {dataset_name.upper()} ({num_classes} classes)")
+    logger.info(f"  {args.num_clients} clients, alpha={args.alpha}, beta={effective_beta}")
     logger.info(f"{'='*60}\n")
 
     best_wf1, patience_cnt = 0.0, 0
@@ -368,7 +412,8 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         for loader in client_loaders:
             local_model = copy.deepcopy(global_model).to(device)
             local_model.train()
-            loss_fn.set_epoch(round_num)
+            if use_edl:
+                loss_fn.set_epoch(round_num)
             opt = optim.Adam(local_model.parameters(), lr=args.lr, weight_decay=1e-4)
             all_u_local = []
 
@@ -379,16 +424,20 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
                     labels = batch["labels"].to(device)
                     out = local_model(feats, speakers)
                     mask = labels != -1
-                    loss, _ = loss_fn(out["alpha"][mask], labels[mask])
+                    if use_edl:
+                        loss, _ = loss_fn(out["alpha"][mask], labels[mask])
+                        all_u_local.extend(out["uncertainty"][mask].detach().cpu().numpy())
+                    else:
+                        loss = loss_fn(out[mask], labels[mask])
                     opt.zero_grad()
                     loss.backward()
                     torch.nn.utils.clip_grad_norm_(local_model.parameters(), 5.0)
                     opt.step()
-                    all_u_local.extend(out["uncertainty"][mask].detach().cpu().numpy())
 
             client_states.append(OrderedDict({k: v.cpu() for k, v in local_model.state_dict().items()}))
             client_sizes.append(len(loader.dataset))
-            client_us.append(float(np.mean(all_u_local)) if all_u_local else 1.0)
+            # For CE models or FedAvg, uncertainty=0 → EAFA degenerates to FedAvg
+            client_us.append(float(np.mean(all_u_local)) if all_u_local else 0.0)
 
         global_state, agg_stats = aggregator.aggregate(
             client_states, client_sizes, client_us, round_num,
@@ -396,7 +445,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         global_model.load_state_dict(global_state)
         global_model.to(device)
 
-        test_wf1, test_u, _ = evaluate(global_model, test_loader, device)
+        test_wf1, test_u, _, _ = evaluate(global_model, test_loader, device)
         elapsed = time.time() - start
         w_str = ",".join(f"{w:.2f}" for w in agg_stats["weights"])
         logger.info(f"Round {round_num:3d}/{args.num_rounds} | Test WF1: {test_wf1:.4f} u={test_u:.3f} | w=[{w_str}] | {elapsed:.1f}s")
@@ -404,7 +453,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         if test_wf1 > best_wf1:
             best_wf1 = test_wf1
             patience_cnt = 0
-            ckpt = Path(args.save_dir) / f"best_eafa_{dataset_name}.pt"
+            ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}.pt"
             ckpt.parent.mkdir(exist_ok=True)
             torch.save({"round": round_num, "model_state_dict": global_model.state_dict()}, ckpt)
             logger.info(f"  >> New best! WF1={test_wf1:.4f}")
@@ -418,19 +467,21 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         torch.cuda.empty_cache() if torch.cuda.is_available() else None
 
     # Final
-    ckpt = Path(args.save_dir) / f"best_eafa_{dataset_name}.pt"
+    ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}.pt"
     if ckpt.exists():
         global_model.load_state_dict(torch.load(ckpt, weights_only=False)["model_state_dict"])
-    test_wf1, test_u, test_report = evaluate(global_model, test_loader, device, emotions)
+    test_wf1, test_u, test_report, micro_f1 = evaluate(global_model, test_loader, device, emotions, dataset_name)
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"  RESULT: EAFA Federated — {dataset_name.upper()}")
+    logger.info(f"  RESULT: {agg_label} Federated ({loss_label}) — {dataset_name.upper()}")
     logger.info(f"{'='*60}")
     logger.info(f"\n{test_report}")
     logger.info(f"  Test WF1 = {test_wf1:.4f}, u = {test_u:.4f}")
+    if micro_f1 is not None:
+        logger.info(f"  Micro F1 (excl. neutral) = {micro_f1:.4f}")
     logger.info(f"{'='*60}")
 
-    return test_wf1, test_u
+    return test_wf1, test_u, micro_f1
 
 
 def main():
@@ -453,6 +504,11 @@ def main():
     parser.add_argument("--num_rounds", type=int, default=50)
     parser.add_argument("--local_epochs", type=int, default=3)
     parser.add_argument("--beta", type=float, default=1.0)
+    # Ablation
+    parser.add_argument("--loss_type", type=str, default="edl",
+                        choices=["edl", "ce"], help="edl=Evidential, ce=CrossEntropy (ablation)")
+    parser.add_argument("--aggregation", type=str, default="eafa",
+                        choices=["eafa", "fedavg"], help="eafa=uncertainty-weighted, fedavg=size-only (ablation)")
     # General
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--save_dir", type=str, default="checkpoints")
@@ -477,16 +533,20 @@ def main():
         train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
 
         if args.mode in ("centralized", "both"):
-            wf1_c, u_c = train_centralized(
+            wf1_c, u_c, mf1_c = train_centralized(
                 ds_name, train, dev, test, emotions, weights, cache, num_spk, args,
             )
             all_results[f"{ds_name}_edl"] = wf1_c
+            if mf1_c is not None:
+                all_results[f"{ds_name}_edl_micro"] = mf1_c
 
         if args.mode in ("federated", "both"):
-            wf1_f, u_f = train_federated(
+            wf1_f, u_f, mf1_f = train_federated(
                 ds_name, train, dev, test, emotions, weights, cache, num_spk, args,
             )
             all_results[f"{ds_name}_eafa"] = wf1_f
+            if mf1_f is not None:
+                all_results[f"{ds_name}_eafa_micro"] = mf1_f
 
     # Final summary
     logger.info(f"\n{'='*60}")
