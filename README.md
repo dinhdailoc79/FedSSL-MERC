@@ -1,4 +1,4 @@
-# LucBinh — FedSSL-MERC
+# ThuanPhongNhi — FedSSL-MERC
 
 > **Uncertainty-Aware Federated Learning for Emotion Recognition in Conversations**
 
@@ -8,7 +8,7 @@
 
 ## 📌 Overview
 
-LucBinh is a framework combining **Evidential Deep Learning (EDL)** with **Federated Learning (FL)** for privacy-preserving Emotion Recognition in Conversations (ERC). Our key innovation is **EAFA (Epistemic-Aware Federated Aggregation)**, which uses model uncertainty to intelligently weight client contributions during aggregation.
+ThuanPhongNhi is a framework combining **Evidential Deep Learning (EDL)** with **Federated Learning (FL)** for privacy-preserving Emotion Recognition in Conversations (ERC). Our key innovation is **EAFA (Epistemic-Aware Federated Aggregation)**, which uses model uncertainty to intelligently weight client contributions during aggregation.
 
 ### Key Contributions
 
@@ -19,7 +19,7 @@ LucBinh is a framework combining **Evidential Deep Learning (EDL)** with **Feder
 
 ### Related Work
 
-This work addresses a complementary challenge to [FedDISC (NeurIPS 2025)](https://neurips.cc), which handles missing modalities in federated MERC via diffusion models. LucBinh instead focuses on **client quality heterogeneity** through uncertainty-guided aggregation.
+This work addresses a complementary challenge to [FedDISC (NeurIPS 2025)](https://neurips.cc), which handles missing modalities in federated MERC via diffusion models. ThuanPhongNhi instead focuses on **client quality heterogeneity** through uncertainty-guided aggregation.
 
 ## 🏗️ Architecture
 

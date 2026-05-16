@@ -1,5 +1,5 @@
 """
-LucBinh Demo — Emotion Recognition with Uncertainty
+ThuanPhongNhi Demo — Emotion Recognition with Uncertainty
 =====================================================
 Interactive demo: type a dialogue → see emotion predictions + uncertainty.
 
@@ -168,7 +168,7 @@ def print_header():
     """Print demo header."""
     print("\033[1;36m")
     print("╔══════════════════════════════════════════════════════════════╗")
-    print("║          🧠 LucBinh — Emotion Recognition Demo             ║")
+    print("║          🧠 ThuanPhongNhi — Emotion Recognition Demo             ║")
     print("║     Evidential Deep Learning + Federated Aggregation        ║")
     print("╚══════════════════════════════════════════════════════════════╝")
     print("\033[0m")
@@ -282,7 +282,7 @@ def run_demo(dataset_name, use_eafa, device):
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="LucBinh Inference Demo")
+    parser = argparse.ArgumentParser(description="ThuanPhongNhi Inference Demo")
     parser.add_argument("--dataset", type=str, default="meld",
                         choices=["meld", "iemocap", "dailydialog"])
     parser.add_argument("--use_eafa", action="store_true",

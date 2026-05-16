@@ -14,7 +14,7 @@ doc = docx.Document(r'd:\OJT\Worklog - Wx - Student ID - FullName.docx')
 # Table 0: Project Info
 # ============================================
 info_table = doc.tables[0]
-info_table.rows[0].cells[1].text = "LucBinh: Uncertainty-Aware Federated Semi-Supervised Learning for Multimodal Emotion Recognition in Conversations"
+info_table.rows[0].cells[1].text = "ThuanPhongNhi: Uncertainty-Aware Federated Semi-Supervised Learning for Multimodal Emotion Recognition in Conversations"
 info_table.rows[1].cells[1].text = "Dinh Dai Loc"
 info_table.rows[2].cells[1].text = "22110046"
 
@@ -54,7 +54,7 @@ all_tasks = [
      "Completed", "1h",
      "20% SSL WF1=0.4141 vs Supervised WF1=0.4736. Validates Poison Amplification."),
     
-    ("Review proposal LucBinh, gap analysis vs implementation",
+    ("Review proposal ThuanPhongNhi, gap analysis vs implementation",
      "Completed", "2h",
      "Baselines done. Next: EDL module (core contribution)."),
 ]

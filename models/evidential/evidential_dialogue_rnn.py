@@ -4,7 +4,7 @@ Evidential DialogueRNN
 Wraps DialogueRNN with an Evidential Head instead of softmax classifier.
 
 Returns Dirichlet parameters (alpha, belief, uncertainty) instead of logits.
-Supports both supervised training and LucBinh SSL pipeline.
+Supports both supervised training and ThuanPhongNhi SSL pipeline.
 """
 
 import torch

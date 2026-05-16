@@ -1,5 +1,5 @@
 """
-LucBinh: Fine-tune RoBERTa for Emotion Recognition
+ThuanPhongNhi: Fine-tune RoBERTa for Emotion Recognition
 =====================================================
 Designed to run on Kaggle T4 GPU.
 
@@ -322,7 +322,7 @@ def extract_all_utterances(model, tokenizer, dataset_name, data_dir, device, bat
 # Main
 # -------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="LucBinh: Fine-tune RoBERTa")
+    parser = argparse.ArgumentParser(description="ThuanPhongNhi: Fine-tune RoBERTa")
     parser.add_argument("--dataset", type=str, required=True,
                         choices=["meld", "iemocap", "dailydialog"])
     parser.add_argument("--data_dir", type=str, default=None,
@@ -361,7 +361,7 @@ def main():
             raise FileNotFoundError(f"Cannot find {args.dataset} data. Use --data_dir")
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"  LucBinh: Fine-tune RoBERTa — {args.dataset.upper()}")
+    logger.info(f"  ThuanPhongNhi: Fine-tune RoBERTa — {args.dataset.upper()}")
     logger.info(f"  Data: {args.data_dir}")
     logger.info(f"  Device: {args.device}")
     logger.info(f"  Epochs: {args.epochs}, Batch: {args.batch_size}, LR: {args.lr}")

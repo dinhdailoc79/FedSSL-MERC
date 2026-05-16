@@ -1,5 +1,5 @@
 """
-LucBinh Multi-Dataset EDL Training
+ThuanPhongNhi Multi-Dataset EDL Training
 =======================================
 Run EDL centralized + EAFA federated on MELD, IEMOCAP, DailyDialog.
 
@@ -486,7 +486,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="LucBinh Multi-Dataset")
+    parser = argparse.ArgumentParser(description="ThuanPhongNhi Multi-Dataset")
     parser.add_argument("--dataset", type=str, default="all",
                         choices=["meld", "iemocap", "dailydialog", "all"])
     parser.add_argument("--mode", type=str, default="both",
@@ -550,7 +550,7 @@ def main():
 
     # Final summary
     logger.info(f"\n{'='*60}")
-    logger.info(f"  FINAL SUMMARY — LucBinh Multi-Dataset")
+    logger.info(f"  FINAL SUMMARY — ThuanPhongNhi Multi-Dataset")
     logger.info(f"{'='*60}")
     for key, wf1 in all_results.items():
         logger.info(f"  {key:<30} WF1 = {wf1:.4f}")

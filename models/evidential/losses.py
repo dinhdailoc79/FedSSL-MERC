@@ -1,5 +1,5 @@
 """
-Evidential Losses for LucBinh
+Evidential Losses for ThuanPhongNhi
 ====================================
 Implements two core loss functions:
 
@@ -14,7 +14,7 @@ Implements two core loss functions:
 
 References:
 - Sensoy et al. (NeurIPS 2018) for supervised evidential loss
-- LucBinh proposal for ECR formulation
+- ThuanPhongNhi proposal for ECR formulation
 """
 
 import torch
@@ -254,7 +254,7 @@ class EvidentialConsistencyRegularization(nn.Module):
 
 class FedEvidenceLoss(nn.Module):
     """
-    Combined loss for LucBinh framework.
+    Combined loss for ThuanPhongNhi framework.
 
     L_client = L_sup + λ_u · L_ecr
 
@@ -313,7 +313,7 @@ class FedEvidenceLoss(nn.Module):
         unlabeled_mask: Optional[torch.Tensor] = None,
     ) -> Tuple[torch.Tensor, Dict]:
         """
-        Compute combined LucBinh loss.
+        Compute combined ThuanPhongNhi loss.
 
         Args:
             alpha_labeled: (N_l, C) Dirichlet params for labeled data

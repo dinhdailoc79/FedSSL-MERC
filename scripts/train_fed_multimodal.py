@@ -1,9 +1,9 @@
 """
-LucBinh Full Pipeline: Federated Multimodal Training
+ThuanPhongNhi Full Pipeline: Federated Multimodal Training
 ========================================================
 EAFA aggregation + Multimodal EDL (text+audio) with DS Fusion.
 
-This is the COMPLETE LucBinh pipeline combining all 4 contributions:
+This is the COMPLETE ThuanPhongNhi pipeline combining all 4 contributions:
 1. EDL Head (Dirichlet)
 2. DS Fusion (text+audio evidence)
 3. EAFA (uncertainty-weighted federated aggregation)
@@ -232,7 +232,7 @@ def load_feature_cache(path, splits):
 # -------------------------------------------------------
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="LucBinh: Federated Multimodal Training")
+    parser = argparse.ArgumentParser(description="ThuanPhongNhi: Federated Multimodal Training")
     parser.add_argument("--data_dir", type=str, default="data/raw/MELD")
     parser.add_argument("--text_cache", type=str, default="data/features/meld_text_roberta.pt")
     parser.add_argument("--audio_cache", type=str, default="data/features/meld_audio_wavlm.pt")
@@ -262,7 +262,7 @@ def main():
 
     mode = "EAFA+DS" if args.beta > 0 else "FedAvg+DS"
     logger.info(f"\n{'='*60}")
-    logger.info(f"  LucBinh Full Pipeline: {mode}")
+    logger.info(f"  ThuanPhongNhi Full Pipeline: {mode}")
     logger.info(f"  {args.num_clients} clients, alpha={args.alpha}, beta={args.beta}")
     logger.info(f"  Fusion: {args.fusion_mode}")
     logger.info(f"{'='*60}")
@@ -415,7 +415,7 @@ def main():
     )
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"  FINAL: LucBinh Full Pipeline ({mode})")
+    logger.info(f"  FINAL: ThuanPhongNhi Full Pipeline ({mode})")
     logger.info(f"{'='*60}")
     logger.info(f"\n{test_report}")
     logger.info(f"\n{'='*60}")
@@ -426,7 +426,7 @@ def main():
     logger.info(f"  Multimodal EDL (text+audio):       WF1 = 0.5606")
     logger.info(f"  Softmax FedAvg (text):             WF1 = 0.5419")
     logger.info(f"  EAFA (text):                       WF1 = 0.5585")
-    logger.info(f"  LucBinh Full ({mode}):  WF1 = {test_wf1:.4f}")
+    logger.info(f"  ThuanPhongNhi Full ({mode}):  WF1 = {test_wf1:.4f}")
     logger.info(f"  Fused uncertainty:                 u = {test_u:.4f}")
     logger.info(f"{'='*60}")
     logger.info("Done!")

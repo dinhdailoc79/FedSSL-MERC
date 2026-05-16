@@ -1,5 +1,5 @@
 """
-LucBinh Demo — Real Test Data Emotion Predictions
+ThuanPhongNhi Demo — Real Test Data Emotion Predictions
 ===================================================
 Uses pre-computed features + trained models → accurate predictions.
 
@@ -93,7 +93,7 @@ def run(dataset_name, num, device):
 
     print("\033[1;36m")
     print("╔══════════════════════════════════════════════════════════╗")
-    print("║       🧠 LucBinh — Emotion Recognition Demo            ║")
+    print("║       🧠 ThuanPhongNhi — Emotion Recognition Demo            ║")
     print("║    Evidential Deep Learning + Federated Aggregation     ║")
     print("╚══════════════════════════════════════════════════════════╝")
     print("\033[0m")

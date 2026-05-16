@@ -1,5 +1,5 @@
 """
-Ablation Study Runner for LucBinh
+Ablation Study Runner for ThuanPhongNhi
 ==================================
 Runs all ablation configurations × 3 seeds for DailyDialog.
 

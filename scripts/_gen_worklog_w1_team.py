@@ -5,7 +5,7 @@ Based on actual project progress as of Week 1 (09/05/2026 - 15/05/2026)
 import docx
 
 TEMPLATE = r'd:\OJT\Worklog - Wx - Student ID - FullName.docx'
-PROJECT_NAME = "LucBinh: Uncertainty-Aware Federated Learning for Emotion Recognition in Conversations"
+PROJECT_NAME = "ThuanPhongNhi: Uncertainty-Aware Federated Learning for Emotion Recognition in Conversations"
 
 # ============================================================
 # Phân chia công việc CÂN ĐỐI cho 3 người
