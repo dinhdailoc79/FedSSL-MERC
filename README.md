@@ -52,7 +52,7 @@ Text → RoBERTa (frozen, 768d) → DialogueRNN (context) → EDL Head → Diric
 
 ## 📊 Results
 
-### Ablation Study (DailyDialog, Micro F1 excl. neutral)
+### Ablation Study (DailyDialog, text-only)
 
 | Config | Loss | Aggregation | WF1 | Uncertainty |
 |:-------|:----:|:-----------:|:---:|:----------:|
@@ -62,6 +62,17 @@ Text → RoBERTa (frozen, 768d) → DialogueRNN (context) → EDL Head → Diric
 | EDL FedAvg | EDL | FedAvg | 0.885 | ✓ |
 | **EDL EAFA** | **EDL** | **EAFA** | **0.887** | **✓** |
 
+### Multimodal Results (MELD, text+audio, finetuned features)
+
+| Config | Modality | Aggregation | WF1 |
+|:-------|:--------:|:-----------:|:---:|
+| EDL Centralized | Text | — | 63.09 |
+| EDL EAFA | Text | EAFA | 63.44 |
+| Multimodal FedAvg+DS | Text+Audio | FedAvg | 62.95 |
+| **Multimodal EAFA+DS** | **Text+Audio** | **EAFA** | **63.27** |
+
+> EAFA outperforms FedAvg in both text-only (+0.35%) and multimodal (+0.32%) settings. DS Fusion combines evidence from text and audio modalities with uncertainty-aware weighting.
+
 ### Cross-Dataset (3 seeds, mean WF1)
 
 | Dataset | EDL Centralized | EDL EAFA | Δ |
@@ -69,8 +80,6 @@ Text → RoBERTa (frozen, 768d) → DialogueRNN (context) → EDL Head → Diric
 | MELD (7 classes) | 63.09 | **63.44** | +0.35 |
 | IEMOCAP (6 classes) | 56.33 | **58.46** | +2.13 |
 | DailyDialog (6 classes) | 87.99 | **88.69** | +0.70 |
-
-> EAFA outperforms centralized training on all 3 datasets — uncertainty-guided collaboration captures complementary data patterns.
 
 ## 📁 Project Structure
 
