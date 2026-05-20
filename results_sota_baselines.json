@@ -1,0 +1,482 @@
+{
+  "meld_compm_lr0.05_s42": {
+    "wf1": 0.6196,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 42,
+    "time": 9.9
+  },
+  "meld_compm_lr0.05_s123": {
+    "wf1": 0.6058,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 123,
+    "time": 16.3
+  },
+  "meld_compm_lr0.05_s456": {
+    "wf1": 0.6245,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 456,
+    "time": 8.2
+  },
+  "meld_compm_lr0.05_s789": {
+    "wf1": 0.6241,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 789,
+    "time": 8.5
+  },
+  "meld_compm_lr0.05_s2024": {
+    "wf1": 0.6099,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 2024,
+    "time": 6.1
+  },
+  "meld_compm_lr0.10_s42": {
+    "wf1": 0.6185,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 10.7
+  },
+  "meld_compm_lr0.10_s123": {
+    "wf1": 0.6141,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 123,
+    "time": 11.7
+  },
+  "meld_compm_lr0.10_s456": {
+    "wf1": 0.628,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 456,
+    "time": 9.4
+  },
+  "meld_compm_lr0.10_s789": {
+    "wf1": 0.6188,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 789,
+    "time": 9.2
+  },
+  "meld_compm_lr0.10_s2024": {
+    "wf1": 0.6192,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 2024,
+    "time": 13.1
+  },
+  "meld_compm_lr0.50_s42": {
+    "wf1": 0.6256,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 42,
+    "time": 26.1
+  },
+  "meld_compm_lr0.50_s123": {
+    "wf1": 0.6244,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 123,
+    "time": 17.9
+  },
+  "meld_compm_lr0.50_s456": {
+    "wf1": 0.6285,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 456,
+    "time": 14.9
+  },
+  "meld_compm_lr0.50_s789": {
+    "wf1": 0.6212,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 789,
+    "time": 17.5
+  },
+  "meld_compm_lr0.50_s2024": {
+    "wf1": 0.6228,
+    "model": "compm",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 2024,
+    "time": 22.2
+  },
+  "iemocap_compm_lr0.05_s42": {
+    "wf1": 0.5247,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 42,
+    "time": 11.0
+  },
+  "iemocap_compm_lr0.05_s123": {
+    "wf1": 0.5694,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 123,
+    "time": 10.3
+  },
+  "iemocap_compm_lr0.05_s456": {
+    "wf1": 0.5254,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 456,
+    "time": 5.8
+  },
+  "iemocap_compm_lr0.05_s789": {
+    "wf1": 0.5461,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 789,
+    "time": 5.3
+  },
+  "iemocap_compm_lr0.05_s2024": {
+    "wf1": 0.5067,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 2024,
+    "time": 8.0
+  },
+  "iemocap_compm_lr0.10_s42": {
+    "wf1": 0.5229,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 4.9
+  },
+  "iemocap_compm_lr0.10_s123": {
+    "wf1": 0.5426,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 123,
+    "time": 9.2
+  },
+  "iemocap_compm_lr0.10_s456": {
+    "wf1": 0.5634,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 456,
+    "time": 6.8
+  },
+  "iemocap_compm_lr0.10_s789": {
+    "wf1": 0.5485,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 789,
+    "time": 7.6
+  },
+  "iemocap_compm_lr0.10_s2024": {
+    "wf1": 0.5337,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 2024,
+    "time": 12.1
+  },
+  "iemocap_compm_lr0.50_s42": {
+    "wf1": 0.5874,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 42,
+    "time": 8.4
+  },
+  "iemocap_compm_lr0.50_s123": {
+    "wf1": 0.5799,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 123,
+    "time": 15.1
+  },
+  "iemocap_compm_lr0.50_s456": {
+    "wf1": 0.5753,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 456,
+    "time": 5.9
+  },
+  "iemocap_compm_lr0.50_s789": {
+    "wf1": 0.5963,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 789,
+    "time": 8.5
+  },
+  "iemocap_compm_lr0.50_s2024": {
+    "wf1": 0.576,
+    "model": "compm",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 2024,
+    "time": 9.2
+  },
+  "meld_spcl_lr0.05_s42": {
+    "wf1": 0.6231,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 42,
+    "time": 49.3
+  },
+  "meld_spcl_lr0.05_s123": {
+    "wf1": 0.6158,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 123,
+    "time": 60.5
+  },
+  "meld_spcl_lr0.05_s456": {
+    "wf1": 0.6204,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 456,
+    "time": 39.6
+  },
+  "meld_spcl_lr0.05_s789": {
+    "wf1": 0.6246,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 789,
+    "time": 38.3
+  },
+  "meld_spcl_lr0.05_s2024": {
+    "wf1": 0.6128,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.05,
+    "seed": 2024,
+    "time": 32.0
+  },
+  "meld_spcl_lr0.10_s42": {
+    "wf1": 0.6262,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 50.7
+  },
+  "meld_spcl_lr0.10_s123": {
+    "wf1": 0.6103,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 123,
+    "time": 41.4
+  },
+  "meld_spcl_lr0.10_s456": {
+    "wf1": 0.6303,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 456,
+    "time": 49.0
+  },
+  "meld_spcl_lr0.10_s789": {
+    "wf1": 0.6263,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 789,
+    "time": 36.2
+  },
+  "meld_spcl_lr0.10_s2024": {
+    "wf1": 0.6224,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 2024,
+    "time": 45.3
+  },
+  "meld_spcl_lr0.50_s42": {
+    "wf1": 0.6251,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 42,
+    "time": 131.6
+  },
+  "meld_spcl_lr0.50_s123": {
+    "wf1": 0.6289,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 123,
+    "time": 151.9
+  },
+  "meld_spcl_lr0.50_s456": {
+    "wf1": 0.6262,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 456,
+    "time": 131.7
+  },
+  "meld_spcl_lr0.50_s789": {
+    "wf1": 0.627,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 789,
+    "time": 170.0
+  },
+  "meld_spcl_lr0.50_s2024": {
+    "wf1": 0.6228,
+    "model": "spcl",
+    "dataset": "meld",
+    "label_ratio": 0.5,
+    "seed": 2024,
+    "time": 155.4
+  },
+  "iemocap_spcl_lr0.05_s42": {
+    "wf1": 0.5228,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 42,
+    "time": 103.1
+  },
+  "iemocap_spcl_lr0.05_s123": {
+    "wf1": 0.5547,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 123,
+    "time": 51.4
+  },
+  "iemocap_spcl_lr0.05_s456": {
+    "wf1": 0.5699,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 456,
+    "time": 91.8
+  },
+  "iemocap_spcl_lr0.05_s789": {
+    "wf1": 0.5687,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 789,
+    "time": 56.0
+  },
+  "iemocap_spcl_lr0.05_s2024": {
+    "wf1": 0.5073,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.05,
+    "seed": 2024,
+    "time": 124.0
+  },
+  "iemocap_spcl_lr0.10_s42": {
+    "wf1": 0.5043,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 61.4
+  },
+  "iemocap_spcl_lr0.10_s123": {
+    "wf1": 0.5516,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 123,
+    "time": 77.0
+  },
+  "iemocap_spcl_lr0.10_s456": {
+    "wf1": 0.5828,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 456,
+    "time": 87.2
+  },
+  "iemocap_spcl_lr0.10_s789": {
+    "wf1": 0.5453,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 789,
+    "time": 96.6
+  },
+  "iemocap_spcl_lr0.10_s2024": {
+    "wf1": 0.5423,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.1,
+    "seed": 2024,
+    "time": 77.3
+  },
+  "iemocap_spcl_lr0.50_s42": {
+    "wf1": 0.5934,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 42,
+    "time": 76.0
+  },
+  "iemocap_spcl_lr0.50_s123": {
+    "wf1": 0.6021,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 123,
+    "time": 93.1
+  },
+  "iemocap_spcl_lr0.50_s456": {
+    "wf1": 0.5853,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 456,
+    "time": 100.9
+  },
+  "iemocap_spcl_lr0.50_s789": {
+    "wf1": 0.5968,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 789,
+    "time": 107.6
+  },
+  "iemocap_spcl_lr0.50_s2024": {
+    "wf1": 0.5972,
+    "model": "spcl",
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "seed": 2024,
+    "time": 72.8
+  }
+}

@@ -1,0 +1,488 @@
+{
+  "iemocap_ecr_lu0.3_rp5_s42": {
+    "wf1": 0.5833,
+    "lambda_u": 0.3,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 121.1
+  },
+  "iemocap_ecr_lu0.3_rp5_s123": {
+    "wf1": 0.589,
+    "lambda_u": 0.3,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 155.9
+  },
+  "iemocap_ecr_lu0.3_rp5_s2024": {
+    "wf1": 0.5956,
+    "lambda_u": 0.3,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 245.1
+  },
+  "iemocap_ecr_lu0.3_rp10_s42": {
+    "wf1": 0.5852,
+    "lambda_u": 0.3,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 172.2
+  },
+  "iemocap_ecr_lu0.3_rp10_s123": {
+    "wf1": 0.5898,
+    "lambda_u": 0.3,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 125.1
+  },
+  "iemocap_ecr_lu0.3_rp10_s2024": {
+    "wf1": 0.591,
+    "lambda_u": 0.3,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 156.8
+  },
+  "iemocap_ecr_lu0.3_rp20_s42": {
+    "wf1": 0.5875,
+    "lambda_u": 0.3,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 117.0
+  },
+  "iemocap_ecr_lu0.3_rp20_s123": {
+    "wf1": 0.5949,
+    "lambda_u": 0.3,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 124.4
+  },
+  "iemocap_ecr_lu0.3_rp20_s2024": {
+    "wf1": 0.5911,
+    "lambda_u": 0.3,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 136.4
+  },
+  "iemocap_ecr_lu0.5_rp5_s42": {
+    "wf1": 0.5816,
+    "lambda_u": 0.5,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 138.1
+  },
+  "iemocap_ecr_lu0.5_rp5_s123": {
+    "wf1": 0.5871,
+    "lambda_u": 0.5,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 127.5
+  },
+  "iemocap_ecr_lu0.5_rp5_s2024": {
+    "wf1": 0.5918,
+    "lambda_u": 0.5,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 164.5
+  },
+  "iemocap_ecr_lu0.5_rp10_s42": {
+    "wf1": 0.5838,
+    "lambda_u": 0.5,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 146.6
+  },
+  "iemocap_ecr_lu0.5_rp10_s123": {
+    "wf1": 0.5862,
+    "lambda_u": 0.5,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 139.0
+  },
+  "iemocap_ecr_lu0.5_rp10_s2024": {
+    "wf1": 0.5905,
+    "lambda_u": 0.5,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 157.7
+  },
+  "iemocap_ecr_lu0.5_rp20_s42": {
+    "wf1": 0.5856,
+    "lambda_u": 0.5,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 118.5
+  },
+  "iemocap_ecr_lu0.5_rp20_s123": {
+    "wf1": 0.5887,
+    "lambda_u": 0.5,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 136.1
+  },
+  "iemocap_ecr_lu0.5_rp20_s2024": {
+    "wf1": 0.5993,
+    "lambda_u": 0.5,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 215.3
+  },
+  "iemocap_ecr_lu1.0_rp5_s42": {
+    "wf1": 0.5774,
+    "lambda_u": 1.0,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 104.2
+  },
+  "iemocap_ecr_lu1.0_rp5_s123": {
+    "wf1": 0.5858,
+    "lambda_u": 1.0,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 133.2
+  },
+  "iemocap_ecr_lu1.0_rp5_s2024": {
+    "wf1": 0.59,
+    "lambda_u": 1.0,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 250.8
+  },
+  "iemocap_ecr_lu1.0_rp10_s42": {
+    "wf1": 0.5789,
+    "lambda_u": 1.0,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 136.5
+  },
+  "iemocap_ecr_lu1.0_rp10_s123": {
+    "wf1": 0.5891,
+    "lambda_u": 1.0,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 121.7
+  },
+  "iemocap_ecr_lu1.0_rp10_s2024": {
+    "wf1": 0.5911,
+    "lambda_u": 1.0,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 235.5
+  },
+  "iemocap_ecr_lu1.0_rp20_s42": {
+    "wf1": 0.5857,
+    "lambda_u": 1.0,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 172.8
+  },
+  "iemocap_ecr_lu1.0_rp20_s123": {
+    "wf1": 0.5867,
+    "lambda_u": 1.0,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 126.9
+  },
+  "iemocap_ecr_lu1.0_rp20_s2024": {
+    "wf1": 0.5875,
+    "lambda_u": 1.0,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 207.3
+  },
+  "iemocap_ecr_lu2.0_rp5_s42": {
+    "wf1": 0.5765,
+    "lambda_u": 2.0,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 84.4
+  },
+  "iemocap_ecr_lu2.0_rp5_s123": {
+    "wf1": 0.5781,
+    "lambda_u": 2.0,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 150.1
+  },
+  "iemocap_ecr_lu2.0_rp5_s2024": {
+    "wf1": 0.5897,
+    "lambda_u": 2.0,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 248.2
+  },
+  "iemocap_ecr_lu2.0_rp10_s42": {
+    "wf1": 0.5782,
+    "lambda_u": 2.0,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 99.5
+  },
+  "iemocap_ecr_lu2.0_rp10_s123": {
+    "wf1": 0.5841,
+    "lambda_u": 2.0,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 131.0
+  },
+  "iemocap_ecr_lu2.0_rp10_s2024": {
+    "wf1": 0.5891,
+    "lambda_u": 2.0,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 260.1
+  },
+  "iemocap_ecr_lu2.0_rp20_s42": {
+    "wf1": 0.5773,
+    "lambda_u": 2.0,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 164.2
+  },
+  "iemocap_ecr_lu2.0_rp20_s123": {
+    "wf1": 0.5913,
+    "lambda_u": 2.0,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 103.7
+  },
+  "iemocap_ecr_lu2.0_rp20_s2024": {
+    "wf1": 0.5884,
+    "lambda_u": 2.0,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 183.3
+  },
+  "iemocap_ecr_lu3.0_rp5_s42": {
+    "wf1": 0.5784,
+    "lambda_u": 3.0,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 85.8
+  },
+  "iemocap_ecr_lu3.0_rp5_s123": {
+    "wf1": 0.5728,
+    "lambda_u": 3.0,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 102.6
+  },
+  "iemocap_ecr_lu3.0_rp5_s2024": {
+    "wf1": 0.5828,
+    "lambda_u": 3.0,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 179.4
+  },
+  "iemocap_ecr_lu3.0_rp10_s42": {
+    "wf1": 0.5746,
+    "lambda_u": 3.0,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 86.5
+  },
+  "iemocap_ecr_lu3.0_rp10_s123": {
+    "wf1": 0.5783,
+    "lambda_u": 3.0,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 92.0
+  },
+  "iemocap_ecr_lu3.0_rp10_s2024": {
+    "wf1": 0.585,
+    "lambda_u": 3.0,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 196.6
+  },
+  "iemocap_ecr_lu3.0_rp20_s42": {
+    "wf1": 0.5719,
+    "lambda_u": 3.0,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 94.8
+  },
+  "iemocap_ecr_lu3.0_rp20_s123": {
+    "wf1": 0.5877,
+    "lambda_u": 3.0,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 101.6
+  },
+  "iemocap_ecr_lu3.0_rp20_s2024": {
+    "wf1": 0.5853,
+    "lambda_u": 3.0,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 153.1
+  },
+  "iemocap_ecr_lu5.0_rp5_s42": {
+    "wf1": 0.5732,
+    "lambda_u": 5.0,
+    "rampup": 5,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 189.6
+  },
+  "iemocap_ecr_lu5.0_rp5_s123": {
+    "wf1": 0.581,
+    "lambda_u": 5.0,
+    "rampup": 5,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 183.9
+  },
+  "iemocap_ecr_lu5.0_rp5_s2024": {
+    "wf1": 0.5825,
+    "lambda_u": 5.0,
+    "rampup": 5,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 184.4
+  },
+  "iemocap_ecr_lu5.0_rp10_s42": {
+    "wf1": 0.5715,
+    "lambda_u": 5.0,
+    "rampup": 10,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 103.6
+  },
+  "iemocap_ecr_lu5.0_rp10_s123": {
+    "wf1": 0.5665,
+    "lambda_u": 5.0,
+    "rampup": 10,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 112.7
+  },
+  "iemocap_ecr_lu5.0_rp10_s2024": {
+    "wf1": 0.5819,
+    "lambda_u": 5.0,
+    "rampup": 10,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 210.2
+  },
+  "iemocap_ecr_lu5.0_rp20_s42": {
+    "wf1": 0.5773,
+    "lambda_u": 5.0,
+    "rampup": 20,
+    "seed": 42,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 108.4
+  },
+  "iemocap_ecr_lu5.0_rp20_s123": {
+    "wf1": 0.5857,
+    "lambda_u": 5.0,
+    "rampup": 20,
+    "seed": 123,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 94.9
+  },
+  "iemocap_ecr_lu5.0_rp20_s2024": {
+    "wf1": 0.582,
+    "lambda_u": 5.0,
+    "rampup": 20,
+    "seed": 2024,
+    "dataset": "iemocap",
+    "label_ratio": 0.5,
+    "time": 153.1
+  }
+}

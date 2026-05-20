@@ -65,6 +65,17 @@ results/tables/*.csv
 Thumbs.db
 desktop.ini
 
+# LaTeX build files
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/AuthorKit26/
+
 # Secrets
 .env
 *.key

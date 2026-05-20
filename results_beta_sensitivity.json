@@ -1,0 +1,882 @@
+{
+  "meld_beta1.0_noise0.4_s42": {
+    "wf1": 0.6064,
+    "uncertainty": 0.6274,
+    "dev_wf1": 0.5842,
+    "weights": [
+      0.228,
+      0.409,
+      0.132,
+      0.153,
+      0.078
+    ],
+    "client_uncertainties": [
+      0.4999,
+      0.4393,
+      0.5333,
+      0.7631,
+      0.6623
+    ],
+    "time": 166.6,
+    "beta": 1.0,
+    "noise_rate": 0.4
+  },
+  "meld_beta2.0_noise0.4_s42": {
+    "wf1": 0.6186,
+    "uncertainty": 0.5855,
+    "dev_wf1": 0.5878,
+    "weights": [
+      0.231,
+      0.448,
+      0.132,
+      0.12,
+      0.069
+    ],
+    "client_uncertainties": [
+      0.5009,
+      0.432,
+      0.5248,
+      0.762,
+      0.6565
+    ],
+    "time": 199.8,
+    "beta": 2.0,
+    "noise_rate": 0.4
+  },
+  "meld_beta5.0_noise0.4_s42": {
+    "wf1": 0.6104,
+    "uncertainty": 0.3968,
+    "dev_wf1": 0.5926,
+    "weights": [
+      0.144,
+      0.773,
+      0.057,
+      0.016,
+      0.01
+    ],
+    "client_uncertainties": [
+      0.5055,
+      0.2742,
+      0.5864,
+      0.9235,
+      0.8545
+    ],
+    "time": 263.2,
+    "beta": 5.0,
+    "noise_rate": 0.4
+  },
+  "meld_beta10.0_noise0.4_s42": {
+    "wf1": 0.6234,
+    "uncertainty": 0.4619,
+    "dev_wf1": 0.5946,
+    "weights": [
+      0.213,
+      0.606,
+      0.113,
+      0.043,
+      0.025
+    ],
+    "client_uncertainties": [
+      0.4727,
+      0.4207,
+      0.4846,
+      0.6199,
+      0.5958
+    ],
+    "time": 154.0,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "meld_fedavg_noise0.4_s42_v2": {
+    "wf1": 0.6124,
+    "uncertainty": 0.6131,
+    "dev_wf1": 0.5824,
+    "weights": [
+      0.219,
+      0.37,
+      0.131,
+      0.192,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.5035,
+      0.4572,
+      0.5303,
+      0.7189,
+      0.632
+    ],
+    "time": 194.1,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  },
+  "meld_eafa_b10.0_noise0.0_s42": {
+    "wf1": 0.6298,
+    "uncertainty": 0.3961,
+    "dev_wf1": 0.6086,
+    "weights": [
+      0.191,
+      0.431,
+      0.119,
+      0.175,
+      0.085
+    ],
+    "client_uncertainties": [
+      0.4258,
+      0.3967,
+      0.4218,
+      0.4211,
+      0.4168
+    ],
+    "time": 155.9,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "meld_fedavg_noise0.0_s42_v2": {
+    "wf1": 0.6273,
+    "uncertainty": 0.4051,
+    "dev_wf1": 0.5977,
+    "weights": [
+      0.219,
+      0.37,
+      0.131,
+      0.192,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.4298,
+      0.4019,
+      0.4274,
+      0.4305,
+      0.4248
+    ],
+    "time": 161.8,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "meld_eafa_b10.0_noise0.0_s123": {
+    "wf1": 0.6193,
+    "uncertainty": 0.3669,
+    "dev_wf1": 0.5948,
+    "weights": [
+      0.17,
+      0.072,
+      0.089,
+      0.55,
+      0.119
+    ],
+    "client_uncertainties": [
+      0.4138,
+      0.4086,
+      0.4052,
+      0.3754,
+      0.3864
+    ],
+    "time": 142.5,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "meld_fedavg_noise0.0_s123_v2": {
+    "wf1": 0.621,
+    "uncertainty": 0.4135,
+    "dev_wf1": 0.5942,
+    "weights": [
+      0.217,
+      0.087,
+      0.104,
+      0.477,
+      0.116
+    ],
+    "client_uncertainties": [
+      0.449,
+      0.4431,
+      0.4658,
+      0.4075,
+      0.426
+    ],
+    "time": 170.9,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "meld_eafa_b10.0_noise0.0_s2024": {
+    "wf1": 0.6217,
+    "uncertainty": 0.4474,
+    "dev_wf1": 0.5953,
+    "weights": [
+      0.501,
+      0.087,
+      0.119,
+      0.244,
+      0.048
+    ],
+    "client_uncertainties": [
+      0.4231,
+      0.4946,
+      0.4991,
+      0.4544,
+      0.4357
+    ],
+    "time": 180.4,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "meld_fedavg_noise0.0_s2024_v2": {
+    "wf1": 0.6295,
+    "uncertainty": 0.4482,
+    "dev_wf1": 0.5916,
+    "weights": [
+      0.379,
+      0.135,
+      0.193,
+      0.252,
+      0.041
+    ],
+    "client_uncertainties": [
+      0.4468,
+      0.4883,
+      0.4935,
+      0.4578,
+      0.4532
+    ],
+    "time": 154.4,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "meld_eafa_b10.0_noise0.2_s42": {
+    "wf1": 0.6281,
+    "uncertainty": 0.4107,
+    "dev_wf1": 0.603,
+    "weights": [
+      0.236,
+      0.54,
+      0.143,
+      0.045,
+      0.037
+    ],
+    "client_uncertainties": [
+      0.4304,
+      0.4003,
+      0.4296,
+      0.5838,
+      0.5259
+    ],
+    "time": 122.4,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "meld_fedavg_noise0.2_s42_v2": {
+    "wf1": 0.6303,
+    "uncertainty": 0.5052,
+    "dev_wf1": 0.5985,
+    "weights": [
+      0.219,
+      0.37,
+      0.131,
+      0.192,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.4783,
+      0.4352,
+      0.4805,
+      0.6732,
+      0.6151
+    ],
+    "time": 165.1,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "meld_eafa_b10.0_noise0.2_s123": {
+    "wf1": 0.6287,
+    "uncertainty": 0.5306,
+    "dev_wf1": 0.5913,
+    "weights": [
+      0.422,
+      0.115,
+      0.149,
+      0.244,
+      0.071
+    ],
+    "client_uncertainties": [
+      0.4768,
+      0.5151,
+      0.5077,
+      0.6105,
+      0.5928
+    ],
+    "time": 147.5,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "meld_fedavg_noise0.2_s123_v2": {
+    "wf1": 0.61,
+    "uncertainty": 0.709,
+    "dev_wf1": 0.5854,
+    "weights": [
+      0.217,
+      0.087,
+      0.104,
+      0.477,
+      0.116
+    ],
+    "client_uncertainties": [
+      0.5357,
+      0.6147,
+      0.6188,
+      0.6778,
+      0.8792
+    ],
+    "time": 270.1,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "meld_eafa_b10.0_noise0.2_s2024": {
+    "wf1": 0.6196,
+    "uncertainty": 0.4395,
+    "dev_wf1": 0.5928,
+    "weights": [
+      0.719,
+      0.11,
+      0.154,
+      0.008,
+      0.009
+    ],
+    "client_uncertainties": [
+      0.4037,
+      0.4885,
+      0.4901,
+      0.809,
+      0.6203
+    ],
+    "time": 193.1,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "meld_fedavg_noise0.2_s2024_v2": {
+    "wf1": 0.6096,
+    "uncertainty": 0.577,
+    "dev_wf1": 0.5927,
+    "weights": [
+      0.379,
+      0.135,
+      0.193,
+      0.252,
+      0.041
+    ],
+    "client_uncertainties": [
+      0.3814,
+      0.5524,
+      0.5079,
+      0.7882,
+      0.7664
+    ],
+    "time": 267.3,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "meld_eafa_b10.0_noise0.4_s42": {
+    "wf1": 0.6234,
+    "uncertainty": 0.4619,
+    "dev_wf1": 0.5946,
+    "weights": [
+      0.213,
+      0.606,
+      0.113,
+      0.043,
+      0.025
+    ],
+    "client_uncertainties": [
+      0.4727,
+      0.4207,
+      0.4846,
+      0.6199,
+      0.5958
+    ],
+    "time": 152.2,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "meld_eafa_b10.0_noise0.4_s123": {
+    "wf1": 0.6204,
+    "uncertainty": 0.631,
+    "dev_wf1": 0.5858,
+    "weights": [
+      0.374,
+      0.122,
+      0.184,
+      0.217,
+      0.103
+    ],
+    "client_uncertainties": [
+      0.5504,
+      0.5706,
+      0.5479,
+      0.6838,
+      0.6165
+    ],
+    "time": 160.2,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "meld_fedavg_noise0.4_s123_v2": {
+    "wf1": 0.6055,
+    "uncertainty": 0.8047,
+    "dev_wf1": 0.5676,
+    "weights": [
+      0.217,
+      0.087,
+      0.104,
+      0.477,
+      0.116
+    ],
+    "client_uncertainties": [
+      0.5824,
+      0.6809,
+      0.6394,
+      0.729,
+      0.9552
+    ],
+    "time": 307.2,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  },
+  "meld_eafa_b10.0_noise0.4_s2024": {
+    "wf1": 0.6285,
+    "uncertainty": 0.4404,
+    "dev_wf1": 0.5937,
+    "weights": [
+      0.7,
+      0.119,
+      0.17,
+      0.004,
+      0.007
+    ],
+    "client_uncertainties": [
+      0.421,
+      0.495,
+      0.4947,
+      0.9055,
+      0.6659
+    ],
+    "time": 164.1,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "meld_fedavg_noise0.4_s2024_v2": {
+    "wf1": 0.6127,
+    "uncertainty": 0.5323,
+    "dev_wf1": 0.5844,
+    "weights": [
+      0.379,
+      0.135,
+      0.193,
+      0.252,
+      0.041
+    ],
+    "client_uncertainties": [
+      0.4391,
+      0.469,
+      0.4617,
+      0.6043,
+      0.5123
+    ],
+    "time": 146.0,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_eafa_b10.0_noise0.0_s42": {
+    "wf1": 0.5871,
+    "uncertainty": 0.4224,
+    "dev_wf1": 0.5612,
+    "weights": [
+      0.228,
+      0.121,
+      0.39,
+      0.17,
+      0.09
+    ],
+    "client_uncertainties": [
+      0.4335,
+      0.4346,
+      0.3799,
+      0.4142,
+      0.4082
+    ],
+    "time": 78.0,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_fedavg_noise0.0_s42_v2": {
+    "wf1": 0.5766,
+    "uncertainty": 0.4512,
+    "dev_wf1": 0.5469,
+    "weights": [
+      0.289,
+      0.156,
+      0.289,
+      0.178,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.4651,
+      0.4568,
+      0.4136,
+      0.4443,
+      0.4341
+    ],
+    "time": 70.2,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_eafa_b10.0_noise0.0_s123": {
+    "wf1": 0.586,
+    "uncertainty": 0.4085,
+    "dev_wf1": 0.5488,
+    "weights": [
+      0.23,
+      0.272,
+      0.256,
+      0.052,
+      0.189
+    ],
+    "client_uncertainties": [
+      0.3588,
+      0.3512,
+      0.3212,
+      0.4921,
+      0.3224
+    ],
+    "time": 173.1,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_fedavg_noise0.0_s123_v2": {
+    "wf1": 0.589,
+    "uncertainty": 0.4349,
+    "dev_wf1": 0.5492,
+    "weights": [
+      0.233,
+      0.256,
+      0.178,
+      0.2,
+      0.133
+    ],
+    "client_uncertainties": [
+      0.3761,
+      0.3766,
+      0.3591,
+      0.4914,
+      0.3505
+    ],
+    "time": 176.4,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_eafa_b10.0_noise0.0_s2024": {
+    "wf1": 0.588,
+    "uncertainty": 0.442,
+    "dev_wf1": 0.5404,
+    "weights": [
+      0.256,
+      0.127,
+      0.158,
+      0.04,
+      0.42
+    ],
+    "client_uncertainties": [
+      0.3815,
+      0.3825,
+      0.4251,
+      0.5068,
+      0.3405
+    ],
+    "time": 147.3,
+    "beta": 10.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_fedavg_noise0.0_s2024_v2": {
+    "wf1": 0.5763,
+    "uncertainty": 0.4742,
+    "dev_wf1": 0.5464,
+    "weights": [
+      0.244,
+      0.122,
+      0.233,
+      0.133,
+      0.267
+    ],
+    "client_uncertainties": [
+      0.4097,
+      0.3884,
+      0.4022,
+      0.512,
+      0.3638
+    ],
+    "time": 120.4,
+    "beta": 0.0,
+    "noise_rate": 0.0
+  },
+  "iemocap_eafa_b10.0_noise0.2_s42": {
+    "wf1": 0.59,
+    "uncertainty": 0.4495,
+    "dev_wf1": 0.554,
+    "weights": [
+      0.267,
+      0.139,
+      0.378,
+      0.148,
+      0.068
+    ],
+    "client_uncertainties": [
+      0.4516,
+      0.4549,
+      0.4169,
+      0.4625,
+      0.471
+    ],
+    "time": 52.6,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_fedavg_noise0.2_s42_v2": {
+    "wf1": 0.5841,
+    "uncertainty": 0.4642,
+    "dev_wf1": 0.5474,
+    "weights": [
+      0.289,
+      0.156,
+      0.289,
+      0.178,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.4678,
+      0.4678,
+      0.4172,
+      0.4719,
+      0.4829
+    ],
+    "time": 55.9,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_eafa_b10.0_noise0.2_s123": {
+    "wf1": 0.583,
+    "uncertainty": 0.3967,
+    "dev_wf1": 0.5544,
+    "weights": [
+      0.275,
+      0.4,
+      0.28,
+      0.007,
+      0.039
+    ],
+    "client_uncertainties": [
+      0.3338,
+      0.3054,
+      0.3047,
+      0.6914,
+      0.4736
+    ],
+    "time": 165.3,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_fedavg_noise0.2_s123_v2": {
+    "wf1": 0.582,
+    "uncertainty": 0.581,
+    "dev_wf1": 0.5558,
+    "weights": [
+      0.233,
+      0.256,
+      0.178,
+      0.2,
+      0.133
+    ],
+    "client_uncertainties": [
+      0.4783,
+      0.4508,
+      0.419,
+      0.7221,
+      0.6966
+    ],
+    "time": 142.5,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_eafa_b10.0_noise0.2_s2024": {
+    "wf1": 0.5963,
+    "uncertainty": 0.4397,
+    "dev_wf1": 0.547,
+    "weights": [
+      0.384,
+      0.192,
+      0.331,
+      0.051,
+      0.042
+    ],
+    "client_uncertainties": [
+      0.3942,
+      0.3943,
+      0.4045,
+      0.5361,
+      0.6236
+    ],
+    "time": 111.5,
+    "beta": 10.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_fedavg_noise0.2_s2024_v2": {
+    "wf1": 0.5769,
+    "uncertainty": 0.6262,
+    "dev_wf1": 0.5325,
+    "weights": [
+      0.244,
+      0.122,
+      0.233,
+      0.133,
+      0.267
+    ],
+    "client_uncertainties": [
+      0.4776,
+      0.512,
+      0.4603,
+      0.7557,
+      0.7691
+    ],
+    "time": 176.9,
+    "beta": 0.0,
+    "noise_rate": 0.2
+  },
+  "iemocap_eafa_b10.0_noise0.4_s42": {
+    "wf1": 0.5901,
+    "uncertainty": 0.4342,
+    "dev_wf1": 0.5617,
+    "weights": [
+      0.281,
+      0.121,
+      0.479,
+      0.077,
+      0.042
+    ],
+    "client_uncertainties": [
+      0.4356,
+      0.458,
+      0.3822,
+      0.5164,
+      0.5088
+    ],
+    "time": 74.9,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_fedavg_noise0.4_s42_v2": {
+    "wf1": 0.601,
+    "uncertainty": 0.4766,
+    "dev_wf1": 0.5635,
+    "weights": [
+      0.289,
+      0.156,
+      0.289,
+      0.178,
+      0.089
+    ],
+    "client_uncertainties": [
+      0.4591,
+      0.4737,
+      0.4127,
+      0.5379,
+      0.5364
+    ],
+    "time": 78.5,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_eafa_b10.0_noise0.4_s123": {
+    "wf1": 0.5821,
+    "uncertainty": 0.4319,
+    "dev_wf1": 0.5574,
+    "weights": [
+      0.268,
+      0.395,
+      0.307,
+      0.006,
+      0.024
+    ],
+    "client_uncertainties": [
+      0.367,
+      0.3374,
+      0.3264,
+      0.7339,
+      0.5514
+    ],
+    "time": 176.4,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_fedavg_noise0.4_s123_v2": {
+    "wf1": 0.5871,
+    "uncertainty": 0.5534,
+    "dev_wf1": 0.5554,
+    "weights": [
+      0.233,
+      0.256,
+      0.178,
+      0.2,
+      0.133
+    ],
+    "client_uncertainties": [
+      0.4825,
+      0.4781,
+      0.4789,
+      0.6325,
+      0.5902
+    ],
+    "time": 86.5,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_eafa_b10.0_noise0.4_s2024": {
+    "wf1": 0.5854,
+    "uncertainty": 0.536,
+    "dev_wf1": 0.5394,
+    "weights": [
+      0.28,
+      0.15,
+      0.31,
+      0.069,
+      0.192
+    ],
+    "client_uncertainties": [
+      0.5097,
+      0.5028,
+      0.495,
+      0.5896,
+      0.5562
+    ],
+    "time": 76.2,
+    "beta": 10.0,
+    "noise_rate": 0.4
+  },
+  "iemocap_fedavg_noise0.4_s2024_v2": {
+    "wf1": 0.5668,
+    "uncertainty": 0.5616,
+    "dev_wf1": 0.5256,
+    "weights": [
+      0.244,
+      0.122,
+      0.233,
+      0.133,
+      0.267
+    ],
+    "client_uncertainties": [
+      0.5064,
+      0.5183,
+      0.5072,
+      0.6256,
+      0.5837
+    ],
+    "time": 84.5,
+    "beta": 0.0,
+    "noise_rate": 0.4
+  }
+}

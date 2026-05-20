@@ -1,0 +1,12 @@
+{
+  "multimodal_eafa": {
+    "wf1": 0.6304,
+    "uncertainty": 0.368,
+    "best_dev_wf1": 0.5983
+  },
+  "multimodal_fedavg": {
+    "wf1": 0.6258,
+    "uncertainty": 0.455,
+    "best_dev_wf1": 0.5997
+  }
+}

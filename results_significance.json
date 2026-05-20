@@ -1,0 +1,110 @@
+{
+  "dailydialog_eafa_s42": {
+    "wf1": 0.8854
+  },
+  "dailydialog_eafa_s123": {
+    "wf1": 0.8859
+  },
+  "dailydialog_eafa_s2024": {
+    "wf1": 0.8895
+  },
+  "dailydialog_centralized_s42": {
+    "wf1": 0.8773
+  },
+  "dailydialog_centralized_s123": {
+    "wf1": 0.8846
+  },
+  "dailydialog_centralized_s2024": {
+    "wf1": 0.8778
+  },
+  "dailydialog_fedavg_s42": {
+    "wf1": 0.8837,
+    "micro": 0.8844,
+    "time": 1290.178731918335,
+    "label": "dailydialog_federated_fedavg_s42_a0.5"
+  },
+  "dailydialog_fedavg_s123": {
+    "wf1": 0.8846,
+    "micro": 0.8851,
+    "time": 1087.0656321048737,
+    "label": "dailydialog_federated_fedavg_s123_a0.5"
+  },
+  "dailydialog_fedavg_s2024": {
+    "wf1": 0.8852,
+    "micro": 0.8858,
+    "time": 862.7883625030518,
+    "label": "dailydialog_federated_fedavg_s2024_a0.5"
+  },
+  "meld_eafa_s42": {
+    "wf1": 0.6347,
+    "micro": null,
+    "time": 176.27225494384766,
+    "label": "meld_federated_eafa_s42_a0.5"
+  },
+  "meld_eafa_s123": {
+    "wf1": 0.6311,
+    "micro": null,
+    "time": 288.37945222854614,
+    "label": "meld_federated_eafa_s123_a0.5"
+  },
+  "meld_eafa_s2024": {
+    "wf1": 0.6311,
+    "micro": null,
+    "time": 228.13935828208923,
+    "label": "meld_federated_eafa_s2024_a0.5"
+  },
+  "meld_fedavg_s42": {
+    "wf1": 0.6345,
+    "micro": null,
+    "time": 187.89677476882935,
+    "label": "meld_federated_fedavg_s42_a0.5"
+  },
+  "meld_fedavg_s123": {
+    "wf1": 0.6298,
+    "micro": null,
+    "time": 223.39628839492798,
+    "label": "meld_federated_fedavg_s123_a0.5"
+  },
+  "meld_fedavg_s2024": {
+    "wf1": 0.631,
+    "micro": null,
+    "time": 175.7429141998291,
+    "label": "meld_federated_fedavg_s2024_a0.5"
+  },
+  "iemocap_eafa_s42": {
+    "wf1": 0.6056,
+    "micro": null,
+    "time": 126.08903670310974,
+    "label": "iemocap_federated_eafa_s42_a0.5"
+  },
+  "iemocap_eafa_s123": {
+    "wf1": 0.5991,
+    "micro": null,
+    "time": 78.17299175262451,
+    "label": "iemocap_federated_eafa_s123_a0.5"
+  },
+  "iemocap_eafa_s2024": {
+    "wf1": 0.6009,
+    "micro": null,
+    "time": 78.98733973503113,
+    "label": "iemocap_federated_eafa_s2024_a0.5"
+  },
+  "iemocap_fedavg_s42": {
+    "wf1": 0.6053,
+    "micro": null,
+    "time": 136.67008113861084,
+    "label": "iemocap_federated_fedavg_s42_a0.5"
+  },
+  "iemocap_fedavg_s123": {
+    "wf1": 0.5998,
+    "micro": null,
+    "time": 574.9224646091461,
+    "label": "iemocap_federated_fedavg_s123_a0.5"
+  },
+  "iemocap_fedavg_s2024": {
+    "wf1": 0.6015,
+    "micro": null,
+    "time": 119.34929323196411,
+    "label": "iemocap_federated_fedavg_s2024_a0.5"
+  }
+}
