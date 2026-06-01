@@ -1,0 +1,110 @@
+{
+  "meld_eafa_alpha0.1_seed42": {
+    "wf1": 0.628132,
+    "uncertainty": 0.4030730128288269,
+    "dev_wf1": 0.60678,
+    "time": 126.8,
+    "beta": 1.0,
+    "alpha": 0.1,
+    "seed": 42
+  },
+  "meld_eafa_alpha0.1_seed123": {
+    "wf1": 0.616749,
+    "uncertainty": 0.362062007188797,
+    "dev_wf1": 0.587624,
+    "time": 126.5,
+    "beta": 1.0,
+    "alpha": 0.1,
+    "seed": 123
+  },
+  "meld_eafa_alpha0.1_seed2024": {
+    "wf1": 0.626006,
+    "uncertainty": 0.3753319978713989,
+    "dev_wf1": 0.6019,
+    "time": 131.9,
+    "beta": 1.0,
+    "alpha": 0.1,
+    "seed": 2024
+  },
+  "meld_fedavg_alpha0.1_seed42": {
+    "wf1": 0.627269,
+    "uncertainty": 0.4043799936771393,
+    "dev_wf1": 0.605546,
+    "time": 126.8,
+    "beta": 0.0,
+    "alpha": 0.1,
+    "seed": 42
+  },
+  "meld_fedavg_alpha0.1_seed123": {
+    "wf1": 0.617048,
+    "uncertainty": 0.36358198523521423,
+    "dev_wf1": 0.589977,
+    "time": 143.9,
+    "beta": 0.0,
+    "alpha": 0.1,
+    "seed": 123
+  },
+  "meld_fedavg_alpha0.1_seed2024": {
+    "wf1": 0.623595,
+    "uncertainty": 0.40391799807548523,
+    "dev_wf1": 0.591245,
+    "time": 150.4,
+    "beta": 0.0,
+    "alpha": 0.1,
+    "seed": 2024
+  },
+  "meld_eafa_alpha0.5_seed42": {
+    "wf1": 0.62918,
+    "uncertainty": 0.4105469882488251,
+    "dev_wf1": 0.596568,
+    "time": 152.1,
+    "beta": 1.0,
+    "alpha": 0.5,
+    "seed": 42
+  },
+  "meld_eafa_alpha0.5_seed123": {
+    "wf1": 0.626354,
+    "uncertainty": 0.40962401032447815,
+    "dev_wf1": 0.597159,
+    "time": 138.4,
+    "beta": 1.0,
+    "alpha": 0.5,
+    "seed": 123
+  },
+  "meld_eafa_alpha0.5_seed2024": {
+    "wf1": 0.615578,
+    "uncertainty": 0.4398539960384369,
+    "dev_wf1": 0.588581,
+    "time": 205.6,
+    "beta": 1.0,
+    "alpha": 0.5,
+    "seed": 2024
+  },
+  "meld_fedavg_alpha0.5_seed42": {
+    "wf1": 0.630902,
+    "uncertainty": 0.4113839864730835,
+    "dev_wf1": 0.599918,
+    "time": 136.3,
+    "beta": 0.0,
+    "alpha": 0.5,
+    "seed": 42
+  },
+  "meld_fedavg_alpha0.5_seed123": {
+    "wf1": 0.619965,
+    "uncertainty": 0.41747599840164185,
+    "dev_wf1": 0.595501,
+    "time": 134.5,
+    "beta": 0.0,
+    "alpha": 0.5,
+    "seed": 123
+  },
+  "meld_fedavg_alpha0.5_seed2024": {
+    "wf1": 0.632752,
+    "uncertainty": 0.38351699709892273,
+    "dev_wf1": 0.586616,
+    "time": 120.1,
+    "beta": 0.0,
+    "alpha": 0.5,
+    "seed": 2024
+  }
+}

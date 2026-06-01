@@ -1,0 +1,26 @@
+{
+  "iemocap4_fed_eafa_seed42": {
+    "wf1": 0.8092,
+    "time": 50.8
+  },
+  "iemocap4_fed_eafa_seed123": {
+    "wf1": 0.7874,
+    "time": 47.9
+  },
+  "iemocap4_fed_eafa_seed2024": {
+    "wf1": 0.8022,
+    "time": 41.6
+  },
+  "iemocap4_cent_edl_seed42": {
+    "wf1": 0.793,
+    "time": 20.2
+  },
+  "iemocap4_cent_edl_seed123": {
+    "wf1": 0.7981,
+    "time": 20.1
+  },
+  "iemocap4_cent_edl_seed2024": {
+    "wf1": 0.7761,
+    "time": 16.7
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "centralized_ce_s42": {
+    "wf1": 0.7758,
+    "config": "centralized_ce_s42",
+    "time": 23.3
+  },
+  "centralized_ce_s123": {
+    "wf1": 0.7724,
+    "config": "centralized_ce_s123",
+    "time": 17.4
+  },
+  "centralized_ce_s2024": {
+    "wf1": 0.7792,
+    "config": "centralized_ce_s2024",
+    "time": 17.1
+  },
+  "centralized_edl_s42": {
+    "wf1": 0.793,
+    "config": "centralized_edl_s42",
+    "time": 15.4
+  },
+  "centralized_edl_s123": {
+    "wf1": 0.7981,
+    "config": "centralized_edl_s123",
+    "time": 15.3
+  },
+  "centralized_edl_s2024": {
+    "wf1": 0.7761,
+    "config": "centralized_edl_s2024",
+    "time": 15.2
+  },
+  "fedavg_edl_s42": {
+    "wf1": 0.8108,
+    "config": "fedavg_edl_s42",
+    "time": 41.7
+  },
+  "fedavg_edl_s123": {
+    "wf1": 0.789,
+    "config": "fedavg_edl_s123",
+    "time": 41.9
+  },
+  "fedavg_edl_s2024": {
+    "wf1": 0.8038,
+    "config": "fedavg_edl_s2024",
+    "time": 44.7
+  },
+  "eafa_edl_s42": {
+    "wf1": 0.8084,
+    "config": "eafa_edl_s42",
+    "time": 42.7
+  },
+  "eafa_edl_s123": {
+    "wf1": 0.7801,
+    "config": "eafa_edl_s123",
+    "time": 42.2
+  },
+  "eafa_edl_s2024": {
+    "wf1": 0.7961,
+    "config": "eafa_edl_s2024",
+    "time": 42.3
+  }
+}

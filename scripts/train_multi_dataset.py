@@ -32,6 +32,7 @@ from models.evidential.evidential_dialogue_rnn import EvidentialDialogueRNN
 from models.erc.dialogue_rnn import DialogueRNN
 from models.evidential.losses import SupervisedEvidentialLoss
 from federated.aggregation.eafa import EAFAAggregator
+from federated.aggregation.fedprox import FedProxLoss
 from data.federated_partition import FederatedPartitioner
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -102,9 +103,9 @@ def load_meld(finetuned=False):
     return train, dev, test, MELD_EMOTIONS, weights, cache, 10
 
 
-def load_iemocap(finetuned=False):
-    from data.datasets.iemocap import IEMOCAPDataset, IEMOCAP_EMOTIONS_6
-    ds = IEMOCAPDataset(data_dir="data/raw/IEMOCAP/IEMOCAP_full_release", num_classes=6)
+def load_iemocap(finetuned=False, num_classes=6):
+    from data.datasets.iemocap import IEMOCAPDataset, IEMOCAP_EMOTIONS_6, IEMOCAP_EMOTIONS_4
+    ds = IEMOCAPDataset(data_dir="data/raw/IEMOCAP/IEMOCAP_full_release", num_classes=num_classes)
     ds.load()
     # Standard: test=session5
     train_dias, test_dias = ds.get_session_split(test_session=5)
@@ -112,6 +113,8 @@ def load_iemocap(finetuned=False):
     dev_dias = [d for d in train_dias if d.session == 4]
     train_dias = [d for d in train_dias if d.session != 4]
     weights = ds.get_emotion_weights()
+
+    emotions = IEMOCAP_EMOTIONS_4 if num_classes == 4 else IEMOCAP_EMOTIONS_6
 
     if finetuned:
         feat_file = "data/features/iemocap_text_roberta_finetuned.pt"
@@ -121,7 +124,7 @@ def load_iemocap(finetuned=False):
         feat_file = "data/features/iemocap_text_roberta.pt"
         logger.info(f"  Features: {feat_file}")
         cache = _load_iemocap_cache(feat_file)
-    return train_dias, dev_dias, test_dias, IEMOCAP_EMOTIONS_6, weights, cache, 10
+    return train_dias, dev_dias, test_dias, emotions, weights, cache, 10
 
 
 def load_dailydialog(finetuned=False):
@@ -270,7 +273,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
         ).to(device)
         loss_fn = SupervisedEvidentialLoss(
             num_classes=num_classes, annealing_epochs=args.annealing_epochs,
-            class_weights=class_weights,
+            class_weights=class_weights, focal_gamma=args.focal_gamma,
         )
     else:
         model = DialogueRNN(
@@ -384,7 +387,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         ).to(device)
         loss_fn = SupervisedEvidentialLoss(
             num_classes=num_classes, annealing_epochs=args.annealing_epochs,
-            class_weights=class_weights,
+            class_weights=class_weights, focal_gamma=args.focal_gamma,
         )
     else:
         global_model = DialogueRNN(
@@ -396,11 +399,17 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
     # FedAvg = EAFA with beta=0 (pure size-weighted averaging)
     effective_beta = args.beta if use_eafa else 0.0
     aggregator = EAFAAggregator(beta=effective_beta)
+    
+    if args.mu > 0.0:
+        prox_loss_fn = FedProxLoss(mu=args.mu)
+        prox_label = f" + FedProx(mu={args.mu})"
+    else:
+        prox_label = ""
 
     agg_label = "EAFA" if use_eafa else "FedAvg"
     loss_label = args.loss_type.upper()
     logger.info(f"\n{'='*60}")
-    logger.info(f"  {agg_label} Federated ({loss_label}) — {dataset_name.upper()} ({num_classes} classes)")
+    logger.info(f"  {agg_label} Federated ({loss_label}){prox_label} — {dataset_name.upper()} ({num_classes} classes)")
     logger.info(f"  {args.num_clients} clients, alpha={args.alpha}, beta={effective_beta}")
     logger.info(f"{'='*60}\n")
 
@@ -416,6 +425,9 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
                 loss_fn.set_epoch(round_num)
             opt = optim.Adam(local_model.parameters(), lr=args.lr, weight_decay=1e-4)
             all_u_local = []
+            
+            if args.mu > 0.0:
+                global_params = {name: param.clone().detach() for name, param in global_model.named_parameters()}
 
             for _ in range(args.local_epochs):
                 for batch in loader:
@@ -429,6 +441,10 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
                         all_u_local.extend(out["uncertainty"][mask].detach().cpu().numpy())
                     else:
                         loss = loss_fn(out[mask], labels[mask])
+                    
+                    if args.mu > 0.0:
+                        loss = loss + prox_loss_fn(local_model, global_params)
+
                     opt.zero_grad()
                     loss.backward()
                     torch.nn.utils.clip_grad_norm_(local_model.parameters(), 5.0)
@@ -504,11 +520,19 @@ def main():
     parser.add_argument("--num_rounds", type=int, default=50)
     parser.add_argument("--local_epochs", type=int, default=3)
     parser.add_argument("--beta", type=float, default=1.0)
+    parser.add_argument("--mu", type=float, default=0.0,
+                        help="FedProx proximal term coefficient (mu=0.0 turns off FedProx)")
     # Ablation
     parser.add_argument("--loss_type", type=str, default="edl",
                         choices=["edl", "ce"], help="edl=Evidential, ce=CrossEntropy (ablation)")
     parser.add_argument("--aggregation", type=str, default="eafa",
                         choices=["eafa", "fedavg"], help="eafa=uncertainty-weighted, fedavg=size-only (ablation)")
+    # Focal loss
+    parser.add_argument("--focal_gamma", type=float, default=0.0,
+                        help="Focal loss gamma. 0=standard, 1-2=focus on hard/minority samples")
+    # IEMOCAP
+    parser.add_argument("--iemocap_classes", type=int, default=6, choices=[4, 6],
+                        help="IEMOCAP classes: 4 (merge happy+excited) or 6 (all)")
     # General
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--save_dir", type=str, default="checkpoints")
@@ -530,7 +554,11 @@ def main():
         logger.info(f"{'#'*60}")
 
         load_fn = loaders[ds_name]
-        train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
+        if ds_name == "iemocap":
+            train, dev, test, emotions, weights, cache, num_spk = load_fn(
+                finetuned=args.finetuned, num_classes=args.iemocap_classes)
+        else:
+            train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
 
         if args.mode in ("centralized", "both"):
             wf1_c, u_c, mf1_c = train_centralized(

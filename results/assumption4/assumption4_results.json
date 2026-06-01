@@ -1,0 +1,50 @@
+{
+  "meld": [
+    {
+      "dataset": "meld",
+      "seed": 123,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.3054,
+        "spearman_p": 8.5384076243647e-07,
+        "pearson_r": 0.1382,
+        "pearson_p": 0.02892519057508754
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": 0.2523,
+        "spearman_p": 5.451288973088074e-05,
+        "pearson_r": -0.0079,
+        "pearson_p": 0.900799058350776
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.8518,
+        "spearman_p": 1.3917353518363412e-71
+      },
+      "plot_path": "results/assumption4\\assumption4_meld_seed123.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_meld_seed123.png"
+    },
+    {
+      "dataset": "meld",
+      "seed": 2024,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.0838,
+        "spearman_p": 0.18648447432044754,
+        "pearson_r": 0.159,
+        "pearson_p": 0.01182999292390425
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": -0.281,
+        "spearman_p": 6.429720391398315e-06,
+        "pearson_r": -0.1311,
+        "pearson_p": 0.0382774545370911
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.5905,
+        "spearman_p": 6.929364520867389e-25
+      },
+      "plot_path": "results/assumption4\\assumption4_meld_seed2024.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_meld_seed2024.png"
+    }
+  ]
+}

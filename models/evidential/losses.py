@@ -64,6 +64,8 @@ class SupervisedEvidentialLoss(nn.Module):
         num_classes: Number of emotion classes
         annealing_epochs: Number of epochs to anneal KL weight from 0 to 1
         class_weights: Optional class weights for imbalanced data
+        focal_gamma: Focal loss exponent. 0 = standard loss, >0 = focus on hard samples.
+                     Recommended: 1.0-2.0 for imbalanced datasets.
     """
 
     def __init__(
@@ -71,10 +73,12 @@ class SupervisedEvidentialLoss(nn.Module):
         num_classes: int = 7,
         annealing_epochs: int = 10,
         class_weights: Optional[torch.Tensor] = None,
+        focal_gamma: float = 0.0,
     ):
         super().__init__()
         self.num_classes = num_classes
         self.annealing_epochs = annealing_epochs
+        self.focal_gamma = focal_gamma
         self.register_buffer(
             "class_weights",
             class_weights if class_weights is not None
@@ -115,6 +119,13 @@ class SupervisedEvidentialLoss(nn.Module):
         # ========================================
         # L_nll = Σ_c y_c [ψ(S) - ψ(α^(c))]
         nll = (y * (torch.digamma(S) - torch.digamma(alpha))).sum(dim=-1)  # (N,)
+
+        # Focal modulation: (1 - p_correct)^gamma
+        # Down-weights easy samples, amplifies hard/minority samples
+        if self.focal_gamma > 0:
+            p_correct = (alpha * y).sum(dim=-1) / S.squeeze(-1)  # (N,)
+            focal_weight = (1.0 - p_correct.detach()).pow(self.focal_gamma)
+            nll = nll * focal_weight
 
         # Apply class weights
         sample_weights = self.class_weights[labels]  # (N,)

@@ -32,6 +32,7 @@ from data.datasets.meld import MELDDataset, MELD_EMOTIONS
 from models.erc.dialogue_rnn import DialogueRNN
 from scripts.train_centralized import DialogueDataset, collate_dialogues
 from semi_supervised.fixmatch import FixMatchLoss
+from semi_supervised.flexmatch import FlexMatchLoss
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -107,10 +108,12 @@ def main():
     parser.add_argument("--data_dir", type=str, default="data/raw/MELD")
     parser.add_argument("--feature_cache", type=str, default="data/features/meld_text_roberta.pt")
     # SSL settings
+    parser.add_argument("--method", type=str, default="fixmatch", choices=["fixmatch", "flexmatch"],
+                        help="Semi-supervised learning method (fixmatch or flexmatch)")
     parser.add_argument("--label_ratio", type=float, default=0.1,
                         help="Fraction of labeled data (0.05, 0.1, 0.2, 1.0)")
     parser.add_argument("--threshold", type=float, default=0.95,
-                        help="FixMatch confidence threshold")
+                        help="FixMatch/FlexMatch base confidence threshold")
     parser.add_argument("--lambda_u", type=float, default=1.0,
                         help="Weight for unsupervised loss")
     # Model
@@ -131,7 +134,7 @@ def main():
     np.random.seed(args.seed)
 
     is_ssl = args.label_ratio < 1.0
-    mode = f"FixMatch (label_ratio={args.label_ratio})" if is_ssl else "Fully Supervised"
+    mode = f"{args.method.upper()} (label_ratio={args.label_ratio})" if is_ssl else "Fully Supervised"
 
     logger.info(f"\n{'='*60}")
     logger.info(f"  Semi-Supervised Training: {mode}")
@@ -239,12 +242,19 @@ def main():
         optimizer, mode="max", factor=0.5, patience=5,
     )
 
-    # FixMatch loss
-    fixmatch = FixMatchLoss(
-        threshold=args.threshold,
-        lambda_u=args.lambda_u,
-        num_classes=len(MELD_EMOTIONS),
-    )
+    # SSL loss initialization
+    if args.method == "flexmatch":
+        fixmatch = FlexMatchLoss(
+            threshold=args.threshold,
+            lambda_u=args.lambda_u,
+            num_classes=len(MELD_EMOTIONS),
+        )
+    else:
+        fixmatch = FixMatchLoss(
+            threshold=args.threshold,
+            lambda_u=args.lambda_u,
+            num_classes=len(MELD_EMOTIONS),
+        )
 
     total_params = sum(p.numel() for p in model.parameters())
     logger.info(f"\nModel parameters: {total_params:,}")
@@ -265,8 +275,9 @@ def main():
         model.train()
         fixmatch.train()
 
-        # Update curriculum threshold
-        fixmatch.update_threshold(epoch)
+        # Update curriculum threshold if applicable
+        if hasattr(fixmatch, "update_threshold"):
+            fixmatch.update_threshold(epoch)
 
         epoch_stats = {
             "loss_sup": 0, "loss_unsup": 0, "loss_total": 0,
@@ -324,11 +335,12 @@ def main():
         elapsed = time.time() - start_time
 
         if is_ssl:
+            curr_thr = getattr(fixmatch, "current_threshold", args.threshold)
             logger.info(
                 f"Epoch {epoch:3d}/{args.epochs} | "
                 f"Sup: {avg_sup:.4f} Unsup: {avg_unsup:.4f} | "
                 f"Pseudo: {epoch_stats['pseudo_count']}/{epoch_stats['pseudo_total']} "
-                f"({mask_ratio*100:.0f}%) thr={fixmatch.current_threshold:.2f} | "
+                f"({mask_ratio*100:.0f}%) thr={curr_thr:.2f} | "
                 f"Dev WF1: {dev_wf1:.4f} | {elapsed:.1f}s"
             )
         else:
@@ -341,7 +353,7 @@ def main():
         if dev_wf1 > best_dev_wf1:
             best_dev_wf1 = dev_wf1
             patience_counter = 0
-            ckpt_name = f"best_ssl_{int(args.label_ratio*100)}pct.pt"
+            ckpt_name = f"best_{args.method}_{int(args.label_ratio*100)}pct.pt"
             ckpt_path = Path(args.save_dir) / ckpt_name
             ckpt_path.parent.mkdir(exist_ok=True)
             torch.save({
@@ -349,6 +361,7 @@ def main():
                 "model_state_dict": model.state_dict(),
                 "dev_wf1": dev_wf1,
                 "label_ratio": args.label_ratio,
+                "method": args.method,
             }, ckpt_path)
             logger.info(f"  >> New best! Dev WF1={dev_wf1:.4f}")
         else:
@@ -361,7 +374,7 @@ def main():
     # 5. Final evaluation on test set
     # -------------------------------------------------------
     # Load best model
-    ckpt_name = f"best_ssl_{int(args.label_ratio*100)}pct.pt"
+    ckpt_name = f"best_{args.method}_{int(args.label_ratio*100)}pct.pt"
     ckpt_path = Path(args.save_dir) / ckpt_name
     if ckpt_path.exists():
         ckpt = torch.load(ckpt_path, weights_only=False)
@@ -383,11 +396,12 @@ def main():
     logger.info(f"\n{'='*60}")
     logger.info(f"  SUMMARY")
     logger.info(f"{'='*60}")
+    logger.info(f"  Method:          {args.method.upper()}")
     logger.info(f"  Label ratio:     {args.label_ratio*100:.0f}% ({n_labeled}/{n_total} dialogues)")
     logger.info(f"  Best Dev WF1:    {best_dev_wf1:.4f}")
     logger.info(f"  Test WF1:        {test_wf1:.4f}")
     if is_ssl:
-        logger.info(f"  FixMatch threshold: {args.threshold}")
+        logger.info(f"  Base threshold:  {args.threshold}")
         logger.info(f"  Lambda_u:        {args.lambda_u}")
     logger.info(f"{'='*60}")
     logger.info("Done!")

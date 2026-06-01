@@ -30,7 +30,7 @@ from pathlib import Path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 RESULTS_FILE = "results_ecr_ablation.json"
-SEEDS = [42, 123, 2024]
+SEEDS = [42, 123, 2024, 7, 99]  # 5 seeds for reviewer response
 
 
 def load_results():

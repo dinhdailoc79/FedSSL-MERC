@@ -73,6 +73,7 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
     from models.erc.dialogue_rnn import DialogueRNN
     from models.evidential.losses import SupervisedEvidentialLoss, FedEvidenceLoss
     from semi_supervised.fixmatch import FixMatchLoss
+    from semi_supervised.flexmatch import FlexMatchLoss
     from semi_supervised.augmentation import StrongAugmentation
     from federated.aggregation.eafa import EAFAAggregator
     from data.federated_partition import FederatedPartitioner
@@ -89,7 +90,7 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
     
     use_edl = method in ("supervised", "ecr")
     use_eafa = use_edl  # EAFA only with EDL (needs uncertainty)
-    is_ssl = method in ("fixmatch", "ecr") and label_ratio < 1.0
+    is_ssl = method in ("fixmatch", "flexmatch", "ecr") and label_ratio < 1.0
     
     # Load data
     load_fn = loaders[dataset]
@@ -176,6 +177,13 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
             annealing_epochs=args.annealing_epochs,
             class_weights=class_weights,
         )
+    elif method == "flexmatch":
+        ce_loss = nn.CrossEntropyLoss(weight=class_weights)
+        flexmatch_loss = FlexMatchLoss(
+            threshold=0.95, lambda_u=1.0,
+            num_classes=num_classes,
+            threshold_min=0.5,
+        )
     else:  # fixmatch
         ce_loss = nn.CrossEntropyLoss(weight=class_weights)
         fixmatch_loss = FixMatchLoss(
@@ -188,7 +196,7 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
     effective_beta = args.beta if use_eafa else 0.0
     aggregator = EAFAAggregator(beta=effective_beta)
     
-    method_label = {"supervised": "Supervised", "fixmatch": "FixMatch", "ecr": "EDL+ECR"}[method]
+    method_label = {"supervised": "Supervised", "fixmatch": "FixMatch", "flexmatch": "FlexMatch", "ecr": "EDL+ECR"}[method]
     agg_label = "EAFA" if use_eafa else "FedAvg"
     
     logger.info(f"\n{'='*60}")
@@ -217,6 +225,8 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
             if method == "ecr":
                 loss_fn.set_epoch(round_num)
                 strong_aug.train()
+            elif method == "flexmatch":
+                flexmatch_loss.train()
             elif method == "fixmatch":
                 fixmatch_loss.update_threshold(round_num)
                 fixmatch_loss.train()
@@ -285,6 +295,34 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
                             uncertainty_weak=uncertainty_weak,
                         )
                     
+                    elif method == "flexmatch":
+                        # CE supervised + FlexMatch on unlabeled
+                        logits_l = local_model(feats_l, speakers_l)
+                        
+                        # Get unlabeled batch
+                        unlabeled_batch = None
+                        if unlabeled_iter is not None:
+                            try:
+                                unlabeled_batch = next(unlabeled_iter)
+                            except StopIteration:
+                                unlabeled_iter = iter(unlabeled_loader)
+                                unlabeled_batch = next(unlabeled_iter)
+                            unlabeled_batch = {
+                                k: v.to(device) if isinstance(v, torch.Tensor) else v
+                                for k, v in unlabeled_batch.items()
+                            }
+                        
+                        labeled_batch_device = {
+                            "features": feats_l, "speaker_ids": speakers_l,
+                            "labels": labels_l,
+                        }
+                        loss, fm_stats = flexmatch_loss(
+                            local_model, labeled_batch_device,
+                            unlabeled_batch, ce_loss,
+                        )
+                        round_ssl_stats["pseudo_count"] += fm_stats["pseudo_label_count"]
+                        round_ssl_stats["pseudo_total"] += fm_stats["pseudo_label_total"]
+                    
                     elif method == "fixmatch":
                         # CE supervised + FixMatch on unlabeled
                         logits_l = local_model(feats_l, speakers_l)
@@ -335,7 +373,7 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
         
         # SSL stats string
         ssl_str = ""
-        if method == "fixmatch" and round_ssl_stats["pseudo_total"] > 0:
+        if method in ("fixmatch", "flexmatch") and round_ssl_stats["pseudo_total"] > 0:
             pr = round_ssl_stats["pseudo_count"] / round_ssl_stats["pseudo_total"] * 100
             ssl_str = f" | pseudo={pr:.0f}%"
         elif method == "ecr" and round_ssl_stats["ecr_certainty"]:
@@ -393,7 +431,7 @@ def main():
     
     datasets = ["meld", "iemocap"]
     label_ratios = [0.05, 0.1, 0.5, 1.0]
-    methods = ["supervised", "fixmatch", "ecr"]
+    methods = ["supervised", "fixmatch", "flexmatch", "ecr"]
     seed = 42
     
     experiments = []
@@ -433,29 +471,32 @@ def main():
     
     # Summary
     total_time = time.time() - total_start
-    print(f"\n{'='*70}")
+    print(f"\n{'='*85}")
     print(f"  SSL EXPERIMENTS RESULTS -- {total_time/60:.1f} minutes")
-    print(f"{'='*70}")
+    print(f"{'='*85}")
     
     for dataset in datasets:
         print(f"\n  {dataset.upper()}:")
-        print(f"  {'Label%':>7} | {'Supervised':>11} | {'FixMatch':>11} | {'EDL+ECR':>11}")
-        print(f"  {'-'*7}-+-{'-'*11}-+-{'-'*11}-+-{'-'*11}")
+        print(f"  {'Label%':>7} | {'Supervised':>11} | {'FixMatch':>11} | {'FlexMatch':>11} | {'EDL+ECR':>11}")
+        print(f"  {'-'*7}-+-{'-'*11}-+-{'-'*11}-+-{'-'*11}-+-{'-'*11}")
         
         for lr in label_ratios:
             sup_key = f"{dataset}_supervised_lr{lr:.2f}_s{seed}"
             fm_key = f"{dataset}_fixmatch_lr{lr:.2f}_s{seed}"
+            flex_key = f"{dataset}_flexmatch_lr{lr:.2f}_s{seed}"
             ecr_key = f"{dataset}_ecr_lr{lr:.2f}_s{seed}"
             
             sup_wf1 = results.get(sup_key, {}).get("wf1")
             fm_wf1 = results.get(fm_key, {}).get("wf1")
+            flex_wf1 = results.get(flex_key, {}).get("wf1")
             ecr_wf1 = results.get(ecr_key, {}).get("wf1")
             
             sup_s = f"{sup_wf1:.4f}" if sup_wf1 else "N/A"
             fm_s = f"{fm_wf1:.4f}" if fm_wf1 else ("--" if lr >= 1.0 else "N/A")
+            flex_s = f"{flex_wf1:.4f}" if flex_wf1 else ("--" if lr >= 1.0 else "N/A")
             ecr_s = f"{ecr_wf1:.4f}" if ecr_wf1 else ("--" if lr >= 1.0 else "N/A")
             
-            print(f"  {lr:6.0%}  | {sup_s:>11} | {fm_s:>11} | {ecr_s:>11}")
+            print(f"  {lr:6.0%}  | {sup_s:>11} | {fm_s:>11} | {flex_s:>11} | {ecr_s:>11}")
 
 
 if __name__ == "__main__":

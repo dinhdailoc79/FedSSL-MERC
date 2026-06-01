@@ -1,0 +1,100 @@
+{
+  "meld_K5_s42": {
+    "wf1": 0.6323,
+    "dataset": "meld",
+    "K": 5,
+    "seed": 42,
+    "time": 158.7
+  },
+  "meld_K5_s123": {
+    "wf1": 0.6274,
+    "dataset": "meld",
+    "K": 5,
+    "seed": 123,
+    "time": 261.8
+  },
+  "meld_K5_s2024": {
+    "wf1": 0.6346,
+    "dataset": "meld",
+    "K": 5,
+    "seed": 2024,
+    "time": 162.7
+  },
+  "meld_K10_s42": {
+    "wf1": 0.6297,
+    "dataset": "meld",
+    "K": 10,
+    "seed": 42,
+    "time": 182.2
+  },
+  "meld_K10_s123": {
+    "wf1": 0.6349,
+    "dataset": "meld",
+    "K": 10,
+    "seed": 123,
+    "time": 173.0
+  },
+  "meld_K10_s2024": {
+    "wf1": 0.6282,
+    "dataset": "meld",
+    "K": 10,
+    "seed": 2024,
+    "time": 171.4
+  },
+  "meld_K20_s42": {
+    "wf1": 0.6332,
+    "dataset": "meld",
+    "K": 20,
+    "seed": 42,
+    "time": 206.2
+  },
+  "meld_K20_s123": {
+    "wf1": 0.6356,
+    "dataset": "meld",
+    "K": 20,
+    "seed": 123,
+    "time": 154.5
+  },
+  "meld_K20_s2024": {
+    "wf1": 0.633,
+    "dataset": "meld",
+    "K": 20,
+    "seed": 2024,
+    "time": 203.9
+  },
+  "iemocap_K5_s42": {
+    "wf1": 0.6024,
+    "dataset": "iemocap",
+    "K": 5,
+    "seed": 42,
+    "time": 116.1
+  },
+  "iemocap_K5_s123": {
+    "wf1": 0.5993,
+    "dataset": "iemocap",
+    "K": 5,
+    "seed": 123,
+    "time": 113.9
+  },
+  "iemocap_K5_s2024": {
+    "wf1": 0.5994,
+    "dataset": "iemocap",
+    "K": 5,
+    "seed": 2024,
+    "time": 100.8
+  },
+  "iemocap_K10_s42": {
+    "wf1": 0.5936,
+    "dataset": "iemocap",
+    "K": 10,
+    "seed": 42,
+    "time": 137.3
+  },
+  "iemocap_K10_s2024": {
+    "wf1": 0.6354,
+    "dataset": "iemocap",
+    "K": 10,
+    "seed": 2024,
+    "time": 95.9
+  }
+}
