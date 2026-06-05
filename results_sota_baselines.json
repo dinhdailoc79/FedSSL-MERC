@@ -478,5 +478,29 @@
     "label_ratio": 0.5,
     "seed": 2024,
     "time": 72.8
+  },
+  "meld_fedswitch_lr0.10_s42": {
+    "wf1": 0.6241,
+    "model": "fedswitch",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 11.9
+  },
+  "meld_mean_teacher_lr0.10_s42": {
+    "wf1": 0.626,
+    "model": "mean_teacher",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 18.5
+  },
+  "meld_fedeu_lr0.10_s42": {
+    "wf1": 0.6152,
+    "model": "fedeu",
+    "dataset": "meld",
+    "label_ratio": 0.1,
+    "seed": 42,
+    "time": 26.9
   }
 }

@@ -5,3 +5,8 @@ from models.evidential.losses import (
     FedEvidenceLoss,
     dirichlet_kl_divergence,
 )
+from models.evidential.calibration import (
+    compute_calibration_metrics,
+    plot_reliability_diagram,
+)
+

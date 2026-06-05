@@ -88,9 +88,9 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
         save_dir="checkpoints", seed=seed, finetuned=True,
     )
     
-    use_edl = method in ("supervised", "ecr")
+    use_edl = method in ("supervised", "ecr", "dirichlet_fixmatch")
     use_eafa = use_edl  # EAFA only with EDL (needs uncertainty)
-    is_ssl = method in ("fixmatch", "flexmatch", "ecr") and label_ratio < 1.0
+    is_ssl = method in ("fixmatch", "flexmatch", "ecr", "dirichlet_fixmatch") and label_ratio < 1.0
     
     # Load data
     load_fn = loaders[dataset]
@@ -177,6 +177,13 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
             annealing_epochs=args.annealing_epochs,
             class_weights=class_weights,
         )
+    elif method == "dirichlet_fixmatch":
+        loss_fn = SupervisedEvidentialLoss(
+            num_classes=num_classes,
+            annealing_epochs=args.annealing_epochs,
+            class_weights=class_weights,
+        )
+        strong_aug = StrongAugmentation(noise_std=0.05, dropout_p=0.25)
     elif method == "flexmatch":
         ce_loss = nn.CrossEntropyLoss(weight=class_weights)
         flexmatch_loss = FlexMatchLoss(
@@ -196,7 +203,7 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
     effective_beta = args.beta if use_eafa else 0.0
     aggregator = EAFAAggregator(beta=effective_beta)
     
-    method_label = {"supervised": "Supervised", "fixmatch": "FixMatch", "flexmatch": "FlexMatch", "ecr": "EDL+ECR"}[method]
+    method_label = {"supervised": "Supervised", "fixmatch": "FixMatch", "flexmatch": "FlexMatch", "ecr": "EDL+ECR", "dirichlet_fixmatch": "Dirichlet-FixMatch"}[method]
     agg_label = "EAFA" if use_eafa else "FedAvg"
     
     logger.info(f"\n{'='*60}")
@@ -323,6 +330,57 @@ def run_ssl_experiment(dataset, method, label_ratio, seed=42):
                         round_ssl_stats["pseudo_count"] += fm_stats["pseudo_label_count"]
                         round_ssl_stats["pseudo_total"] += fm_stats["pseudo_label_total"]
                     
+                    elif method == "dirichlet_fixmatch":
+                        # Evidential supervised on labeled + hard belief threshold pseudo-labeling on unlabeled
+                        out_l = local_model(feats_l, speakers_l)
+                        alpha_l = out_l["alpha"][mask_l]
+                        labels_flat = labels_l[mask_l]
+                        all_u_local.extend(out_l["uncertainty"][mask_l].detach().cpu().numpy())
+                        
+                        loss_supervised, _ = loss_fn(alpha_l, labels_flat)
+                        
+                        loss_unsupervised = torch.tensor(0.0, device=device)
+                        if unlabeled_iter is not None:
+                            try:
+                                u_batch = next(unlabeled_iter)
+                            except StopIteration:
+                                unlabeled_iter = iter(unlabeled_loader)
+                                u_batch = next(unlabeled_iter)
+                            
+                            feats_u = u_batch["features"].to(device)
+                            speakers_u = u_batch["speaker_ids"].to(device)
+                            labels_u = u_batch["labels"].to(device)
+                            u_mask = labels_u != -1
+                            
+                            # 1. Weak view (no augmentation)
+                            local_model.eval()
+                            with torch.no_grad():
+                                out_weak = local_model(feats_u, speakers_u)
+                            local_model.train()
+                            
+                            belief_weak = out_weak["belief"][u_mask]
+                            max_belief, pseudo_label = belief_weak.max(dim=-1)
+                            
+                            # 2. Hard threshold on belief
+                            threshold = 0.95
+                            conf_mask = max_belief >= threshold
+                            
+                            num_above = conf_mask.sum().item()
+                            num_tot = u_mask.sum().item()
+                            round_ssl_stats["pseudo_count"] += int(num_above)
+                            round_ssl_stats["pseudo_total"] += int(num_tot)
+                            
+                            if num_above > 0:
+                                # 3. Strong view (augmented)
+                                feats_strong = strong_aug(feats_u)
+                                out_strong = local_model(feats_strong, speakers_u)
+                                alpha_strong_masked = out_strong["alpha"][u_mask][conf_mask]
+                                pseudo_masked = pseudo_label[conf_mask]
+                                
+                                loss_unsupervised, _ = loss_fn(alpha_strong_masked, pseudo_masked)
+                                
+                        loss = loss_supervised + loss_unsupervised
+                        
                     elif method == "fixmatch":
                         # CE supervised + FixMatch on unlabeled
                         logits_l = local_model(feats_l, speakers_l)

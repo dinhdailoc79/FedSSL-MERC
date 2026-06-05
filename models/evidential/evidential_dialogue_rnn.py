@@ -107,6 +107,9 @@ class EvidentialDialogueRNN(nn.Module):
         # EDL head
         edl_output = self.edl_head(projected)
 
+        # Expose hidden states for contrastive learning (e.g., MOON)
+        edl_output["hidden"] = projected
+
         return edl_output
 
     def predict(

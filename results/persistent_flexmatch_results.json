@@ -1,0 +1,146 @@
+{
+  "meld_flexmatch_original_lr0.10_s42": {
+    "wf1": 0.6144,
+    "method": "flexmatch_original",
+    "dataset": "meld",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 80.0
+  },
+  "meld_flexmatch_original_lr0.10_s123": {
+    "wf1": 0.6153,
+    "method": "flexmatch_original",
+    "dataset": "meld",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 136.4
+  },
+  "meld_flexmatch_original_lr0.10_s2024": {
+    "wf1": 0.6043,
+    "method": "flexmatch_original",
+    "dataset": "meld",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 77.4
+  },
+  "iemocap_flexmatch_original_lr0.10_s42": {
+    "wf1": 0.5424,
+    "method": "flexmatch_original",
+    "dataset": "iemocap",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 182.4
+  },
+  "iemocap_flexmatch_original_lr0.10_s123": {
+    "wf1": 0.4639,
+    "method": "flexmatch_original",
+    "dataset": "iemocap",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 226.8
+  },
+  "iemocap_flexmatch_original_lr0.10_s2024": {
+    "wf1": 0.503,
+    "method": "flexmatch_original",
+    "dataset": "iemocap",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 253.9
+  },
+  "meld_flexmatch_persistent_lr0.10_s42": {
+    "wf1": 0.6213,
+    "method": "flexmatch_persistent",
+    "dataset": "meld",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 68.8
+  },
+  "meld_flexmatch_persistent_lr0.10_s123": {
+    "wf1": 0.6123,
+    "method": "flexmatch_persistent",
+    "dataset": "meld",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 86.1
+  },
+  "meld_flexmatch_persistent_lr0.10_s2024": {
+    "wf1": 0.6149,
+    "method": "flexmatch_persistent",
+    "dataset": "meld",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 61.0
+  },
+  "iemocap_flexmatch_persistent_lr0.10_s42": {
+    "wf1": 0.5444,
+    "method": "flexmatch_persistent",
+    "dataset": "iemocap",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 125.1
+  },
+  "iemocap_flexmatch_persistent_lr0.10_s123": {
+    "wf1": 0.4503,
+    "method": "flexmatch_persistent",
+    "dataset": "iemocap",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 195.0
+  },
+  "iemocap_flexmatch_persistent_lr0.10_s2024": {
+    "wf1": 0.4921,
+    "method": "flexmatch_persistent",
+    "dataset": "iemocap",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 262.6
+  },
+  "meld_flexmatch_serveragg_lr0.10_s42": {
+    "wf1": 0.6201,
+    "method": "flexmatch_serveragg",
+    "dataset": "meld",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 89.0
+  },
+  "meld_flexmatch_serveragg_lr0.10_s123": {
+    "wf1": 0.6092,
+    "method": "flexmatch_serveragg",
+    "dataset": "meld",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 70.4
+  },
+  "meld_flexmatch_serveragg_lr0.10_s2024": {
+    "wf1": 0.6134,
+    "method": "flexmatch_serveragg",
+    "dataset": "meld",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 80.3
+  },
+  "iemocap_flexmatch_serveragg_lr0.10_s42": {
+    "wf1": 0.5446,
+    "method": "flexmatch_serveragg",
+    "dataset": "iemocap",
+    "seed": 42,
+    "label_ratio": 0.1,
+    "time": 188.2
+  },
+  "iemocap_flexmatch_serveragg_lr0.10_s123": {
+    "wf1": 0.4551,
+    "method": "flexmatch_serveragg",
+    "dataset": "iemocap",
+    "seed": 123,
+    "label_ratio": 0.1,
+    "time": 144.2
+  },
+  "iemocap_flexmatch_serveragg_lr0.10_s2024": {
+    "wf1": 0.5014,
+    "method": "flexmatch_serveragg",
+    "dataset": "iemocap",
+    "seed": 2024,
+    "label_ratio": 0.1,
+    "time": 247.9
+  }
+}

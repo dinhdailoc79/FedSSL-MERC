@@ -2,9 +2,9 @@
 # FedSSL-MERC .gitignore
 # ============================================================
 
-# Downloaded papers (private, do not push)
-docs/papers/
-docs/papers_txt/
+# Private documents and papers
+docs/
+paper/
 
 # Python
 __pycache__/
@@ -64,17 +64,6 @@ results/tables/*.csv
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# LaTeX build files
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.log
-paper/*.out
-paper/*.fls
-paper/*.fdb_latexmk
-paper/*.synctex.gz
-paper/AuthorKit26/
 
 # Secrets
 .env

@@ -57,6 +57,7 @@ class MultimodalEvidentialDialogueRNN(nn.Module):
         super().__init__()
         self.num_classes = num_classes
         self.hidden_dim = hidden_dim
+        self.fusion_mode = fusion_mode
 
         # Text encoder
         self.text_encoder = DialogueRNN(
@@ -86,10 +87,18 @@ class MultimodalEvidentialDialogueRNN(nn.Module):
         )
         self.audio_edl = EvidentialHead(hidden_dim, num_classes)
 
-        # DS Fusion
-        self.fusion = DempsterShaferFusion(
-            num_classes=num_classes, mode=fusion_mode,
-        )
+        # Gating network or DS Fusion
+        if self.fusion_mode == "learnable_gating":
+            self.gating = nn.Sequential(
+                nn.Linear(hidden_dim * 2, hidden_dim),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, 2),
+                nn.Softmax(dim=-1)
+            )
+        elif self.fusion_mode in ["evidence_sum", "dempster"]:
+            self.fusion = DempsterShaferFusion(
+                num_classes=num_classes, mode=fusion_mode,
+            )
 
     def forward(
         self,
@@ -99,7 +108,7 @@ class MultimodalEvidentialDialogueRNN(nn.Module):
         lengths: Optional[torch.Tensor] = None,
     ) -> Dict[str, torch.Tensor]:
         """
-        Forward pass with DS fusion.
+        Forward pass with multimodal fusion.
 
         Args:
             text_features: (batch, seq, text_dim)
@@ -112,28 +121,61 @@ class MultimodalEvidentialDialogueRNN(nn.Module):
         # Text branch
         text_hidden = self.text_encoder.get_features(text_features, speaker_ids)
         text_proj = self.text_projection(text_hidden)
-        text_edl = self.text_edl(text_proj)
+        text_logits = self.text_edl.evidence_fc(text_proj)
+        text_evidence = self.text_edl.activation(text_logits)
+        text_alpha = text_evidence + 1.0
+        text_strength = text_alpha.sum(dim=-1)
+        text_uncertainty = self.num_classes / text_strength
 
         # Audio branch
         audio_hidden = self.audio_encoder.get_features(audio_features, speaker_ids)
         audio_proj = self.audio_projection(audio_hidden)
-        audio_edl = self.audio_edl(audio_proj)
+        audio_logits = self.audio_edl.evidence_fc(audio_proj)
+        audio_evidence = self.audio_edl.activation(audio_logits)
+        audio_alpha = audio_evidence + 1.0
+        audio_strength = audio_alpha.sum(dim=-1)
+        audio_uncertainty = self.num_classes / audio_strength
 
-        # DS Fusion
-        fused = self.fusion([text_edl["evidence"], audio_edl["evidence"]])
+        # Fusion
+        if self.fusion_mode == "logit_avg":
+            fused_logits = 0.5 * (text_logits + audio_logits)
+            fused_evidence = self.text_edl.activation(fused_logits)
+            fused_alpha = fused_evidence + 1.0
+            fused_strength = fused_alpha.sum(dim=-1)
+            fused_belief = fused_evidence / fused_strength.unsqueeze(-1)
+            fused_uncertainty = self.num_classes / fused_strength
+        elif self.fusion_mode == "learnable_gating":
+            h_cat = torch.cat([text_proj, audio_proj], dim=-1)
+            g_weights = self.gating(h_cat)  # [batch, seq, 2]
+            w_t = g_weights[..., 0:1]
+            w_a = g_weights[..., 1:2]
+            
+            fused_logits = w_t * text_logits + w_a * audio_logits
+            fused_evidence = self.text_edl.activation(fused_logits)
+            fused_alpha = fused_evidence + 1.0
+            fused_strength = fused_alpha.sum(dim=-1)
+            fused_belief = fused_evidence / fused_strength.unsqueeze(-1)
+            fused_uncertainty = self.num_classes / fused_strength
+        else:
+            # DS Fusion (evidence_sum or dempster)
+            fused = self.fusion([text_evidence, audio_evidence])
+            fused_alpha = fused["alpha"]
+            fused_belief = fused["belief"]
+            fused_uncertainty = fused["uncertainty"]
+            fused_evidence = fused["evidence"]
 
         # Return fused + per-modality for auxiliary losses
         return {
             # Fused outputs (primary)
-            "alpha": fused["alpha"],
-            "belief": fused["belief"],
-            "uncertainty": fused["uncertainty"],
-            "evidence": fused["evidence"],
+            "alpha": fused_alpha,
+            "belief": fused_belief,
+            "uncertainty": fused_uncertainty,
+            "evidence": fused_evidence,
             # Per-modality (for auxiliary supervision)
-            "text_alpha": text_edl["alpha"],
-            "text_uncertainty": text_edl["uncertainty"],
-            "audio_alpha": audio_edl["alpha"],
-            "audio_uncertainty": audio_edl["uncertainty"],
+            "text_alpha": text_alpha,
+            "text_uncertainty": text_uncertainty,
+            "audio_alpha": audio_alpha,
+            "audio_uncertainty": audio_uncertainty,
         }
 
     def forward_text_only(

@@ -1,0 +1,16 @@
+{
+    "bandwidth": {
+        "num_parameters": 1781262,
+        "standard_weights_bytes": 7125048,
+        "standard_weights_mb": 6.794975280761719,
+        "uncertainty_scalar_bytes": 4,
+        "eafa_total_bytes": 7125052,
+        "eafa_overhead_percentage": 5.61399726710613e-05
+    },
+    "wall_clock_50_batches_seconds": 1.2297,
+    "partial_participation": {
+        "num_clients": 50,
+        "participation_fraction": 0.2,
+        "num_selected": 10
+    }
+}

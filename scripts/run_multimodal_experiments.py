@@ -30,12 +30,13 @@ def save_results(results):
         json.dump(results, f, indent=2, default=lambda x: float(x) if hasattr(x, 'item') else str(x))
 
 
-def run_multimodal_experiment(beta, seed=42):
+def run_multimodal_experiment(beta, fusion_mode="evidence_sum", seed=42):
     """
     Run federated multimodal (text+audio) experiment on MELD.
     
     Args:
         beta: EAFA beta (1.0=EAFA, 0.0=FedAvg)
+        fusion_mode: Fusion mechanism mode
         seed: random seed
     """
     import logging
@@ -65,12 +66,12 @@ def run_multimodal_experiment(beta, seed=42):
         hidden_dim=256, dropout=0.3, batch_size=8, lr=1e-3,
         annealing_epochs=30, patience=15, num_clients=5,
         alpha=0.5, num_rounds=50, local_epochs=3,
-        beta=beta, lambda_aux=0.3, fusion_mode="evidence_sum",
+        beta=beta, lambda_aux=0.3, fusion_mode=fusion_mode,
         device="cuda" if torch.cuda.is_available() else "cpu",
         save_dir="checkpoints", seed=seed,
     )
     
-    agg_label = "EAFA" if beta > 0 else "FedAvg"
+    agg_label = f"{'EAFA' if beta > 0 else 'FedAvg'}_{fusion_mode}"
     
     # Load data
     meld = MELDDataset(data_dir="data/raw/MELD")
@@ -205,11 +206,13 @@ def main():
     total_start = time.time()
     
     experiments = [
-        ("multimodal_eafa", 1.0),
-        ("multimodal_fedavg", 0.0),
+        ("multimodal_eafa", 1.0, "evidence_sum"),
+        ("multimodal_fedavg", 0.0, "evidence_sum"),
+        ("multimodal_logit_avg", 1.0, "logit_avg"),
+        ("multimodal_learnable_gating", 1.0, "learnable_gating"),
     ]
     
-    for key, beta in experiments:
+    for key, beta, fusion_mode in experiments:
         if key in results and results[key].get("wf1") is not None:
             print(f"SKIP {key}: WF1={results[key]['wf1']}")
             continue
@@ -218,7 +221,7 @@ def main():
         start = time.time()
         
         try:
-            r = run_multimodal_experiment(beta=beta, seed=42)
+            r = run_multimodal_experiment(beta=beta, fusion_mode=fusion_mode, seed=42)
             r["time"] = round(time.time() - start, 1)
             results[key] = r
             save_results(results)
@@ -234,16 +237,13 @@ def main():
     print(f"\n{'='*60}")
     print(f"  MULTIMODAL RESULTS -- {total_time/60:.1f} min")
     print(f"{'='*60}")
-    print(f"  Text-only EAFA:     WF1 = 0.6347 (from significance)")
-    print(f"  Text-only FedAvg:   WF1 = 0.6345 (from significance)")
+    print(f"  Text-only EAFA:             WF1 = 0.6347")
+    print(f"  Text-only FedAvg:           WF1 = 0.6345")
     
-    mm_eafa = results.get("multimodal_eafa", {}).get("wf1")
-    mm_fedavg = results.get("multimodal_fedavg", {}).get("wf1")
-    
-    if mm_eafa:
-        print(f"  Text+Audio EAFA:    WF1 = {mm_eafa}")
-    if mm_fedavg:
-        print(f"  Text+Audio FedAvg:  WF1 = {mm_fedavg}")
+    for key, _, _ in experiments:
+        wf1 = results.get(key, {}).get("wf1")
+        if wf1 is not None:
+            print(f"  {key:<27}: WF1 = {wf1:.4f}")
     print(f"{'='*60}")
 
 

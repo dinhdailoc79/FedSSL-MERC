@@ -1,0 +1,6 @@
+{
+    "meld_softmax_finetuned_False": 0.3969,
+    "meld_edl_finetuned_False": 0.3298,
+    "meld_softmax_finetuned_True": 0.6259,
+    "meld_edl_finetuned_True": 0.6309
+}

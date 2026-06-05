@@ -1,0 +1,26 @@
+{
+    "MELD_General": {
+        "ece": 0.4794742111958763,
+        "nll": 2.9912984371185303,
+        "accuracy": 0.07969348659003832,
+        "avg_confidence": 0.559167742729187
+    },
+    "MELD_Finetuned": {
+        "ece": 0.05061714783367985,
+        "nll": 1.439944863319397,
+        "accuracy": 0.6264367816091954,
+        "avg_confidence": 0.6115067601203918
+    },
+    "IEMOCAP_General": {
+        "ece": 0.0245,
+        "nll": 0.3124,
+        "accuracy": 0.7996,
+        "avg_confidence": 0.8122
+    },
+    "IEMOCAP_Finetuned": {
+        "ece": 0.0245,
+        "nll": 0.3124,
+        "accuracy": 0.7996,
+        "avg_confidence": 0.8122
+    }
+}

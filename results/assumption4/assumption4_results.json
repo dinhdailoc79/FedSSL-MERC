@@ -2,6 +2,29 @@
   "meld": [
     {
       "dataset": "meld",
+      "seed": 42,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.3985,
+        "spearman_p": 6.04208459863229e-11,
+        "pearson_r": 0.2484,
+        "pearson_p": 7.174987908386357e-05
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": -0.0497,
+        "spearman_p": 0.4342310881719877,
+        "pearson_r": -0.0128,
+        "pearson_p": 0.840447809385505
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.7814,
+        "spearman_p": 1.0476087863593001e-52
+      },
+      "plot_path": "results/assumption4\\assumption4_meld_seed42.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_meld_seed42.png"
+    },
+    {
+      "dataset": "meld",
       "seed": 123,
       "n_datapoints": 250,
       "u_vs_val_error": {
@@ -45,6 +68,77 @@
       },
       "plot_path": "results/assumption4\\assumption4_meld_seed2024.png",
       "evolution_plot_path": "results/assumption4\\assumption4_evolution_meld_seed2024.png"
+    }
+  ],
+  "iemocap": [
+    {
+      "dataset": "iemocap",
+      "seed": 42,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.4458,
+        "spearman_p": 1.3076919183029954e-13,
+        "pearson_r": 0.539,
+        "pearson_p": 3.058812487829024e-20
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": -0.295,
+        "spearman_p": 2.064584285417226e-06,
+        "pearson_r": -0.2708,
+        "pearson_p": 1.416351564850529e-05
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.2641,
+        "spearman_p": 2.3427367744627794e-05
+      },
+      "plot_path": "results/assumption4\\assumption4_iemocap_seed42.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_iemocap_seed42.png"
+    },
+    {
+      "dataset": "iemocap",
+      "seed": 123,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.2017,
+        "spearman_p": 0.0013479956503456016,
+        "pearson_r": 0.4508,
+        "pearson_p": 6.479538864874694e-14
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": 0.0686,
+        "spearman_p": 0.28006039738077093,
+        "pearson_r": -0.0212,
+        "pearson_p": 0.7381223551453535
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.0371,
+        "spearman_p": 0.5591005480991528
+      },
+      "plot_path": "results/assumption4\\assumption4_iemocap_seed123.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_iemocap_seed123.png"
+    },
+    {
+      "dataset": "iemocap",
+      "seed": 2024,
+      "n_datapoints": 250,
+      "u_vs_val_error": {
+        "spearman_rho": 0.0678,
+        "spearman_p": 0.2854283451427389,
+        "pearson_r": 0.4342,
+        "pearson_p": 6.460090181013801e-13
+      },
+      "u_vs_grad_var": {
+        "spearman_rho": -0.16,
+        "spearman_p": 0.01129162698500848,
+        "pearson_r": -0.1173,
+        "pearson_p": 0.0640913411765736
+      },
+      "u_vs_eafa_weight": {
+        "spearman_rho": -0.5154,
+        "spearman_p": 2.2791323432857947e-18
+      },
+      "plot_path": "results/assumption4\\assumption4_iemocap_seed2024.png",
+      "evolution_plot_path": "results/assumption4\\assumption4_evolution_iemocap_seed2024.png"
     }
   ]
 }

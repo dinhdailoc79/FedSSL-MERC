@@ -8,5 +8,17 @@
     "wf1": 0.6258,
     "uncertainty": 0.455,
     "best_dev_wf1": 0.5997
+  },
+  "multimodal_logit_avg": {
+    "wf1": 0.6332,
+    "uncertainty": 0.46889999508857727,
+    "best_dev_wf1": 0.5975,
+    "time": 571.4
+  },
+  "multimodal_learnable_gating": {
+    "wf1": 0.6321,
+    "uncertainty": 0.4316999912261963,
+    "best_dev_wf1": 0.6022,
+    "time": 615.7
   }
 }
