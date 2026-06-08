@@ -23,24 +23,10 @@ This work addresses a complementary challenge to [FedDISC (NeurIPS 2025)](https:
 
 ## 🏗️ Architecture
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                    SERVER (Central)                        │
-│  ┌──────────────────────────────────────────────────┐    │
-│  │  EAFA: Epistemic-Aware Federated Aggregation     │    │
-│  │  w_k = f(data_size, 1/uncertainty_k)             │    │
-│  └──────────────────────────────────────────────────┘    │
-│         ▲              ▲              ▲                   │
-└─────────┼──────────────┼──────────────┼───────────────────┘
-          │              │              │
-    ┌─────┴─────┐  ┌─────┴─────┐  ┌─────┴─────┐
-    │  Client 1  │  │  Client 2  │  │  Client N  │
-    │ RoBERTa    │  │ RoBERTa    │  │ RoBERTa    │
-    │ DialogRNN  │  │ DialogRNN  │  │ DialogRNN  │
-    │ EDL Head   │  │ EDL Head   │  │ EDL Head   │
-    │ → α, u     │  │ → α, u     │  │ → α, u     │
-    └────────────┘  └────────────┘  └────────────┘
-```
+<p align="center">
+  <img src="assets/fig0_architecture.png" alt="FedSSL-MERC System Architecture" width="85%">
+</p>
+
 
 **Pipeline per utterance:**
 ```
@@ -80,6 +66,18 @@ Text → RoBERTa (frozen, 768d) → DialogueRNN (context) → EDL Head → Diric
 | MELD (7 classes) | 63.09 | **63.44** | +0.35 |
 | IEMOCAP (6 classes) | 56.33 | **58.46** | +2.13 |
 | DailyDialog (6 classes) | 87.99 | **88.69** | +0.70 |
+
+### 🛡️ Robustness under Client Label Noise & Beta Sensitivity
+
+We evaluate our model under symmetric client label noise ($20\%$ and $40\%$) and analyze the model's sensitivity to the aggregation hyperparameter $\beta$.
+
+<p align="center">
+  <img src="assets/fig3_noise_robustness.png" alt="Noise Robustness comparison" width="49%">
+  <img src="assets/fig6_beta_sensitivity.png" alt="Beta Sensitivity analysis" width="49%">
+</p>
+
+* **Client Label Noise**: Under 40% label noise, standard FedAvg collapses, while EAFA exhibits remarkable robustness (WF1 $+2.77\%$ improvement on MELD).
+* **Beta Sensitivity**: Dynamic weighting automatically suppresses noisy clients. For example, at $\beta=10$, a noisy client with high mean uncertainty of **0.76** has its contribution weight down-weighted from $0.20$ to **0.12**, protecting the global model.
 
 ## 📁 Project Structure
 
@@ -176,6 +174,7 @@ python scripts/demo_realdata.py --dataset meld --num 5
 
 | Member | Role |
 |--------|------|
+| **Le Vo Minh Thu** | Supervisor / Advisor |
 | **Đinh Đại Lộc** | Lead Developer & Architecture |
 | **Trần Phi Học** | Training & Experiments |
 | **Hồ Gia Phú** | Research & Survey |

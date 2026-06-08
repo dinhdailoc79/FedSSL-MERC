@@ -12,15 +12,15 @@
         "avg_confidence": 0.6115067601203918
     },
     "IEMOCAP_General": {
-        "ece": 0.0245,
-        "nll": 0.3124,
-        "accuracy": 0.7996,
-        "avg_confidence": 0.8122
+        "ece": 0.05262965660341126,
+        "nll": 1.6271389722824097,
+        "accuracy": 0.3029814665592264,
+        "avg_confidence": 0.3045670986175537
     },
     "IEMOCAP_Finetuned": {
-        "ece": 0.0245,
-        "nll": 0.3124,
-        "accuracy": 0.7996,
-        "avg_confidence": 0.8122
+        "ece": 0.19631127337118387,
+        "nll": 0.8518766760826111,
+        "accuracy": 0.7695406929895245,
+        "avg_confidence": 0.5732293725013733
     }
 }
