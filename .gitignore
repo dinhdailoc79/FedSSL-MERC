@@ -27,6 +27,10 @@ env/
 *.swp
 *.swo
 
+# Temporary/Scratch directories
+scratch/
+kaggle_upload/
+
 # Jupyter Notebooks
 .ipynb_checkpoints/
 *.ipynb_checkpoints

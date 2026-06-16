@@ -156,7 +156,10 @@ python scripts/train_multi_dataset.py --dataset meld --finetuned --loss_type ce 
 # 3. Run ablation study (9 configs × 3 seeds)
 python scripts/run_ablation.py
 
-# 4. Demo inference on test data
+# 4. Run EDL vs. Softmax uncertainty surrogate ablation
+python scripts/automate_ablation_pipeline.py
+
+# 5. Demo inference on test data
 python scripts/demo_realdata.py --dataset meld --num 5
 ```
 

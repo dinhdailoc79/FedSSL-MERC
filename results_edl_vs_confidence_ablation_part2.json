@@ -1,0 +1,44 @@
+{
+  "CE_FedAvg_s42": {
+    "wf1": 0.6223,
+    "mean_u": 1.0,
+    "config": "CE_FedAvg",
+    "seed": 42,
+    "time_sec": 526.6
+  },
+  "CE_FedAvg_s123": {
+    "wf1": 0.62,
+    "mean_u": 1.0,
+    "config": "CE_FedAvg",
+    "seed": 123,
+    "time_sec": 320.8
+  },
+  "CE_FedAvg_s2024": {
+    "wf1": 0.6217,
+    "mean_u": 1.0,
+    "config": "CE_FedAvg",
+    "seed": 2024,
+    "time_sec": 320.7
+  },
+  "CE_EAFA_Confidence_s42": {
+    "wf1": 0.6221,
+    "mean_u": 1.0,
+    "config": "CE_EAFA_Confidence",
+    "seed": 42,
+    "time_sec": 329.3
+  },
+  "CE_EAFA_Confidence_s123": {
+    "wf1": 0.6189,
+    "mean_u": 1.0,
+    "config": "CE_EAFA_Confidence",
+    "seed": 123,
+    "time_sec": 262.9
+  },
+  "CE_EAFA_Confidence_s2024": {
+    "wf1": 0.6221,
+    "mean_u": 1.0,
+    "config": "CE_EAFA_Confidence",
+    "seed": 2024,
+    "time_sec": 281.5
+  }
+}

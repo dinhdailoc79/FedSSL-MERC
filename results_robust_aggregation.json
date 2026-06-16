@@ -1,0 +1,42 @@
+{
+  "meld_median_label_flip": {
+    "wf1": 0.6074,
+    "attack": "label_flip",
+    "strategy": "median"
+  },
+  "meld_trimmed_mean_label_flip": {
+    "wf1": 0.6088,
+    "attack": "label_flip",
+    "strategy": "trimmed_mean"
+  },
+  "meld_krum_label_flip": {
+    "wf1": 0.6288,
+    "attack": "label_flip",
+    "strategy": "krum"
+  },
+  "meld_multi_krum_label_flip": {
+    "wf1": 0.6296,
+    "attack": "label_flip",
+    "strategy": "multi_krum"
+  },
+  "meld_median_sign_flip": {
+    "wf1": 0.6281,
+    "attack": "sign_flip",
+    "strategy": "median"
+  },
+  "meld_trimmed_mean_sign_flip": {
+    "wf1": 0.6278,
+    "attack": "sign_flip",
+    "strategy": "trimmed_mean"
+  },
+  "meld_krum_sign_flip": {
+    "wf1": 0.6224,
+    "attack": "sign_flip",
+    "strategy": "krum"
+  },
+  "meld_multi_krum_sign_flip": {
+    "wf1": 0.6275,
+    "attack": "sign_flip",
+    "strategy": "multi_krum"
+  }
+}

@@ -438,9 +438,30 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
                     mask = labels != -1
                     if use_edl:
                         loss, _ = loss_fn(out["alpha"][mask], labels[mask])
-                        all_u_local.extend(out["uncertainty"][mask].detach().cpu().numpy())
+                        if args.uncertainty_type == "edl":
+                            all_u_local.extend(out["uncertainty"][mask].detach().cpu().numpy())
+                        elif args.uncertainty_type == "entropy":
+                            probs = out["alpha"][mask] / out["alpha"][mask].sum(dim=-1, keepdim=True)
+                            entropy = -torch.sum(probs * torch.log(probs + 1e-10), dim=-1)
+                            u = entropy / np.log(num_classes)
+                            all_u_local.extend(u.detach().cpu().numpy())
+                        elif args.uncertainty_type == "confidence":
+                            probs = out["alpha"][mask] / out["alpha"][mask].sum(dim=-1, keepdim=True)
+                            conf = probs.max(dim=-1)[0]
+                            u = 1.0 - conf
+                            all_u_local.extend(u.detach().cpu().numpy())
                     else:
                         loss = loss_fn(out[mask], labels[mask])
+                        if args.uncertainty_type == "entropy":
+                            probs = torch.softmax(out[mask], dim=-1)
+                            entropy = -torch.sum(probs * torch.log(probs + 1e-10), dim=-1)
+                            u = entropy / np.log(num_classes)
+                            all_u_local.extend(u.detach().cpu().numpy())
+                        elif args.uncertainty_type == "confidence":
+                            probs = torch.softmax(out[mask], dim=-1)
+                            conf = probs.max(dim=-1)[0]
+                            u = 1.0 - conf
+                            all_u_local.extend(u.detach().cpu().numpy())
                     
                     if args.mu > 0.0:
                         loss = loss + prox_loss_fn(local_model, global_params)
@@ -527,6 +548,8 @@ def main():
                         choices=["edl", "ce"], help="edl=Evidential, ce=CrossEntropy (ablation)")
     parser.add_argument("--aggregation", type=str, default="eafa",
                         choices=["eafa", "fedavg"], help="eafa=uncertainty-weighted, fedavg=size-only (ablation)")
+    parser.add_argument("--uncertainty_type", type=str, default="edl",
+                        choices=["edl", "entropy", "confidence"], help="Type of uncertainty for EAFA weighting")
     # Focal loss
     parser.add_argument("--focal_gamma", type=float, default=0.0,
                         help="Focal loss gamma. 0=standard, 1-2=focus on hard/minority samples")
