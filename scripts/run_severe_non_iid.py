@@ -161,6 +161,12 @@ def run_experiment(beta, alpha_dir, seed):
             test_wf1, test_u, _, _ = evaluate(global_model, test_loader, device)
             best_test_wf1 = test_wf1
             best_test_u = test_u
+            
+            # Save checkpoint
+            method_name = "eafa" if is_eafa else "fedavg"
+            save_path = f"checkpoints/best_non_iid_{method_name}_{alpha_dir}_seed{seed}.pt"
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            torch.save({"model_state_dict": global_model.state_dict()}, save_path)
         else:
             patience_cnt += 1
 

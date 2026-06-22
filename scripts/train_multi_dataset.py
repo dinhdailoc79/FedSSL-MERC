@@ -323,7 +323,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
         if dev_wf1 > best_wf1:
             best_wf1 = dev_wf1
             patience_cnt = 0
-            ckpt = Path(args.save_dir) / f"best_edl_{dataset_name}.pt"
+            ckpt = Path(args.save_dir) / f"best_edl_{dataset_name}_seed{args.seed}.pt"
             ckpt.parent.mkdir(exist_ok=True)
             torch.save({"epoch": epoch, "model_state_dict": model.state_dict()}, ckpt)
             logger.info(f"  >> New best! WF1={dev_wf1:.4f}")
@@ -334,7 +334,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
                 break
 
     # Final test
-    ckpt = Path(args.save_dir) / f"best_edl_{dataset_name}.pt"
+    ckpt = Path(args.save_dir) / f"best_edl_{dataset_name}_seed{args.seed}.pt"
     if ckpt.exists():
         model.load_state_dict(torch.load(ckpt, weights_only=False)["model_state_dict"])
     test_wf1, test_u, test_report, micro_f1 = evaluate(model, test_loader, device, emotions, dataset_name)
@@ -490,7 +490,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         if test_wf1 > best_wf1:
             best_wf1 = test_wf1
             patience_cnt = 0
-            ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}.pt"
+            ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}_seed{args.seed}.pt"
             ckpt.parent.mkdir(exist_ok=True)
             torch.save({"round": round_num, "model_state_dict": global_model.state_dict()}, ckpt)
             logger.info(f"  >> New best! WF1={test_wf1:.4f}")
@@ -504,7 +504,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         torch.cuda.empty_cache() if torch.cuda.is_available() else None
 
     # Final
-    ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}.pt"
+    ckpt = Path(args.save_dir) / f"best_{agg_label.lower()}_{loss_label.lower()}_{dataset_name}_seed{args.seed}.pt"
     if ckpt.exists():
         global_model.load_state_dict(torch.load(ckpt, weights_only=False)["model_state_dict"])
     test_wf1, test_u, test_report, micro_f1 = evaluate(global_model, test_loader, device, emotions, dataset_name)

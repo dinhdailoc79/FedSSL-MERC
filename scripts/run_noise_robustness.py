@@ -211,7 +211,7 @@ def run_noise_experiment(dataset, aggregation, noise_rate, seed=42):
         if test_wf1 > best_wf1:
             best_wf1 = test_wf1
             patience_cnt = 0
-            ckpt_path = Path(args.save_dir) / f"best_noise_{agg_label.lower()}_{dataset}.pt"
+            ckpt_path = Path(args.save_dir) / f"best_noise_{agg_label.lower()}_{dataset}_seed{seed}.pt"
             ckpt_path.parent.mkdir(exist_ok=True)
             torch.save({"model_state_dict": global_model.state_dict()}, ckpt_path)
             logger.info(f"  >> New best! WF1={test_wf1:.4f}")
@@ -225,7 +225,7 @@ def run_noise_experiment(dataset, aggregation, noise_rate, seed=42):
         torch.cuda.empty_cache() if torch.cuda.is_available() else None
     
     # Final eval on best checkpoint
-    ckpt_path = Path(args.save_dir) / f"best_noise_{agg_label.lower()}_{dataset}.pt"
+    ckpt_path = Path(args.save_dir) / f"best_noise_{agg_label.lower()}_{dataset}_seed{seed}.pt"
     if ckpt_path.exists():
         global_model.load_state_dict(torch.load(ckpt_path, weights_only=False)["model_state_dict"])
     final_wf1, final_u, report, _ = evaluate(global_model, test_loader, device, emotions, dataset)
