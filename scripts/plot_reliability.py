@@ -103,7 +103,7 @@ def plot_risk_coverage(dataset_name, json_path, filename):
     ax.set_title(f"Risk-Coverage Trade-off on {dataset_name.upper()}")
     ax.legend(loc="upper left", frameon=True)
     ax.set_xlim(0.0, 1.05)
-    ax.set_ylim(-0.02, 0.45 if dataset_name.lower() == "meld" else 0.25)
+    ax.set_ylim(-0.02, 0.45 if dataset_name.lower() == "meld" else 0.55)
     
     plt.tight_layout()
     plt.savefig(OUT_DIR / filename, dpi=200)
