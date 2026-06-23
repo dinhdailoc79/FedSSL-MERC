@@ -196,6 +196,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ---
 
-**Lab:** AiTA Lab (AI Technology and Application Research Lab)  
 **Institution:** FPT University  
-**Target:** AAAI 2027 Submission
+
