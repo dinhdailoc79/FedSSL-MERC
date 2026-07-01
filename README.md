@@ -20,6 +20,22 @@ direction filter that restores robustness under update-poisoning attacks.
 
 ---
 
+## 📐 Architecture & Data Flow
+
+<p align="center">
+  <img src="assets/fig_pipeline.png" alt="FedSSL-MERC Pipeline Architecture" width="90%">
+  <br>
+  <em>Figure 1: Overall pipeline architecture of FedSSL-MERC, combining Evidential Deep Learning (EDL), Epistemic-Aware Federated Aggregation (EAFA), Evidential Consistency Regularization (ECR), and Evidence-Level Fusion (ELF).</em>
+</p>
+
+<p align="center">
+  <img src="assets/fig_dataflow.png" alt="FedSSL-MERC Data Flow" width="90%">
+  <br>
+  <em>Figure 2: Data flow diagram illustrating the communication between clients and the federated server under EAFA/EAFA-Guard.</em>
+</p>
+
+---
+
 ## Authors
 
 | Author | Role |
