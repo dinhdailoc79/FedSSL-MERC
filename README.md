@@ -83,15 +83,10 @@ FedSSL-MERC/
 ├── results_*.json    # top-level experiment outputs
 ├── assets/           # architecture and result figures
 │
-├── testbed/          # controlled NumPy federated-EDL simulator (no GPU)
-│   ├── fedsim.py  fedtrain.py  run_experiments.py
-│   ├── results/      # executed JSON outputs
-│   └── tests/        # quick sanity checks
-│
-└── paper/            # manuscript (comment-free LaTeX)
-    ├── main.tex
-    ├── figures/
-    └── figure_scripts/
+└── testbed/          # controlled NumPy federated-EDL simulator (no GPU)
+    ├── fedsim.py  fedtrain.py  run_experiments.py
+    ├── results/      # executed JSON outputs
+    └── tests/        # quick sanity checks
 ```
 
 ---
