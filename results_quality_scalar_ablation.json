@@ -1,0 +1,146 @@
+{
+  "meld_combined_s42": {
+    "macro_f1": 0.4468,
+    "weighted_f1": 0.6125,
+    "variant": "combined",
+    "dataset": "meld",
+    "seed": 42,
+    "time_seconds": 214.8
+  },
+  "meld_combined_s153": {
+    "macro_f1": 0.441,
+    "weighted_f1": 0.6065,
+    "variant": "combined",
+    "dataset": "meld",
+    "seed": 153,
+    "time_seconds": 153.3
+  },
+  "meld_combined_s264": {
+    "macro_f1": 0.4548,
+    "weighted_f1": 0.6172,
+    "variant": "combined",
+    "dataset": "meld",
+    "seed": 264,
+    "time_seconds": 136.3
+  },
+  "meld_vacuity_s42": {
+    "macro_f1": 0.4484,
+    "weighted_f1": 0.6104,
+    "variant": "vacuity",
+    "dataset": "meld",
+    "seed": 42,
+    "time_seconds": 209.8
+  },
+  "meld_vacuity_s153": {
+    "macro_f1": 0.4385,
+    "weighted_f1": 0.602,
+    "variant": "vacuity",
+    "dataset": "meld",
+    "seed": 153,
+    "time_seconds": 174.4
+  },
+  "meld_vacuity_s264": {
+    "macro_f1": 0.4551,
+    "weighted_f1": 0.6154,
+    "variant": "vacuity",
+    "dataset": "meld",
+    "seed": 264,
+    "time_seconds": 156.4
+  },
+  "meld_brier_s42": {
+    "macro_f1": 0.4595,
+    "weighted_f1": 0.6192,
+    "variant": "brier",
+    "dataset": "meld",
+    "seed": 42,
+    "time_seconds": 140.5
+  },
+  "meld_brier_s153": {
+    "macro_f1": 0.4362,
+    "weighted_f1": 0.602,
+    "variant": "brier",
+    "dataset": "meld",
+    "seed": 153,
+    "time_seconds": 111.2
+  },
+  "meld_brier_s264": {
+    "macro_f1": 0.4595,
+    "weighted_f1": 0.621,
+    "variant": "brier",
+    "dataset": "meld",
+    "seed": 264,
+    "time_seconds": 138.7
+  },
+  "iemocap_combined_s42": {
+    "macro_f1": 0.5775,
+    "weighted_f1": 0.59,
+    "variant": "combined",
+    "dataset": "iemocap",
+    "seed": 42,
+    "time_seconds": 87.9
+  },
+  "iemocap_combined_s153": {
+    "macro_f1": 0.5608,
+    "weighted_f1": 0.5659,
+    "variant": "combined",
+    "dataset": "iemocap",
+    "seed": 153,
+    "time_seconds": 86.9
+  },
+  "iemocap_combined_s264": {
+    "macro_f1": 0.5483,
+    "weighted_f1": 0.5576,
+    "variant": "combined",
+    "dataset": "iemocap",
+    "seed": 264,
+    "time_seconds": 87.8
+  },
+  "iemocap_vacuity_s42": {
+    "macro_f1": 0.5864,
+    "weighted_f1": 0.5982,
+    "variant": "vacuity",
+    "dataset": "iemocap",
+    "seed": 42,
+    "time_seconds": 81.7
+  },
+  "iemocap_vacuity_s153": {
+    "macro_f1": 0.5551,
+    "weighted_f1": 0.5597,
+    "variant": "vacuity",
+    "dataset": "iemocap",
+    "seed": 153,
+    "time_seconds": 93.1
+  },
+  "iemocap_vacuity_s264": {
+    "macro_f1": 0.5522,
+    "weighted_f1": 0.5607,
+    "variant": "vacuity",
+    "dataset": "iemocap",
+    "seed": 264,
+    "time_seconds": 88.5
+  },
+  "iemocap_brier_s42": {
+    "macro_f1": 0.5733,
+    "weighted_f1": 0.5842,
+    "variant": "brier",
+    "dataset": "iemocap",
+    "seed": 42,
+    "time_seconds": 75.8
+  },
+  "iemocap_brier_s153": {
+    "macro_f1": 0.5527,
+    "weighted_f1": 0.5588,
+    "variant": "brier",
+    "dataset": "iemocap",
+    "seed": 153,
+    "time_seconds": 91.6
+  },
+  "iemocap_brier_s264": {
+    "macro_f1": 0.5428,
+    "weighted_f1": 0.553,
+    "variant": "brier",
+    "dataset": "iemocap",
+    "seed": 264,
+    "time_seconds": 101.1
+  }
+}

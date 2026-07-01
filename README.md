@@ -1,200 +1,193 @@
-# ThuanPhongNhi — FedSSL-MERC
+# FedSSL-MERC
 
-> **Uncertainty-Aware Federated Learning for Emotion Recognition in Conversations**
+> **Evidential Federated Learning for Robust Multimodal Emotion Recognition in Conversations**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?logo=pytorch)](https://pytorch.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## 📌 Overview
+FedSSL-MERC couples **Evidential Deep Learning (EDL)** with **Federated Learning (FL)**
+for privacy-preserving Emotion Recognition in Conversations (ERC). One Dirichlet
+uncertainty estimate is threaded through three mechanisms — **EAFA**
+(uncertainty-aware aggregation), **ECR** (threshold-free semi-supervised consistency),
+and **ELF** (evidence-level multimodal fusion) — plus **EAFA-Guard**, a server-root
+direction filter that restores robustness under update-poisoning attacks.
 
-ThuanPhongNhi is a framework combining **Evidential Deep Learning (EDL)** with **Federated Learning (FL)** for privacy-preserving Emotion Recognition in Conversations (ERC). Our key innovation is **EAFA (Epistemic-Aware Federated Aggregation)**, which uses model uncertainty to intelligently weight client contributions during aggregation.
+> **Honesty note.** Every number is produced by executed code. Results from the
+> **controlled NumPy testbed** (`testbed/`) are reported *separately* from the
+> **real-corpus** runs (MELD / IEMOCAP / DailyDialog); the testbed isolates each
+> mechanism cleanly and is not a substitute for real-data evaluation.
 
-### Key Contributions
+---
 
-1. **EDL for Dialogue** — First application of Evidential Deep Learning on dialogue-level sequential data (DialogueRNN + Dirichlet head) for per-utterance uncertainty estimation
-2. **EAFA Aggregation** — Uncertainty-weighted FL aggregation that auto-downweights noisy clients, outperforming both FedAvg and centralized training
-3. **ECR** — Evidential Consistency Regularization for semi-supervised learning, replacing FixMatch's hard 0.95 threshold with certainty-weighted Dirichlet KL divergence
-4. **Privacy-Preserving ERC** — Data never leaves client devices; only model weights are shared
+## Authors
 
-### Related Work
+| Author | Role |
+|--------|------|
+| **Đinh Đại Lộc** | Student author — architecture & implementation |
+| **Trần Phi Học** | Student author — training & experiments |
+| **Hồ Gia Phú** | Student author — research & analysis |
+| **TS. Lê Võ Minh Thư** | Corresponding author / advisor (`thulvm@fe.edu.vn`) |
 
-This work addresses a complementary challenge to [FedDISC (NeurIPS 2025)](https://neurips.cc), which handles missing modalities in federated MERC via diffusion models. ThuanPhongNhi instead focuses on **client quality heterogeneity** through uncertainty-guided aggregation.
+Department of Artificial Intelligence, FPT University, Ho Chi Minh City, Vietnam.
 
-## 🏗️ Architecture
+---
 
-<p align="center">
-  <img src="assets/fig0_architecture.png" alt="FedSSL-MERC System Architecture" width="85%">
-</p>
+## Key contributions
 
+1. **EDL for dialogue** — Dirichlet evidential head on top of DialogueRNN for
+   per-utterance uncertainty in a single forward pass.
+2. **EAFA aggregation** — uncertainty-weighted FL aggregation that automatically
+   down-weights low-quality clients at O(1) communication overhead.
+3. **ECR** — threshold-free semi-supervised consistency: replaces FixMatch's hard
+   confidence threshold with a certainty-weighted Dirichlet KL whose gradient vanishes
+   when the model is uncertain.
+4. **ELF** — evidence-level multimodal fusion that degrades gracefully when audio is
+   missing.
+5. **EAFA-Guard** — a server-root direction filter + magnitude cap that restores
+   robustness under update-poisoning, where uncertainty weighting alone fails.
 
-**Pipeline per utterance:**
-```
-Text → RoBERTa (frozen, 768d) → DialogueRNN (context) → EDL Head → Dirichlet(α)
-                                                          ├── belief: b = (α-1)/S
-                                                          ├── uncertainty: u = C/S
-                                                          └── prediction: argmax(b)
-```
+---
 
-## 📊 Results
-
-### Ablation Study (DailyDialog, text-only)
-
-| Config | Loss | Aggregation | WF1 | Uncertainty |
-|:-------|:----:|:-----------:|:---:|:----------:|
-| CE Centralized | CE | — | 0.882 | ✗ |
-| CE FedAvg | CE | FedAvg | 0.876 | ✗ |
-| EDL Centralized | EDL | — | 0.880 | ✓ |
-| EDL FedAvg | EDL | FedAvg | 0.885 | ✓ |
-| **EDL EAFA** | **EDL** | **EAFA** | **0.887** | **✓** |
-
-### Multimodal Results (MELD, text+audio, finetuned features)
-
-| Config | Modality | Aggregation | WF1 |
-|:-------|:--------:|:-----------:|:---:|
-| EDL Centralized | Text | — | 63.09 |
-| EDL EAFA | Text | EAFA | 63.44 |
-| Multimodal FedAvg+DS | Text+Audio | FedAvg | 62.95 |
-| **Multimodal EAFA+DS** | **Text+Audio** | **EAFA** | **63.27** |
-
-> EAFA outperforms FedAvg in both text-only (+0.35%) and multimodal (+0.32%) settings. DS Fusion combines evidence from text and audio modalities with uncertainty-aware weighting.
-
-### Cross-Dataset (3 seeds, mean WF1)
-
-| Dataset | EDL Centralized | EDL EAFA | Δ |
-|:--------|:---------------:|:--------:|:-:|
-| MELD (7 classes) | 63.09 | **63.44** | +0.35 |
-| IEMOCAP (6 classes) | 56.33 | **58.46** | +2.13 |
-| DailyDialog (6 classes) | 87.99 | **88.69** | +0.70 |
-
-### 🛡️ Robustness under Client Label Noise & Beta Sensitivity
-
-We evaluate our model under symmetric client label noise ($20\%$ and $40\%$) and analyze the model's sensitivity to the aggregation hyperparameter $\beta$.
-
-<p align="center">
-  <img src="assets/fig3_noise_robustness.png" alt="Noise Robustness comparison" width="49%">
-  <img src="assets/fig6_beta_sensitivity.png" alt="Beta Sensitivity analysis" width="49%">
-</p>
-
-* **Client Label Noise**: Under 40% label noise, standard FedAvg collapses, while EAFA exhibits remarkable robustness (WF1 $+2.77\%$ improvement on MELD).
-* **Beta Sensitivity**: Dynamic weighting automatically suppresses noisy clients. For example, at $\beta=10$, a noisy client with high mean uncertainty of **0.76** has its contribution weight down-weighted from $0.20$ to **0.12**, protecting the global model.
-
-## 📁 Project Structure
+## Repository layout
 
 ```
 FedSSL-MERC/
-├── data/
-│   ├── datasets/               # Dataset loaders (MELD, IEMOCAP, DailyDialog)
-│   ├── raw/                    # Raw dataset CSVs
-│   └── features/               # Pre-extracted RoBERTa features (.pt)
-├── models/
-│   ├── erc/
-│   │   └── dialogue_rnn.py     # Base DialogueRNN (CE baseline)
-│   └── evidential/
-│       ├── evidential_dialogue_rnn.py  # EDL wrapper
-│       ├── edl_head.py         # Dirichlet evidence layer
-│       └── losses.py           # EDL loss + ECR regularization
-├── federated/
-│   ├── aggregation/
-│   │   └── eafa.py             # EAFA aggregator
-│   ├── partitioner.py          # Dirichlet non-IID partitioning
-│   ├── client.py               # FL client training
-│   └── server.py               # FL server orchestration
-├── scripts/
-│   ├── train_multi_dataset.py  # Main training script (all configs)
-│   ├── run_ablation.py         # Automated 9-run ablation
-│   ├── demo_realdata.py        # Inference demo with test data
-│   ├── demo_inference.py       # Interactive inference demo
-│   ├── finetune_roberta.py     # RoBERTa feature extraction
-│   └── extract_text_features_multi.py
-├── checkpoints/                # Trained model weights
-├── docs/
-│   └── literature_survey.md    # 13-paper survey + novelty analysis
-└── configs/                    # YAML configurations
+├── README.md  REPOSITORY_GUIDE.md  LICENSE
+├── Makefile   reproduce.sh                 # one-command reproduction
+├── requirements.txt  setup.py  implementation_plan.md
+│
+├── data/             # dataset loaders, federated partitioning, preprocessing
+├── models/           # encoders, erc (DialogueRNN), evidential (EDL head, losses), fusion
+├── federated/        # client, server, aggregation (EAFA / EAFA-Guard / baselines), privacy
+├── semi_supervised/  # ECR, FixMatch, FlexMatch, FSSL baselines, augmentation
+├── configs/          # backbone / federated / ssl configuration files
+├── scripts/          # training + experiment + figure-generation entry points
+├── results/          # executed real-corpus experiment outputs (JSON)
+├── results_*.json    # top-level experiment outputs
+├── assets/           # architecture and result figures
+│
+├── testbed/          # controlled NumPy federated-EDL simulator (no GPU)
+│   ├── fedsim.py  fedtrain.py  run_experiments.py
+│   ├── results/      # executed JSON outputs
+│   └── tests/        # quick sanity checks
+│
+└── paper/            # manuscript (comment-free LaTeX)
+    ├── main.tex
+    ├── figures/
+    └── figure_scripts/
 ```
 
-## 🔬 Supported Components
+---
 
-### Datasets
-| Dataset | Modalities | Emotions | Utterances | Source |
-|---------|:----------:|:--------:|:----------:|--------|
-| MELD | Text (+Audio) | 7 | ~13,708 | Friends TV Series |
-| IEMOCAP | Text | 6 | ~7,433 | USC Acted Dialogues |
-| DailyDialog | Text | 6 (excl. neutral) | ~59,547 | Open-domain Dialogues |
+## How to run
 
-### Model Components
-| Component | Implementation | Purpose |
-|:----------|:---------------|:--------|
-| Encoder | RoBERTa-Base (125M, frozen) | Text feature extraction |
-| Context | DialogueRNN (GRU × 3) | Speaker + global + emotion tracking |
-| Head | EDL (Dirichlet) | Uncertainty-aware classification |
-| Aggregation | EAFA (β-weighted) | Epistemic-guided FL |
-| SSL | ECR | Certainty-weighted consistency |
+### 0. Install
 
-### Ablation Configurations
-| Flag | Options | Description |
-|:-----|:--------|:------------|
-| `--loss_type` | `edl` / `ce` | Evidential vs CrossEntropy |
-| `--aggregation` | `eafa` / `fedavg` | Uncertainty-weighted vs uniform |
-| `--mode` | `centralized` / `federated` | Single-site vs multi-client |
-
-## ⚙️ Setup
-
-### Requirements
 ```bash
-pip install -r requirements.txt
+python -m venv .venv && source .venv/bin/activate
+make install              # = pip install -r requirements.txt
 ```
 
-### Quick Start
+### 1. Reproduce all testbed results with one command
+
+The controlled federated-EDL testbed depends only on NumPy/SciPy/Matplotlib (no GPU,
+no PyTorch). It regenerates every Section-7 number and figure:
+
 ```bash
-# 1. Train EDL + EAFA (main pipeline)
+make reproduce            # runs the full battery + regenerates figures
+# or, equivalently:
+./reproduce.sh
+```
+
+Outputs land in `testbed/results/*.json` and `paper/figures/`. To run only the
+experiments (no figures): `make testbed`. To run the sanity checks: `make test`.
+
+### 2. Real-corpus training (PyTorch)
+
+The real-data pipeline (MELD / IEMOCAP / DailyDialog) uses RoBERTa + WavLM +
+DialogueRNN. Datasets are not redistributed here (licensing). Typical entry points:
+
+```bash
+# main EDL + EAFA pipeline
 python scripts/train_multi_dataset.py --dataset meld --finetuned --seed 42
 
-# 2. Train CE baseline (centralized)
-python scripts/train_multi_dataset.py --dataset meld --finetuned --loss_type ce --mode centralized
+# CE baseline (centralized)
+python scripts/train_multi_dataset.py --dataset meld --loss_type ce --mode centralized
 
-# 3. Run ablation study (9 configs × 3 seeds)
-python scripts/run_ablation.py
+# robustness / Byzantine / calibration studies
+python scripts/run_noise_robustness.py
+python scripts/run_byzantine_robustness.py
+python scripts/run_calibration_analysis.py
 
-# 4. Run EDL vs. Softmax uncertainty surrogate ablation
-python scripts/automate_ablation_pipeline.py
-
-# 5. Demo inference on test data
-python scripts/demo_realdata.py --dataset meld --num 5
+# regenerate real-data paper figures
+python scripts/generate_figures.py
 ```
 
-### Demo Output Example
-```
-🗣️ "My God! What happened to you?"
-   → 😮 surprise     (75.7%)  u:████░░░░░░░░░░░░░░░░ 0.243  [true:surprise] ✓
+Run `python scripts/<name>.py --help` for per-script options.
 
-🗣️ "I don't know. We're talking about whipped fish..."
-   → 😊 joy          ( 3.0%)  u:██████████████████░░ 0.944  [true:disgust] ✗
-                               ↑ Model knows it doesn't know!
+### 3. Build the paper
+
+```bash
+make paper                # = pdflatex loop in paper/
 ```
 
-## 👥 Team
+For an actual Elsevier submission, switch the document class in `paper/main.tex` to
+`\documentclass[review]{elsarticle}` and use `natbib`.
 
-| Member | Role |
-|--------|------|
-| **Le Vo Minh Thu** | Supervisor / Advisor |
-| **Đinh Đại Lộc** | Lead Developer & Architecture |
-| **Trần Phi Học** | Training & Experiments |
-| **Hồ Gia Phú** | Research & Survey |
+---
 
-## 📚 Key References
+## Selected results
+
+### Cross-dataset (3 seeds, mean Weighted-F1)
+
+| Dataset | EDL Centralized | EDL + EAFA | Δ |
+|:--------|:---------------:|:----------:|:--:|
+| MELD (7 classes)      | 63.09 | **63.44** | +0.35 |
+| IEMOCAP (6 classes)   | 56.33 | **58.46** | +2.13 |
+| DailyDialog (6 cls.)  | 87.99 | **88.69** | +0.70 |
+
+### Robustness (controlled testbed, macro-F1)
+
+| Setting | EAFA-Guard | Best classical baseline |
+|---------|-----------:|------------------------:|
+| Label-flip 20%    | ≈ 89% | Multi-Krum ≈ 91% |
+| Sign-flip 20%     | ≈ 89% | Multi-Krum ≈ 42% |
+| Adaptive 20%      | ≈ 89% | Krum ≈ 85% |
+| Contamination 40% | ≈ 94% | < 56% |
+
+EAFA-Guard is the only aggregator tested that holds up against **all three** attack
+types. Plain EAFA is competitive under benign noise but collapses under update
+poisoning — reported explicitly as the motivation for the guard.
+
+---
+
+## Components
+
+| Component | Implementation | Purpose |
+|:----------|:---------------|:--------|
+| Text encoder | RoBERTa-Base (frozen) | utterance features |
+| Audio encoder | WavLM (frozen) | speech features |
+| Context | DialogueRNN | speaker + global + emotion tracking |
+| Head | EDL (Dirichlet) | single-pass uncertainty |
+| Aggregation | EAFA / EAFA-Guard | epistemic-guided, robust FL |
+| SSL | ECR | certainty-weighted consistency |
+| Fusion | ELF | evidence-level multimodal fusion |
+
+---
+
+## Key references
 
 1. Majumder, N. et al. (2019). *DialogueRNN: An Attentive RNN for Emotion Detection in Conversations*. AAAI.
 2. Sensoy, M. et al. (2018). *Evidential Deep Learning to Quantify Classification Uncertainty*. NeurIPS.
 3. McMahan, B. et al. (2017). *Communication-Efficient Learning of Deep Networks from Decentralized Data*. AISTATS.
-4. Qiu, X. et al. (2025). *FedDISC: Federated Dialogue-Semantic Diffusion for Emotion Recognition under Incomplete Modalities*. NeurIPS.
-5. Sohn, K. et al. (2020). *FixMatch: Simplifying Semi-Supervised Learning*. NeurIPS.
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+4. Yin, D. et al. (2018). *Byzantine-Robust Distributed Learning: Towards Optimal Statistical Rates*. ICML.
+5. Sohn, K. et al. (2020). *FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence*. NeurIPS.
 
 ---
 
-**Institution:** FPT University  
+## License
 
+Released under the MIT License — see [LICENSE](LICENSE).
+
+**Institution:** FPT University, Ho Chi Minh City, Vietnam.

@@ -1,0 +1,6770 @@
+{
+  "meld_fedavg_sysn0_s42": {
+    "macro_f1": 0.4541,
+    "weighted_f1": 0.6183,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 147.0
+  },
+  "meld_fedavg_sysn0_s153": {
+    "macro_f1": 0.4495,
+    "weighted_f1": 0.6051,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 136.5
+  },
+  "meld_fedavg_sysn0_s264": {
+    "macro_f1": 0.4576,
+    "weighted_f1": 0.613,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 133.1
+  },
+  "meld_fedavg_sysn0_s375": {
+    "macro_f1": 0.4658,
+    "weighted_f1": 0.6216,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 132.5
+  },
+  "meld_fedavg_sysn0_s486": {
+    "macro_f1": 0.4563,
+    "weighted_f1": 0.6134,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 247.0
+  },
+  "meld_fedavg_sysn0_s597": {
+    "macro_f1": 0.464,
+    "weighted_f1": 0.6113,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 254.7
+  },
+  "meld_fedavg_sysn0_s708": {
+    "macro_f1": 0.463,
+    "weighted_f1": 0.62,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 143.3
+  },
+  "meld_fedavg_sysn0_s819": {
+    "macro_f1": 0.4662,
+    "weighted_f1": 0.6274,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 167.5
+  },
+  "meld_fedavg_sysn0_s930": {
+    "macro_f1": 0.4589,
+    "weighted_f1": 0.6187,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 160.7
+  },
+  "meld_fedavg_sysn0_s1041": {
+    "macro_f1": 0.4535,
+    "weighted_f1": 0.6159,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 188.7
+  },
+  "meld_fedavg_sysn0_s1152": {
+    "macro_f1": 0.4704,
+    "weighted_f1": 0.6254,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 137.2
+  },
+  "meld_fedavg_sysn0_s1263": {
+    "macro_f1": 0.4604,
+    "weighted_f1": 0.623,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 155.7
+  },
+  "meld_eafa_sysn0_s42": {
+    "macro_f1": 0.4661,
+    "weighted_f1": 0.6243,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 129.7
+  },
+  "meld_eafa_sysn0_s153": {
+    "macro_f1": 0.4484,
+    "weighted_f1": 0.6038,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 145.7
+  },
+  "meld_eafa_sysn0_s264": {
+    "macro_f1": 0.4533,
+    "weighted_f1": 0.6099,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 135.9
+  },
+  "meld_eafa_sysn0_s375": {
+    "macro_f1": 0.4532,
+    "weighted_f1": 0.6136,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 140.8
+  },
+  "meld_eafa_sysn0_s486": {
+    "macro_f1": 0.454,
+    "weighted_f1": 0.6142,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 142.3
+  },
+  "meld_eafa_sysn0_s597": {
+    "macro_f1": 0.4635,
+    "weighted_f1": 0.6069,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 145.0
+  },
+  "meld_eafa_sysn0_s708": {
+    "macro_f1": 0.4505,
+    "weighted_f1": 0.6104,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 131.6
+  },
+  "meld_eafa_sysn0_s819": {
+    "macro_f1": 0.4709,
+    "weighted_f1": 0.6257,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 131.5
+  },
+  "meld_eafa_sysn0_s930": {
+    "macro_f1": 0.4519,
+    "weighted_f1": 0.6068,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 204.0
+  },
+  "meld_eafa_sysn0_s1041": {
+    "macro_f1": 0.4533,
+    "weighted_f1": 0.6191,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 178.7
+  },
+  "meld_eafa_sysn0_s1152": {
+    "macro_f1": 0.4621,
+    "weighted_f1": 0.6184,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 139.5
+  },
+  "meld_eafa_sysn0_s1263": {
+    "macro_f1": 0.4621,
+    "weighted_f1": 0.6259,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 149.3
+  },
+  "meld_eafa_guard_sysn0_s42": {
+    "macro_f1": 0.4465,
+    "weighted_f1": 0.6171,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 204.0
+  },
+  "meld_eafa_guard_sysn0_s153": {
+    "macro_f1": 0.4666,
+    "weighted_f1": 0.6247,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 285.8
+  },
+  "meld_eafa_guard_sysn0_s264": {
+    "macro_f1": 0.4527,
+    "weighted_f1": 0.6038,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 206.5
+  },
+  "meld_eafa_guard_sysn0_s375": {
+    "macro_f1": 0.4608,
+    "weighted_f1": 0.6227,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 166.6
+  },
+  "meld_eafa_guard_sysn0_s486": {
+    "macro_f1": 0.4328,
+    "weighted_f1": 0.6042,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 205.2
+  },
+  "meld_eafa_guard_sysn0_s597": {
+    "macro_f1": 0.4617,
+    "weighted_f1": 0.6219,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 147.7
+  },
+  "meld_eafa_guard_sysn0_s708": {
+    "macro_f1": 0.4482,
+    "weighted_f1": 0.6097,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 179.8
+  },
+  "meld_eafa_guard_sysn0_s819": {
+    "macro_f1": 0.4679,
+    "weighted_f1": 0.6208,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 168.1
+  },
+  "meld_eafa_guard_sysn0_s930": {
+    "macro_f1": 0.4534,
+    "weighted_f1": 0.6216,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 270.9
+  },
+  "meld_eafa_guard_sysn0_s1041": {
+    "macro_f1": 0.4676,
+    "weighted_f1": 0.6257,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 295.9
+  },
+  "meld_eafa_guard_sysn0_s1152": {
+    "macro_f1": 0.4616,
+    "weighted_f1": 0.6182,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 295.0
+  },
+  "meld_eafa_guard_sysn0_s1263": {
+    "macro_f1": 0.454,
+    "weighted_f1": 0.6041,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 174.3
+  },
+  "meld_fedavg_sysn20_s42": {
+    "macro_f1": 0.4501,
+    "weighted_f1": 0.615,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 203,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1021,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 257,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.3212,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 177.7
+  },
+  "meld_fedavg_sysn20_s153": {
+    "macro_f1": 0.4439,
+    "weighted_f1": 0.6036,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 73,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.1172,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 425,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.3102,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 165.5
+  },
+  "meld_fedavg_sysn20_s264": {
+    "macro_f1": 0.4475,
+    "weighted_f1": 0.6116,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 82,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.1376,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 287,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.1974,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 179.6
+  },
+  "meld_fedavg_sysn20_s375": {
+    "macro_f1": 0.4388,
+    "weighted_f1": 0.6037,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 199,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.141,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 605,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.2025,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 218.0
+  },
+  "meld_fedavg_sysn20_s486": {
+    "macro_f1": 0.4561,
+    "weighted_f1": 0.6165,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 236,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.146,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 112,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.285,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 222.8
+  },
+  "meld_fedavg_sysn20_s597": {
+    "macro_f1": 0.4428,
+    "weighted_f1": 0.6065,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 89,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.1474,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 242,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.2117,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 229.7
+  },
+  "meld_fedavg_sysn20_s708": {
+    "macro_f1": 0.3988,
+    "weighted_f1": 0.5777,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 196,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.1565,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1128,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.1985,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 272.9
+  },
+  "meld_fedavg_sysn20_s819": {
+    "macro_f1": 0.4426,
+    "weighted_f1": 0.6119,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.1099,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 617,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.2003,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 271.3
+  },
+  "meld_fedavg_sysn20_s930": {
+    "macro_f1": 0.4484,
+    "weighted_f1": 0.6095,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 473,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1016,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 109,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.2954,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 211.0
+  },
+  "meld_fedavg_sysn20_s1041": {
+    "macro_f1": 0.4478,
+    "weighted_f1": 0.6082,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.0968,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1053,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.2437,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 264.2
+  },
+  "meld_fedavg_sysn20_s1152": {
+    "macro_f1": 0.4378,
+    "weighted_f1": 0.6074,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 207,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.1029,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 594,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.1906,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 280.5
+  },
+  "meld_fedavg_sysn20_s1263": {
+    "macro_f1": 0.4449,
+    "weighted_f1": 0.6054,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 189,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.1455,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 508,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.1742,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 206.5
+  },
+  "meld_eafa_sysn20_s42": {
+    "macro_f1": 0.4485,
+    "weighted_f1": 0.6153,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 203,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1021,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 257,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.3212,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 227.3
+  },
+  "meld_eafa_sysn20_s153": {
+    "macro_f1": 0.4321,
+    "weighted_f1": 0.5983,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 73,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.1172,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 425,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.3102,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 165.1
+  },
+  "meld_eafa_sysn20_s264": {
+    "macro_f1": 0.4547,
+    "weighted_f1": 0.612,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 82,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.1376,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 287,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.1974,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 174.6
+  },
+  "meld_eafa_sysn20_s375": {
+    "macro_f1": 0.4473,
+    "weighted_f1": 0.607,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 199,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.141,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 605,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.2025,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 194.9
+  },
+  "meld_eafa_sysn20_s486": {
+    "macro_f1": 0.463,
+    "weighted_f1": 0.6197,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 236,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.146,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 112,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.285,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 273.8
+  },
+  "meld_eafa_sysn20_s597": {
+    "macro_f1": 0.4454,
+    "weighted_f1": 0.6015,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 89,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.1474,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 242,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.2117,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 194.8
+  },
+  "meld_eafa_sysn20_s708": {
+    "macro_f1": 0.3696,
+    "weighted_f1": 0.5604,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 196,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.1565,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1128,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.1985,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 233.0
+  },
+  "meld_eafa_sysn20_s819": {
+    "macro_f1": 0.4493,
+    "weighted_f1": 0.6124,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.1099,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 617,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.2003,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 196.5
+  },
+  "meld_eafa_sysn20_s930": {
+    "macro_f1": 0.4471,
+    "weighted_f1": 0.6117,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 473,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1016,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 109,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.2954,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 193.5
+  },
+  "meld_eafa_sysn20_s1041": {
+    "macro_f1": 0.449,
+    "weighted_f1": 0.6134,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.0968,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1053,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.2437,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 244.6
+  },
+  "meld_eafa_sysn20_s1152": {
+    "macro_f1": 0.4431,
+    "weighted_f1": 0.6112,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 207,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.1029,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 594,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.1906,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 222.8
+  },
+  "meld_eafa_sysn20_s1263": {
+    "macro_f1": 0.4544,
+    "weighted_f1": 0.6109,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 189,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.1455,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 508,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.1742,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 230.4
+  },
+  "meld_eafa_guard_sysn20_s42": {
+    "macro_f1": 0.4471,
+    "weighted_f1": 0.6153,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 203,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1021,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 257,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.3212,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 175.4
+  },
+  "meld_eafa_guard_sysn20_s153": {
+    "macro_f1": 0.3661,
+    "weighted_f1": 0.5515,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 73,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.1172,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 425,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.3102,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 275.4
+  },
+  "meld_eafa_guard_sysn20_s264": {
+    "macro_f1": 0.4636,
+    "weighted_f1": 0.6212,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 82,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.1376,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 287,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.1974,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 164.6
+  },
+  "meld_eafa_guard_sysn20_s375": {
+    "macro_f1": 0.4411,
+    "weighted_f1": 0.6024,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 199,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.141,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 605,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.2025,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 213.4
+  },
+  "meld_eafa_guard_sysn20_s486": {
+    "macro_f1": 0.4552,
+    "weighted_f1": 0.6155,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 236,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.146,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 112,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.285,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 237.8
+  },
+  "meld_eafa_guard_sysn20_s597": {
+    "macro_f1": 0.4492,
+    "weighted_f1": 0.6077,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 89,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.1474,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 242,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.2117,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 220.6
+  },
+  "meld_eafa_guard_sysn20_s708": {
+    "macro_f1": 0.4276,
+    "weighted_f1": 0.5983,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 196,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.1565,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1128,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.1985,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 279.7
+  },
+  "meld_eafa_guard_sysn20_s819": {
+    "macro_f1": 0.445,
+    "weighted_f1": 0.5999,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.1099,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 617,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.2003,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 169.4
+  },
+  "meld_eafa_guard_sysn20_s930": {
+    "macro_f1": 0.4335,
+    "weighted_f1": 0.6051,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 473,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1016,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 109,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.2954,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 176.7
+  },
+  "meld_eafa_guard_sysn20_s1041": {
+    "macro_f1": 0.4388,
+    "weighted_f1": 0.6122,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.0968,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 1053,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.2437,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 216.8
+  },
+  "meld_eafa_guard_sysn20_s1152": {
+    "macro_f1": 0.4507,
+    "weighted_f1": 0.6219,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 207,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.1029,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 594,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.1906,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 206.9
+  },
+  "meld_eafa_guard_sysn20_s1263": {
+    "macro_f1": 0.4743,
+    "weighted_f1": 0.623,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 189,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.1455,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 508,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.1742,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 169.4
+  },
+  "meld_fedavg_sysn40_s42": {
+    "macro_f1": 0.4296,
+    "weighted_f1": 0.6037,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 383,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1927,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 484,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.605,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 166.0
+  },
+  "meld_fedavg_sysn40_s153": {
+    "macro_f1": 0.4312,
+    "weighted_f1": 0.5881,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 142,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.2279,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 822,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.6,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 164.2
+  },
+  "meld_fedavg_sysn40_s264": {
+    "macro_f1": 0.441,
+    "weighted_f1": 0.6022,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 181,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.3037,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 591,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.4065,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 246.2
+  },
+  "meld_fedavg_sysn40_s375": {
+    "macro_f1": 0.3938,
+    "weighted_f1": 0.5778,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 398,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.2821,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1179,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.3946,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 279.0
+  },
+  "meld_fedavg_sysn40_s486": {
+    "macro_f1": 0.4366,
+    "weighted_f1": 0.6078,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 470,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.2908,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 214,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.5445,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 275.9
+  },
+  "meld_fedavg_sysn40_s597": {
+    "macro_f1": 0.4452,
+    "weighted_f1": 0.6039,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 187,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.3096,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 503,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.4401,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 246.1
+  },
+  "meld_fedavg_sysn40_s708": {
+    "macro_f1": 0.3511,
+    "weighted_f1": 0.5529,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 369,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.2947,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2212,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.3893,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 275.5
+  },
+  "meld_fedavg_sysn40_s819": {
+    "macro_f1": 0.3955,
+    "weighted_f1": 0.5773,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 324,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.2146,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1186,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.3851,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 265.6
+  },
+  "meld_fedavg_sysn40_s930": {
+    "macro_f1": 0.4218,
+    "weighted_f1": 0.5952,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 897,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1926,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 233,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.6314,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 160.0
+  },
+  "meld_fedavg_sysn40_s1041": {
+    "macro_f1": 0.3639,
+    "weighted_f1": 0.5636,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 259,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.19,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2127,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.4922,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 194.6
+  },
+  "meld_fedavg_sysn40_s1152": {
+    "macro_f1": 0.4121,
+    "weighted_f1": 0.5913,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 409,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.2034,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1185,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.3803,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 215.8
+  },
+  "meld_fedavg_sysn40_s1263": {
+    "macro_f1": 0.3988,
+    "weighted_f1": 0.5823,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 353,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.2717,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1075,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.3687,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 182.6
+  },
+  "meld_eafa_sysn40_s42": {
+    "macro_f1": 0.4366,
+    "weighted_f1": 0.5996,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 383,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1927,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 484,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.605,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 296.8
+  },
+  "meld_eafa_sysn40_s153": {
+    "macro_f1": 0.4456,
+    "weighted_f1": 0.604,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 142,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.2279,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 822,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.6,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 210.0
+  },
+  "meld_eafa_sysn40_s264": {
+    "macro_f1": 0.4461,
+    "weighted_f1": 0.6057,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 181,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.3037,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 591,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.4065,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 227.0
+  },
+  "meld_eafa_sysn40_s375": {
+    "macro_f1": 0.4229,
+    "weighted_f1": 0.5876,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 398,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.2821,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1179,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.3946,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 281.0
+  },
+  "meld_eafa_sysn40_s486": {
+    "macro_f1": 0.4442,
+    "weighted_f1": 0.6085,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 470,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.2908,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 214,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.5445,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 309.2
+  },
+  "meld_eafa_sysn40_s597": {
+    "macro_f1": 0.4514,
+    "weighted_f1": 0.6097,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 187,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.3096,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 503,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.4401,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 224.0
+  },
+  "meld_eafa_sysn40_s708": {
+    "macro_f1": 0.2832,
+    "weighted_f1": 0.4992,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 369,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.2947,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2212,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.3893,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 272.8
+  },
+  "meld_eafa_sysn40_s819": {
+    "macro_f1": 0.4347,
+    "weighted_f1": 0.597,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 324,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.2146,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1186,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.3851,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 301.8
+  },
+  "meld_eafa_sysn40_s930": {
+    "macro_f1": 0.4324,
+    "weighted_f1": 0.6066,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 897,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1926,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 233,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.6314,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 221.1
+  },
+  "meld_eafa_sysn40_s1041": {
+    "macro_f1": 0.3537,
+    "weighted_f1": 0.5543,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 259,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.19,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2127,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.4922,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 321.1
+  },
+  "meld_eafa_sysn40_s1152": {
+    "macro_f1": 0.4132,
+    "weighted_f1": 0.5907,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 409,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.2034,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1185,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.3803,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 322.6
+  },
+  "meld_eafa_sysn40_s1263": {
+    "macro_f1": 0.435,
+    "weighted_f1": 0.6047,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 353,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.2717,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1075,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.3687,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 311.6
+  },
+  "meld_eafa_guard_sysn40_s42": {
+    "macro_f1": 0.3678,
+    "weighted_f1": 0.5596,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 383,
+        "eligible": 926,
+        "total": 1988,
+        "actual_rate": 0.1927,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 484,
+        "eligible": 582,
+        "total": 800,
+        "actual_rate": 0.605,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 170.5
+  },
+  "meld_eafa_guard_sysn40_s153": {
+    "macro_f1": 0.4355,
+    "weighted_f1": 0.6041,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 142,
+        "eligible": 331,
+        "total": 623,
+        "actual_rate": 0.2279,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 822,
+        "eligible": 1032,
+        "total": 1370,
+        "actual_rate": 0.6,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 285.2
+  },
+  "meld_eafa_guard_sysn40_s264": {
+    "macro_f1": 0.4573,
+    "weighted_f1": 0.6163,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 181,
+        "eligible": 448,
+        "total": 596,
+        "actual_rate": 0.3037,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 591,
+        "eligible": 732,
+        "total": 1454,
+        "actual_rate": 0.4065,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 167.5
+  },
+  "meld_eafa_guard_sysn40_s375": {
+    "macro_f1": 0.4608,
+    "weighted_f1": 0.6225,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 398,
+        "eligible": 1012,
+        "total": 1411,
+        "actual_rate": 0.2821,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1179,
+        "eligible": 1466,
+        "total": 2988,
+        "actual_rate": 0.3946,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 204.6
+  },
+  "meld_eafa_guard_sysn40_s486": {
+    "macro_f1": 0.44,
+    "weighted_f1": 0.601,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 470,
+        "eligible": 1187,
+        "total": 1616,
+        "actual_rate": 0.2908,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 214,
+        "eligible": 270,
+        "total": 393,
+        "actual_rate": 0.5445,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 207.2
+  },
+  "meld_eafa_guard_sysn40_s597": {
+    "macro_f1": 0.4604,
+    "weighted_f1": 0.6151,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 187,
+        "eligible": 441,
+        "total": 604,
+        "actual_rate": 0.3096,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 503,
+        "eligible": 615,
+        "total": 1143,
+        "actual_rate": 0.4401,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 212.8
+  },
+  "meld_eafa_guard_sysn40_s708": {
+    "macro_f1": 0.4441,
+    "weighted_f1": 0.6106,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 369,
+        "eligible": 931,
+        "total": 1252,
+        "actual_rate": 0.2947,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2212,
+        "eligible": 2735,
+        "total": 5682,
+        "actual_rate": 0.3893,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 248.8
+  },
+  "meld_eafa_guard_sysn40_s819": {
+    "macro_f1": 0.203,
+    "weighted_f1": 0.4184,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 324,
+        "eligible": 781,
+        "total": 1510,
+        "actual_rate": 0.2146,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1186,
+        "eligible": 1468,
+        "total": 3080,
+        "actual_rate": 0.3851,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 180.4
+  },
+  "meld_eafa_guard_sysn40_s930": {
+    "macro_f1": 0.4443,
+    "weighted_f1": 0.6025,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 897,
+        "eligible": 2219,
+        "total": 4657,
+        "actual_rate": 0.1926,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 233,
+        "eligible": 280,
+        "total": 369,
+        "actual_rate": 0.6314,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 226.3
+  },
+  "meld_eafa_guard_sysn40_s1041": {
+    "macro_f1": 0.4466,
+    "weighted_f1": 0.6121,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 259,
+        "eligible": 610,
+        "total": 1363,
+        "actual_rate": 0.19,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 2127,
+        "eligible": 2642,
+        "total": 4321,
+        "actual_rate": 0.4922,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 168.0
+  },
+  "meld_eafa_guard_sysn40_s1152": {
+    "macro_f1": 0.4515,
+    "weighted_f1": 0.6102,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 409,
+        "eligible": 932,
+        "total": 2011,
+        "actual_rate": 0.2034,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1185,
+        "eligible": 1509,
+        "total": 3116,
+        "actual_rate": 0.3803,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 205.7
+  },
+  "meld_eafa_guard_sysn40_s1263": {
+    "macro_f1": 0.3833,
+    "weighted_f1": 0.5719,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "meld",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 353,
+        "eligible": 921,
+        "total": 1299,
+        "actual_rate": 0.2717,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1075,
+        "eligible": 1341,
+        "total": 2916,
+        "actual_rate": 0.3687,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 186.8
+  },
+  "iemocap_fedavg_sysn0_s42": {
+    "macro_f1": 0.5838,
+    "weighted_f1": 0.596,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 660.0
+  },
+  "iemocap_fedavg_sysn0_s153": {
+    "macro_f1": 0.568,
+    "weighted_f1": 0.5722,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 508.8
+  },
+  "iemocap_fedavg_sysn0_s264": {
+    "macro_f1": 0.5892,
+    "weighted_f1": 0.598,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 717.5
+  },
+  "iemocap_fedavg_sysn0_s375": {
+    "macro_f1": 0.5755,
+    "weighted_f1": 0.584,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 571.3
+  },
+  "iemocap_fedavg_sysn0_s486": {
+    "macro_f1": 0.5849,
+    "weighted_f1": 0.5939,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 750.0
+  },
+  "iemocap_fedavg_sysn0_s597": {
+    "macro_f1": 0.5795,
+    "weighted_f1": 0.5869,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 716.6
+  },
+  "iemocap_fedavg_sysn0_s708": {
+    "macro_f1": 0.5822,
+    "weighted_f1": 0.5914,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 719.5
+  },
+  "iemocap_fedavg_sysn0_s819": {
+    "macro_f1": 0.5884,
+    "weighted_f1": 0.5943,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 756.5
+  },
+  "iemocap_fedavg_sysn0_s930": {
+    "macro_f1": 0.5851,
+    "weighted_f1": 0.591,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 712.4
+  },
+  "iemocap_fedavg_sysn0_s1041": {
+    "macro_f1": 0.587,
+    "weighted_f1": 0.5978,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 741.2
+  },
+  "iemocap_fedavg_sysn0_s1152": {
+    "macro_f1": 0.5776,
+    "weighted_f1": 0.5869,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 767.2
+  },
+  "iemocap_fedavg_sysn0_s1263": {
+    "macro_f1": 0.5785,
+    "weighted_f1": 0.5887,
+    "noise_rate": 0.0,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 554.3
+  },
+  "iemocap_eafa_sysn0_s42": {
+    "macro_f1": 0.582,
+    "weighted_f1": 0.5913,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 685.8
+  },
+  "iemocap_eafa_sysn0_s153": {
+    "macro_f1": 0.5617,
+    "weighted_f1": 0.5678,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 508.7
+  },
+  "iemocap_eafa_sysn0_s264": {
+    "macro_f1": 0.5832,
+    "weighted_f1": 0.591,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 676.3
+  },
+  "iemocap_eafa_sysn0_s375": {
+    "macro_f1": 0.5718,
+    "weighted_f1": 0.5791,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 668.0
+  },
+  "iemocap_eafa_sysn0_s486": {
+    "macro_f1": 0.5816,
+    "weighted_f1": 0.5931,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 595.8
+  },
+  "iemocap_eafa_sysn0_s597": {
+    "macro_f1": 0.5667,
+    "weighted_f1": 0.5774,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 665.1
+  },
+  "iemocap_eafa_sysn0_s708": {
+    "macro_f1": 0.5834,
+    "weighted_f1": 0.5953,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 695.2
+  },
+  "iemocap_eafa_sysn0_s819": {
+    "macro_f1": 0.5854,
+    "weighted_f1": 0.5923,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 603.5
+  },
+  "iemocap_eafa_sysn0_s930": {
+    "macro_f1": 0.5794,
+    "weighted_f1": 0.5857,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 714.5
+  },
+  "iemocap_eafa_sysn0_s1041": {
+    "macro_f1": 0.5911,
+    "weighted_f1": 0.6007,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 748.5
+  },
+  "iemocap_eafa_sysn0_s1152": {
+    "macro_f1": 0.5829,
+    "weighted_f1": 0.5905,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 682.4
+  },
+  "iemocap_eafa_sysn0_s1263": {
+    "macro_f1": 0.5712,
+    "weighted_f1": 0.581,
+    "noise_rate": 0.0,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 757.0
+  },
+  "iemocap_eafa_guard_sysn0_s42": {
+    "macro_f1": 0.5731,
+    "weighted_f1": 0.5809,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 599.1
+  },
+  "iemocap_eafa_guard_sysn0_s153": {
+    "macro_f1": 0.5762,
+    "weighted_f1": 0.585,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 711.6
+  },
+  "iemocap_eafa_guard_sysn0_s264": {
+    "macro_f1": 0.5799,
+    "weighted_f1": 0.5923,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 614.4
+  },
+  "iemocap_eafa_guard_sysn0_s375": {
+    "macro_f1": 0.5695,
+    "weighted_f1": 0.5786,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 603.5
+  },
+  "iemocap_eafa_guard_sysn0_s486": {
+    "macro_f1": 0.5535,
+    "weighted_f1": 0.5551,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 577.9
+  },
+  "iemocap_eafa_guard_sysn0_s597": {
+    "macro_f1": 0.5856,
+    "weighted_f1": 0.594,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 772.7
+  },
+  "iemocap_eafa_guard_sysn0_s708": {
+    "macro_f1": 0.5355,
+    "weighted_f1": 0.537,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 508.5
+  },
+  "iemocap_eafa_guard_sysn0_s819": {
+    "macro_f1": 0.5659,
+    "weighted_f1": 0.57,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 764.6
+  },
+  "iemocap_eafa_guard_sysn0_s930": {
+    "macro_f1": 0.5601,
+    "weighted_f1": 0.5665,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 723.9
+  },
+  "iemocap_eafa_guard_sysn0_s1041": {
+    "macro_f1": 0.5545,
+    "weighted_f1": 0.5663,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 501.3
+  },
+  "iemocap_eafa_guard_sysn0_s1152": {
+    "macro_f1": 0.5775,
+    "weighted_f1": 0.5853,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 766.8
+  },
+  "iemocap_eafa_guard_sysn0_s1263": {
+    "macro_f1": 0.5546,
+    "weighted_f1": 0.5638,
+    "noise_rate": 0.0,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "actual_rate": 0.0
+      },
+      "client_4": {
+        "actual_rate": 0.0
+      }
+    },
+    "time_seconds": 770.4
+  },
+  "iemocap_fedavg_sysn20_s42": {
+    "macro_f1": 0.5859,
+    "weighted_f1": 0.5957,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 149,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.2075,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 164,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.453,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 702.2
+  },
+  "iemocap_fedavg_sysn20_s153": {
+    "macro_f1": 0.5547,
+    "weighted_f1": 0.5606,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.2122,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 321,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.4089,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 386.7
+  },
+  "iemocap_fedavg_sysn20_s264": {
+    "macro_f1": 0.5862,
+    "weighted_f1": 0.5888,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 242,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.1828,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 322,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.3951,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 625.7
+  },
+  "iemocap_fedavg_sysn20_s375": {
+    "macro_f1": 0.5582,
+    "weighted_f1": 0.5669,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.1983,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 491,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.4031,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 745.9
+  },
+  "iemocap_fedavg_sysn20_s486": {
+    "macro_f1": 0.5779,
+    "weighted_f1": 0.5875,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 69,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.1855,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 31,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.3523,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 542.6
+  },
+  "iemocap_fedavg_sysn20_s597": {
+    "macro_f1": 0.5709,
+    "weighted_f1": 0.5783,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 178,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.2107,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 160,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.401,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 148.4
+  },
+  "iemocap_fedavg_sysn20_s708": {
+    "macro_f1": 0.5669,
+    "weighted_f1": 0.5778,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 88,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.2162,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 540,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.4113,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 130.2
+  },
+  "iemocap_fedavg_sysn20_s819": {
+    "macro_f1": 0.5747,
+    "weighted_f1": 0.5795,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 185,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.2134,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 377,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.4134,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 132.7
+  },
+  "iemocap_fedavg_sysn20_s930": {
+    "macro_f1": 0.5747,
+    "weighted_f1": 0.5836,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 305,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.2041,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 94,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.4034,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 140.2
+  },
+  "iemocap_fedavg_sysn20_s1041": {
+    "macro_f1": 0.5786,
+    "weighted_f1": 0.5857,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 112,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.2121,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 176,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.3877,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 133.6
+  },
+  "iemocap_fedavg_sysn20_s1152": {
+    "macro_f1": 0.5435,
+    "weighted_f1": 0.5556,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 146,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.215,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 432,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.3885,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 131.5
+  },
+  "iemocap_fedavg_sysn20_s1263": {
+    "macro_f1": 0.5612,
+    "weighted_f1": 0.5696,
+    "noise_rate": 0.2,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 57,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.1952,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 359,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.3626,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 119.6
+  },
+  "iemocap_eafa_sysn20_s42": {
+    "macro_f1": 0.5828,
+    "weighted_f1": 0.5934,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 149,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.2075,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 164,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.453,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 110.8
+  },
+  "iemocap_eafa_sysn20_s153": {
+    "macro_f1": 0.571,
+    "weighted_f1": 0.5792,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.2122,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 321,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.4089,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 134.3
+  },
+  "iemocap_eafa_sysn20_s264": {
+    "macro_f1": 0.5737,
+    "weighted_f1": 0.5809,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 242,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.1828,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 322,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.3951,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 129.4
+  },
+  "iemocap_eafa_sysn20_s375": {
+    "macro_f1": 0.5629,
+    "weighted_f1": 0.5712,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.1983,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 491,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.4031,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 141.2
+  },
+  "iemocap_eafa_sysn20_s486": {
+    "macro_f1": 0.5727,
+    "weighted_f1": 0.5815,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 69,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.1855,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 31,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.3523,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 144.2
+  },
+  "iemocap_eafa_sysn20_s597": {
+    "macro_f1": 0.5655,
+    "weighted_f1": 0.5739,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 178,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.2107,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 160,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.401,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 140.5
+  },
+  "iemocap_eafa_sysn20_s708": {
+    "macro_f1": 0.574,
+    "weighted_f1": 0.5827,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 88,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.2162,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 540,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.4113,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 135.2
+  },
+  "iemocap_eafa_sysn20_s819": {
+    "macro_f1": 0.5822,
+    "weighted_f1": 0.5869,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 185,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.2134,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 377,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.4134,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 153.3
+  },
+  "iemocap_eafa_sysn20_s930": {
+    "macro_f1": 0.5776,
+    "weighted_f1": 0.5874,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 305,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.2041,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 94,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.4034,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 143.0
+  },
+  "iemocap_eafa_sysn20_s1041": {
+    "macro_f1": 0.5788,
+    "weighted_f1": 0.5845,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 112,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.2121,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 176,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.3877,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 134.4
+  },
+  "iemocap_eafa_sysn20_s1152": {
+    "macro_f1": 0.566,
+    "weighted_f1": 0.5786,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 146,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.215,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 432,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.3885,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 138.4
+  },
+  "iemocap_eafa_sysn20_s1263": {
+    "macro_f1": 0.5722,
+    "weighted_f1": 0.5776,
+    "noise_rate": 0.2,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 57,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.1952,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 359,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.3626,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 121.6
+  },
+  "iemocap_eafa_guard_sysn20_s42": {
+    "macro_f1": 0.5443,
+    "weighted_f1": 0.5504,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 149,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.2075,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 164,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.453,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 137.0
+  },
+  "iemocap_eafa_guard_sysn20_s153": {
+    "macro_f1": 0.5175,
+    "weighted_f1": 0.5265,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 132,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.2122,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 321,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.4089,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 153.5
+  },
+  "iemocap_eafa_guard_sysn20_s264": {
+    "macro_f1": 0.5744,
+    "weighted_f1": 0.5842,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 242,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.1828,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 322,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.3951,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 124.5
+  },
+  "iemocap_eafa_guard_sysn20_s375": {
+    "macro_f1": 0.5437,
+    "weighted_f1": 0.5497,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 166,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.1983,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 491,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.4031,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 147.8
+  },
+  "iemocap_eafa_guard_sysn20_s486": {
+    "macro_f1": 0.568,
+    "weighted_f1": 0.575,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 69,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.1855,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 31,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.3523,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 86.2
+  },
+  "iemocap_eafa_guard_sysn20_s597": {
+    "macro_f1": 0.5357,
+    "weighted_f1": 0.5395,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 178,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.2107,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 160,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.401,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 160.2
+  },
+  "iemocap_eafa_guard_sysn20_s708": {
+    "macro_f1": 0.516,
+    "weighted_f1": 0.5241,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 88,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.2162,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 540,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.4113,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 119.6
+  },
+  "iemocap_eafa_guard_sysn20_s819": {
+    "macro_f1": 0.5487,
+    "weighted_f1": 0.5552,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 185,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.2134,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 377,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.4134,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 152.5
+  },
+  "iemocap_eafa_guard_sysn20_s930": {
+    "macro_f1": 0.5686,
+    "weighted_f1": 0.5735,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 305,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.2041,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 94,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.4034,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 148.0
+  },
+  "iemocap_eafa_guard_sysn20_s1041": {
+    "macro_f1": 0.5493,
+    "weighted_f1": 0.5571,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 112,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.2121,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 176,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.3877,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 140.9
+  },
+  "iemocap_eafa_guard_sysn20_s1152": {
+    "macro_f1": 0.5388,
+    "weighted_f1": 0.5508,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 146,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.215,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 432,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.3885,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 110.3
+  },
+  "iemocap_eafa_guard_sysn20_s1263": {
+    "macro_f1": 0.5442,
+    "weighted_f1": 0.5488,
+    "noise_rate": 0.2,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 57,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.1952,
+        "target_rate": 0.2
+      },
+      "client_4": {
+        "flipped": 359,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.3626,
+        "target_rate": 0.4
+      }
+    },
+    "time_seconds": 119.9
+  },
+  "iemocap_fedavg_sysn40_s42": {
+    "macro_f1": 0.5657,
+    "weighted_f1": 0.5736,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 288,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.4011,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 301,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.8315,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 113.0
+  },
+  "iemocap_fedavg_sysn40_s153": {
+    "macro_f1": 0.5432,
+    "weighted_f1": 0.5498,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 261,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.4196,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 627,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.7987,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 152.3
+  },
+  "iemocap_fedavg_sysn40_s264": {
+    "macro_f1": 0.5204,
+    "weighted_f1": 0.5265,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 524,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.3958,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 662,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.8123,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 133.5
+  },
+  "iemocap_fedavg_sysn40_s375": {
+    "macro_f1": 0.4338,
+    "weighted_f1": 0.4281,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 333,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.3978,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 979,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.8038,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 143.6
+  },
+  "iemocap_fedavg_sysn40_s486": {
+    "macro_f1": 0.5817,
+    "weighted_f1": 0.5916,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 145,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.3898,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 70,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.7955,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 146.5
+  },
+  "iemocap_fedavg_sysn40_s597": {
+    "macro_f1": 0.5449,
+    "weighted_f1": 0.5514,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 379,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.4485,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 328,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.8221,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 82.4
+  },
+  "iemocap_fedavg_sysn40_s708": {
+    "macro_f1": 0.488,
+    "weighted_f1": 0.4943,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 169,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.4152,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1067,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.8126,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 132.4
+  },
+  "iemocap_fedavg_sysn40_s819": {
+    "macro_f1": 0.5286,
+    "weighted_f1": 0.5279,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 354,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.4083,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 723,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.7928,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 148.4
+  },
+  "iemocap_fedavg_sysn40_s930": {
+    "macro_f1": 0.5638,
+    "weighted_f1": 0.5695,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 599,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.4009,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 195,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.8369,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 144.0
+  },
+  "iemocap_fedavg_sysn40_s1041": {
+    "macro_f1": 0.5804,
+    "weighted_f1": 0.5864,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 219,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.4148,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 364,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.8018,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 134.4
+  },
+  "iemocap_fedavg_sysn40_s1152": {
+    "macro_f1": 0.4867,
+    "weighted_f1": 0.4982,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 294,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.433,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 861,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.7743,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 137.7
+  },
+  "iemocap_fedavg_sysn40_s1263": {
+    "macro_f1": 0.529,
+    "weighted_f1": 0.5351,
+    "noise_rate": 0.4,
+    "aggregation": "fedavg",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 110,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.3767,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 783,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.7909,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 115.6
+  },
+  "iemocap_eafa_sysn40_s42": {
+    "macro_f1": 0.5808,
+    "weighted_f1": 0.5904,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 288,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.4011,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 301,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.8315,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 130.3
+  },
+  "iemocap_eafa_sysn40_s153": {
+    "macro_f1": 0.5557,
+    "weighted_f1": 0.5598,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 261,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.4196,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 627,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.7987,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 149.7
+  },
+  "iemocap_eafa_sysn40_s264": {
+    "macro_f1": 0.541,
+    "weighted_f1": 0.5497,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 524,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.3958,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 662,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.8123,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 130.7
+  },
+  "iemocap_eafa_sysn40_s375": {
+    "macro_f1": 0.4481,
+    "weighted_f1": 0.4444,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 333,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.3978,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 979,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.8038,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 143.1
+  },
+  "iemocap_eafa_sysn40_s486": {
+    "macro_f1": 0.5735,
+    "weighted_f1": 0.5845,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 145,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.3898,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 70,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.7955,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 141.8
+  },
+  "iemocap_eafa_sysn40_s597": {
+    "macro_f1": 0.5609,
+    "weighted_f1": 0.5684,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 379,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.4485,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 328,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.8221,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 83.9
+  },
+  "iemocap_eafa_sysn40_s708": {
+    "macro_f1": 0.555,
+    "weighted_f1": 0.5607,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 169,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.4152,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1067,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.8126,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 133.5
+  },
+  "iemocap_eafa_sysn40_s819": {
+    "macro_f1": 0.5605,
+    "weighted_f1": 0.5621,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 354,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.4083,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 723,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.7928,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 147.4
+  },
+  "iemocap_eafa_sysn40_s930": {
+    "macro_f1": 0.5739,
+    "weighted_f1": 0.5799,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 599,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.4009,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 195,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.8369,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 143.8
+  },
+  "iemocap_eafa_sysn40_s1041": {
+    "macro_f1": 0.5809,
+    "weighted_f1": 0.5859,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 219,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.4148,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 364,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.8018,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 134.6
+  },
+  "iemocap_eafa_sysn40_s1152": {
+    "macro_f1": 0.5495,
+    "weighted_f1": 0.5584,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 294,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.433,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 861,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.7743,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 138.5
+  },
+  "iemocap_eafa_sysn40_s1263": {
+    "macro_f1": 0.5634,
+    "weighted_f1": 0.5668,
+    "noise_rate": 0.4,
+    "aggregation": "eafa",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 110,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.3767,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 783,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.7909,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 156.8
+  },
+  "iemocap_eafa_guard_sysn40_s42": {
+    "macro_f1": 0.5607,
+    "weighted_f1": 0.5737,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 42,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 288,
+        "eligible": 718,
+        "total": 718,
+        "actual_rate": 0.4011,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 301,
+        "eligible": 362,
+        "total": 362,
+        "actual_rate": 0.8315,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 137.2
+  },
+  "iemocap_eafa_guard_sysn40_s153": {
+    "macro_f1": 0.4879,
+    "weighted_f1": 0.485,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 153,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 261,
+        "eligible": 622,
+        "total": 622,
+        "actual_rate": 0.4196,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 627,
+        "eligible": 785,
+        "total": 785,
+        "actual_rate": 0.7987,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 134.0
+  },
+  "iemocap_eafa_guard_sysn40_s264": {
+    "macro_f1": 0.4194,
+    "weighted_f1": 0.4077,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 264,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 524,
+        "eligible": 1324,
+        "total": 1324,
+        "actual_rate": 0.3958,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 662,
+        "eligible": 815,
+        "total": 815,
+        "actual_rate": 0.8123,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 137.9
+  },
+  "iemocap_eafa_guard_sysn40_s375": {
+    "macro_f1": 0.4822,
+    "weighted_f1": 0.4949,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 375,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 333,
+        "eligible": 837,
+        "total": 837,
+        "actual_rate": 0.3978,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 979,
+        "eligible": 1218,
+        "total": 1218,
+        "actual_rate": 0.8038,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 148.6
+  },
+  "iemocap_eafa_guard_sysn40_s486": {
+    "macro_f1": 0.4764,
+    "weighted_f1": 0.4775,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 486,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 145,
+        "eligible": 372,
+        "total": 372,
+        "actual_rate": 0.3898,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 70,
+        "eligible": 88,
+        "total": 88,
+        "actual_rate": 0.7955,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 149.9
+  },
+  "iemocap_eafa_guard_sysn40_s597": {
+    "macro_f1": 0.405,
+    "weighted_f1": 0.3876,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 597,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 379,
+        "eligible": 845,
+        "total": 845,
+        "actual_rate": 0.4485,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 328,
+        "eligible": 399,
+        "total": 399,
+        "actual_rate": 0.8221,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 159.2
+  },
+  "iemocap_eafa_guard_sysn40_s708": {
+    "macro_f1": 0.4248,
+    "weighted_f1": 0.4358,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 708,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 169,
+        "eligible": 407,
+        "total": 407,
+        "actual_rate": 0.4152,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 1067,
+        "eligible": 1313,
+        "total": 1313,
+        "actual_rate": 0.8126,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 136.7
+  },
+  "iemocap_eafa_guard_sysn40_s819": {
+    "macro_f1": 0.2936,
+    "weighted_f1": 0.2464,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 819,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 354,
+        "eligible": 867,
+        "total": 867,
+        "actual_rate": 0.4083,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 723,
+        "eligible": 912,
+        "total": 912,
+        "actual_rate": 0.7928,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 117.0
+  },
+  "iemocap_eafa_guard_sysn40_s930": {
+    "macro_f1": 0.5098,
+    "weighted_f1": 0.5102,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 930,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 599,
+        "eligible": 1494,
+        "total": 1494,
+        "actual_rate": 0.4009,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 195,
+        "eligible": 233,
+        "total": 233,
+        "actual_rate": 0.8369,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 147.8
+  },
+  "iemocap_eafa_guard_sysn40_s1041": {
+    "macro_f1": 0.3543,
+    "weighted_f1": 0.3467,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1041,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 219,
+        "eligible": 528,
+        "total": 528,
+        "actual_rate": 0.4148,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 364,
+        "eligible": 454,
+        "total": 454,
+        "actual_rate": 0.8018,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 140.2
+  },
+  "iemocap_eafa_guard_sysn40_s1152": {
+    "macro_f1": 0.3984,
+    "weighted_f1": 0.3949,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1152,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 294,
+        "eligible": 679,
+        "total": 679,
+        "actual_rate": 0.433,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 861,
+        "eligible": 1112,
+        "total": 1112,
+        "actual_rate": 0.7743,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 136.2
+  },
+  "iemocap_eafa_guard_sysn40_s1263": {
+    "macro_f1": 0.4078,
+    "weighted_f1": 0.4246,
+    "noise_rate": 0.4,
+    "aggregation": "eafa_guard",
+    "dataset": "iemocap",
+    "seed": 1263,
+    "noise_stats": {
+      "client_0": {
+        "actual_rate": 0.0
+      },
+      "client_1": {
+        "actual_rate": 0.0
+      },
+      "client_2": {
+        "actual_rate": 0.0
+      },
+      "client_3": {
+        "flipped": 110,
+        "eligible": 292,
+        "total": 292,
+        "actual_rate": 0.3767,
+        "target_rate": 0.4
+      },
+      "client_4": {
+        "flipped": 783,
+        "eligible": 990,
+        "total": 990,
+        "actual_rate": 0.7909,
+        "target_rate": 0.8
+      }
+    },
+    "time_seconds": 163.4
+  }
+}

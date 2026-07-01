@@ -72,3 +72,17 @@ desktop.ini
 # Secrets
 .env
 *.key
+
+# LaTeX build artefacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+paper/*.pdf
+
+# Packaged directories for Google Colab
+colab_upload/
+colab_upload.zip

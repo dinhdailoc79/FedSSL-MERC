@@ -1,93 +1,55 @@
 """
-Merge IEMOCAP and MELD baseline results to resolve race condition.
+JSON Results Merger for Distributed Experiment Runs
+=====================================================
+Utility script to merge JSON result files generated from different machines
+(e.g., Local MELD runs and Google Colab IEMOCAP runs) into a single consolidated file.
+
+Usage:
+    python scripts/merge_results.py --files results_local.json results_colab.json --output results_merged.json
 """
 
-import json
-import os
+import os, json, argparse
 
-RESULTS_FILE = "results/fl_baselines_results.json"
 
-# Manually recovered IEMOCAP results from console output
-iemocap_results = {
-  "iemocap_scaffold_s456": {
-    "wf1": 0.5423,
-    "method": "scaffold",
-    "dataset": "iemocap",
-    "seed": 456,
-    "time": 64.8
-  },
-  "iemocap_scaffold_s789": {
-    "wf1": 0.4199,
-    "method": "scaffold",
-    "dataset": "iemocap",
-    "seed": 789,
-    "time": 71.9
-  },
-  "iemocap_fednova_s456": {
-    "wf1": 0.5971,
-    "method": "fednova",
-    "dataset": "iemocap",
-    "seed": 456,
-    "time": 138.6
-  },
-  "iemocap_fednova_s789": {
-    "wf1": 0.6024,
-    "method": "fednova",
-    "dataset": "iemocap",
-    "seed": 789,
-    "time": 127.3
-  },
-  "iemocap_fedadam_s456": {
-    "wf1": 0.6049,
-    "method": "fedadam",
-    "dataset": "iemocap",
-    "seed": 456,
-    "time": 111.8
-  },
-  "iemocap_fedadam_s789": {
-    "wf1": 0.5761,
-    "method": "fedadam",
-    "dataset": "iemocap",
-    "seed": 789,
-    "time": 228.0
-  },
-  "iemocap_moon_s456": {
-    "wf1": 0.5965,
-    "method": "moon",
-    "dataset": "iemocap",
-    "seed": 456,
-    "time": 220.6
-  },
-  "iemocap_moon_s789": {
-    "wf1": 0.6012,
-    "method": "moon",
-    "dataset": "iemocap",
-    "seed": 789,
-    "time": 278.5
-  }
-}
+def merge_json_files(file_paths, output_path):
+    merged = {}
+    
+    for path in file_paths:
+        if not os.path.exists(path):
+            print(f"Warning: File {path} not found, skipping.")
+            continue
+            
+        try:
+            with open(path, 'r') as f:
+                data = json.load(f)
+                
+            # If it's a flat dictionary (like results_eafa_guard_real.json or results_systematic_noise.json)
+            if isinstance(data, dict):
+                for key, val in data.items():
+                    # Only merge valid results (skip errored ones if a successful one is present)
+                    if key in merged:
+                        if merged[key].get("macro_f1") is None and val.get("macro_f1") is not None:
+                            merged[key] = val
+                            print(f"  Updated/Overwrote key: {key}")
+                    else:
+                        merged[key] = val
+            print(f"Successfully read and merged: {path} ({len(data)} items)")
+        except Exception as e:
+            print(f"Error reading {path}: {e}")
+            
+    with open(output_path, 'w') as f:
+        json.dump(merged, f, indent=2)
+    print(f"\nConsolidated results saved to: {output_path} ({len(merged)} total items)")
+
 
 def main():
-    if not os.path.exists(RESULTS_FILE):
-        print(f"Error: {RESULTS_FILE} not found!")
-        return
-        
-    with open(RESULTS_FILE, "r") as f:
-        data = json.load(f)
-        
-    print(f"Loaded {len(data)} existing keys from {RESULTS_FILE}")
+    parser = argparse.ArgumentParser(description="Merge multiple experimental result JSONs.")
+    parser.add_argument("--files", nargs="+", required=True, help="List of JSON files to merge")
+    parser.add_argument("--output", type=str, required=True, help="Path to save merged results")
+    args = parser.parse_args()
     
-    added = 0
-    for k, v in iemocap_results.items():
-        if k not in data or data[k].get("wf1") is None:
-            data[k] = v
-            added += 1
-            print(f"Adding/Updating: {k} -> WF1={v['wf1']}")
-            
-    with open(RESULTS_FILE, "w") as f:
-        json.dump(data, f, indent=2)
-        
-    print(f"Successfully merged. Total keys in {RESULTS_FILE}: {len(data)} (added {added})")
+    merge_json_files(args.files, args.output)
+
 
 if __name__ == "__main__":
     main()
