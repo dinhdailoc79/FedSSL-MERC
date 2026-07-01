@@ -27,7 +27,7 @@ direction filter that restores robustness under update-poisoning attacks.
 | **Đinh Đại Lộc** | Student author — architecture & implementation |
 | **Trần Phi Học** | Student author — training & experiments |
 | **Hồ Gia Phú** | Student author — research & analysis |
-| **TS. Lê Võ Minh Thư** | Corresponding author / advisor (`thulvm@fe.edu.vn`) |
+| **Lê Võ Minh Thư** | Corresponding author / advisor (`thulvm@fe.edu.vn`) |
 
 Department of Artificial Intelligence, FPT University, Ho Chi Minh City, Vietnam.
 
