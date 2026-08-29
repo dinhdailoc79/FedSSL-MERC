@@ -7,6 +7,7 @@ from fedsim import (DualEDL, make_class_centers, make_client_data,
 
 AGGS = {
     "FedAvg": agg_fedavg, "EAFA": agg_eafa, "EAFA-Guard": agg_eafa_guard,
+    "EAFA-Guard-LF": agg_eafa_guard,  # EAFA-Guard with Label-Flip Detector
     "Krum": lambda *a, **k: agg_krum(*a, multi=False, **k),
     "Multi-Krum": lambda *a, **k: agg_krum(*a, multi=True, **k),
     "Trimmed-Mean": agg_trimmed_mean, "Coord-Median": agg_median,
@@ -59,7 +60,8 @@ def apply_attack(model, data, attack, rng, C):
 def fed_train(clients, test, dt, da, C, agg_name, rng, rounds=30, h=48,
               lr=0.02, epochs=1, lam=0.3, beta=4.0, frac=1.0, participate=1.0,
               ssl_mode=None, frac_labeled=1.0, attack=None, attack_clients=None,
-              return_dynamics=False, gated=False, wd=1e-3, anneal=10):
+              return_dynamics=False, gated=False, wd=1e-3, anneal=10,
+              use_lf_guard=False):
     attack_clients = attack_clients or set()
     global_model = DualEDL(dt, da, h, C, rng, gated=gated)
     P = global_model.params()
@@ -112,8 +114,14 @@ def fed_train(clients, test, dt, da, C, agg_name, rng, rounds=30, h=48,
             deltas.append(d); ns.append(len(data["y"])); us.append(u_k)
             fool_hist[k] += _flat(d)
         # aggregate
+        num_attackers = len(attack_clients) if attack_clients else 0
+        # Auto-enable LF guard for EAFA-Guard-LF
+        auto_lf_guard = use_lf_guard or ("Guard-LF" in agg_name)
         kwargs = dict(beta=beta, server_delta=server_delta,
-                      hist=fool_hist[sel])
+                      hist=fool_hist[sel],
+                      use_lf_guard=auto_lf_guard,
+                      num_attackers=num_attackers,
+                      global_state=P)
         res = agg(deltas, ns, us, **kwargs)
         if isinstance(res, tuple):
             agg_delta, w = res

@@ -36298,5 +36298,731 @@
       }
     ],
     "time_seconds": 88.3
+  },
+  "meld_eafa_guard_lf_label_flip_c20_s42": {
+    "macro_f1": 0.2656,
+    "weighted_f1": 0.3664,
+    "attack": "label_flip",
+    "contamination": 0.2,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 17,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6231,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.476,
+          0.4335
+        ],
+        "weights": [
+          0.2675,
+          0.5128,
+          0.0,
+          0.2197,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.6349,
+        "client_uncertainties": [
+          0.4241,
+          0.3998,
+          0.4387,
+          0.4245,
+          0.4183
+        ],
+        "weights": [
+          0.2811,
+          0.5281,
+          0.1908,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.1337,
+        "client_uncertainties": [
+          0.4295,
+          0.4006,
+          0.4324,
+          0.4367,
+          0.4436
+        ],
+        "weights": [
+          0.0,
+          0.3826,
+          0.0811,
+          0.0,
+          0.5364
+        ]
+      },
+      {
+        "round": 15,
+        "wf1": 0.0591,
+        "client_uncertainties": [
+          0.6151,
+          0.6172,
+          0.6593,
+          0.6197,
+          0.7475
+        ],
+        "weights": [
+          0.0,
+          0.0171,
+          0.1052,
+          0.0,
+          0.8777
+        ]
+      },
+      {
+        "round": 16,
+        "wf1": 0.629,
+        "client_uncertainties": [
+          0.7325,
+          0.701,
+          0.7711,
+          0.7513,
+          0.6994
+        ],
+        "weights": [
+          0.4286,
+          0.0,
+          0.2373,
+          0.3341,
+          0.0
+        ]
+      },
+      {
+        "round": 17,
+        "wf1": 0.3664,
+        "client_uncertainties": [
+          0.62,
+          0.6433,
+          0.6636,
+          0.6316,
+          0.7566
+        ],
+        "weights": [
+          0.0,
+          0.1848,
+          0.0,
+          0.0608,
+          0.7544
+        ]
+      }
+    ],
+    "time_seconds": 160.9
+  },
+  "meld_eafa_guard_lf_label_flip_c40_s42": {
+    "macro_f1": 0.0482,
+    "weighted_f1": 0.0163,
+    "attack": "label_flip",
+    "contamination": 0.4,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 30,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6108,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.3685,
+          0.4335
+        ],
+        "weights": [
+          0.2933,
+          0.5623,
+          0.1444,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.1824,
+        "client_uncertainties": [
+          0.4269,
+          0.3992,
+          0.4391,
+          0.3793,
+          0.4118
+        ],
+        "weights": [
+          0.0,
+          0.5169,
+          0.1246,
+          0.3585,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.6232,
+        "client_uncertainties": [
+          0.4513,
+          0.4157,
+          0.4522,
+          0.3441,
+          0.4236
+        ],
+        "weights": [
+          0.42,
+          0.4014,
+          0.1786,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 28,
+        "wf1": 0.4367,
+        "client_uncertainties": [
+          0.7773,
+          0.7285,
+          0.778,
+          0.8043,
+          0.9217
+        ],
+        "weights": [
+          0.571,
+          0.0,
+          0.0,
+          0.3553,
+          0.0737
+        ]
+      },
+      {
+        "round": 29,
+        "wf1": 0.6201,
+        "client_uncertainties": [
+          0.707,
+          0.6996,
+          0.7691,
+          0.7086,
+          0.8208
+        ],
+        "weights": [
+          0.398,
+          0.3947,
+          0.2074,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 30,
+        "wf1": 0.0163,
+        "client_uncertainties": [
+          0.6758,
+          0.663,
+          0.7281,
+          0.8608,
+          0.8598
+        ],
+        "weights": [
+          0.0,
+          0.0,
+          0.0007,
+          0.7256,
+          0.2737
+        ]
+      }
+    ],
+    "time_seconds": 298.0
+  },
+  "meld_eafa_guard_lf_sign_flip_c20_s42": {
+    "macro_f1": 0.4634,
+    "weighted_f1": 0.6168,
+    "attack": "sign_flip",
+    "contamination": 0.2,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 17,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6231,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.476,
+          0.5199
+        ],
+        "weights": [
+          0.2675,
+          0.5128,
+          0.0,
+          0.2197,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.6349,
+        "client_uncertainties": [
+          0.4241,
+          0.3998,
+          0.4387,
+          0.4245,
+          0.4417
+        ],
+        "weights": [
+          0.2811,
+          0.5281,
+          0.1908,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.6189,
+        "client_uncertainties": [
+          0.4295,
+          0.4006,
+          0.4324,
+          0.4367,
+          0.4298
+        ],
+        "weights": [
+          0.0,
+          0.7444,
+          0.1577,
+          0.0979,
+          0.0
+        ]
+      },
+      {
+        "round": 15,
+        "wf1": 0.6133,
+        "client_uncertainties": [
+          0.5332,
+          0.4933,
+          0.5178,
+          0.5162,
+          0.6986
+        ],
+        "weights": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 16,
+        "wf1": 0.6054,
+        "client_uncertainties": [
+          0.4868,
+          0.5172,
+          0.5368,
+          0.5475,
+          0.6624
+        ],
+        "weights": [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 17,
+        "wf1": 0.6168,
+        "client_uncertainties": [
+          0.5275,
+          0.536,
+          0.485,
+          0.5597,
+          0.6805
+        ],
+        "weights": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "time_seconds": 147.1
+  },
+  "meld_eafa_guard_lf_sign_flip_c40_s42": {
+    "macro_f1": 0.442,
+    "weighted_f1": 0.6105,
+    "attack": "sign_flip",
+    "contamination": 0.4,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 17,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6108,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.476,
+          0.5199
+        ],
+        "weights": [
+          0.2933,
+          0.5623,
+          0.1444,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.6311,
+        "client_uncertainties": [
+          0.4269,
+          0.3992,
+          0.4391,
+          0.4328,
+          0.4444
+        ],
+        "weights": [
+          0.2491,
+          0.6051,
+          0.1458,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.6137,
+        "client_uncertainties": [
+          0.4316,
+          0.3999,
+          0.4333,
+          0.4371,
+          0.4281
+        ],
+        "weights": [
+          0.0,
+          0.8036,
+          0.1923,
+          0.0,
+          0.0041
+        ]
+      },
+      {
+        "round": 15,
+        "wf1": 0.6149,
+        "client_uncertainties": [
+          0.5251,
+          0.4646,
+          0.4934,
+          0.6327,
+          0.6641
+        ],
+        "weights": [
+          0.7762,
+          0.0,
+          0.2238,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 16,
+        "wf1": 0.6115,
+        "client_uncertainties": [
+          0.4768,
+          0.4755,
+          0.5013,
+          0.6225,
+          0.6675
+        ],
+        "weights": [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 17,
+        "wf1": 0.6105,
+        "client_uncertainties": [
+          0.5022,
+          0.4871,
+          0.4628,
+          0.643,
+          0.6778
+        ],
+        "weights": [
+          0.2187,
+          0.3699,
+          0.131,
+          0.1917,
+          0.0886
+        ]
+      }
+    ],
+    "time_seconds": 165.3
+  },
+  "meld_eafa_guard_lf_adaptive_c20_s42": {
+    "macro_f1": 0.4525,
+    "weighted_f1": 0.616,
+    "attack": "adaptive",
+    "contamination": 0.2,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 17,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6231,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.476,
+          0.01
+        ],
+        "weights": [
+          0.2675,
+          0.5128,
+          0.0,
+          0.2197,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.6349,
+        "client_uncertainties": [
+          0.4241,
+          0.3998,
+          0.4387,
+          0.4245,
+          0.01
+        ],
+        "weights": [
+          0.2811,
+          0.5281,
+          0.1908,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.6189,
+        "client_uncertainties": [
+          0.4295,
+          0.4006,
+          0.4324,
+          0.4367,
+          0.01
+        ],
+        "weights": [
+          0.0,
+          0.7444,
+          0.1577,
+          0.0979,
+          0.0
+        ]
+      },
+      {
+        "round": 15,
+        "wf1": 0.6162,
+        "client_uncertainties": [
+          0.5438,
+          0.5596,
+          0.5648,
+          0.557,
+          0.01
+        ],
+        "weights": [
+          0.0,
+          0.3969,
+          0.301,
+          0.3021,
+          0.0
+        ]
+      },
+      {
+        "round": 16,
+        "wf1": 0.6146,
+        "client_uncertainties": [
+          0.5364,
+          0.5538,
+          0.5748,
+          0.5415,
+          0.01
+        ],
+        "weights": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "round": 17,
+        "wf1": 0.616,
+        "client_uncertainties": [
+          0.5379,
+          0.5599,
+          0.5796,
+          0.4822,
+          0.01
+        ],
+        "weights": [
+          0.4837,
+          0.0,
+          0.5163,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "time_seconds": 164.6
+  },
+  "meld_eafa_guard_lf_adaptive_c40_s42": {
+    "macro_f1": 0.4567,
+    "weighted_f1": 0.6232,
+    "attack": "adaptive",
+    "contamination": 0.4,
+    "aggregation": "eafa_guard_lf",
+    "dataset": "meld",
+    "seed": 42,
+    "num_rounds_completed": 17,
+    "round_data_sample": [
+      {
+        "round": 1,
+        "wf1": 0.6108,
+        "client_uncertainties": [
+          0.4689,
+          0.4312,
+          0.4932,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          0.2933,
+          0.5623,
+          0.1444,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 2,
+        "wf1": 0.6311,
+        "client_uncertainties": [
+          0.4269,
+          0.3992,
+          0.4391,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          0.2491,
+          0.6051,
+          0.1458,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 3,
+        "wf1": 0.6137,
+        "client_uncertainties": [
+          0.4316,
+          0.3999,
+          0.4333,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          0.0,
+          0.7896,
+          0.189,
+          0.0,
+          0.0214
+        ]
+      },
+      {
+        "round": 15,
+        "wf1": 0.6131,
+        "client_uncertainties": [
+          0.5075,
+          0.4928,
+          0.5472,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 16,
+        "wf1": 0.6216,
+        "client_uncertainties": [
+          0.5265,
+          0.5156,
+          0.5091,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "round": 17,
+        "wf1": 0.6232,
+        "client_uncertainties": [
+          0.461,
+          0.5216,
+          0.5217,
+          0.01,
+          0.01
+        ],
+        "weights": [
+          0.2187,
+          0.3699,
+          0.131,
+          0.1917,
+          0.0886
+        ]
+      }
+    ],
+    "time_seconds": 176.5
   }
 }

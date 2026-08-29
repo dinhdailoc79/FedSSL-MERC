@@ -314,12 +314,68 @@ def agg_eafa(deltas, ns, us, beta=4.0, **kw):
     w /= w.sum()
     return _weighted(deltas, w), w
 
-def agg_eafa_guard(deltas, ns, us, server_delta=None, beta=4.0, **kw):
+def _adjacent_class_cosine_np(W):
+    """Compute cosine similarity for each adjacent class pair (c, c+1) % C.
+
+    Args:
+        W: weight matrix of shape [C, H] or [H, C]. Detects orientation automatically.
+    Returns:
+        Array of shape [C] with cosine values.
+    """
+    if W.shape[0] <= W.shape[1]:
+        W = W.T  # [H, C] -> [C, H]
+    W = W.astype(np.float64)
+    norms = np.linalg.norm(W, axis=1, keepdims=True) + 1e-12
+    W_norm = W / norms
+    C = W.shape[0]
+    return np.array([W_norm[c] @ W_norm[(c + 1) % C] for c in range(C)])
+
+
+def _get_text_head_w2(state):
+    """Extract text classifier head W2 from a model state dict. Returns [H, C] or None."""
+    if "t_W2" in state:
+        return state["t_W2"]
+    return None
+
+
+def compute_lf_scores_np(deltas, global_state, num_attackers=0):
+    """Compute per-client label-flip suspicion scores (NumPy version).
+
+    Reconstructs full client params (global + delta) and compares the
+    classifier head weight drift against the global baseline.
+    Score = mean(cos(W_c, W_{c+1}) - baseline_cos_c) over all classes.
+    Positive = adjacent class weights drifted toward each other (label-flip signal).
+    """
+    global_head = _get_text_head_w2(global_state)
+    if global_head is None:
+        return np.zeros(len(deltas))
+
+    baseline = _adjacent_class_cosine_np(global_head)
+    scores = []
+    for d in deltas:
+        # Reconstruct full client params: theta_client = theta_global + delta
+        delta_head = _get_text_head_w2(d)
+        global_w2 = global_head
+        if delta_head is None:
+            scores.append(0.0)
+            continue
+        client_w2 = global_w2 + delta_head  # full client classifier head
+        client_cos = _adjacent_class_cosine_np(client_w2)
+        scores.append(float(np.mean(client_cos - baseline)))
+    return np.array(scores)
+
+
+def agg_eafa_guard(deltas, ns, us, server_delta=None, beta=4.0,
+                   use_lf_guard=False, num_attackers=0, **kw):
     """EAFA-Guard: server-root direction filter + magnitude cap + evidential
     quality weight. Robust to update poisoning (incl. adaptive) because the
     median-cosine filter and the norm cap bound an attacker's leverage even when
     it spoofs a low quality scalar; the evidential weight still rewards honest
-    high-quality clients among the survivors."""
+    high-quality clients among the survivors.
+
+    With use_lf_guard=True, also applies the Label-Flip Detector which catches
+    label-flip attacks that survive the direction filter by analyzing classifier
+    head weight drift (adjacent class cosine similarity)."""
     if server_delta is None:
         return agg_eafa(deltas, ns, us, beta=beta, **kw)
     sv = _flat(server_delta); svn = np.linalg.norm(sv) + 1e-12
@@ -331,6 +387,29 @@ def agg_eafa_guard(deltas, ns, us, server_delta=None, beta=4.0, **kw):
     trust = np.maximum(0.0, cs) ** 2                 # sharpened trust
     ev = np.exp(-beta * np.array(us))                # evidential quality weight
     w = np.where(keep, trust * ev * np.array(ns, float), 0.0)
+
+    # --- Label-Flip Detector ---
+    # Note: kw may contain 'global_state' passed from fed_train
+    lf_keep = np.ones(K, dtype=bool)
+    lf_scores = np.zeros(K)
+    lf_threshold = 0.0
+    if use_lf_guard:
+        global_state = kw.get('global_state', server_delta)  # prefer true global params
+        lf_scores = compute_lf_scores_np(deltas, global_state, num_attackers=num_attackers)
+        surviving_scores = lf_scores[keep]
+        # Only apply LF filter if we have enough survivors AND VERY CLEAR label-flip signature
+        # Label-flip creates large POSITIVE drift (> 0.1)
+        # Sign-flip/adative typically create negative or near-zero drift
+        if len(surviving_scores) >= 2:
+            max_score = float(np.max(surviving_scores))
+            # Very conservative: only filter if score > 0.1 (very clear label-flip signature)
+            # This prevents false positives on sign-flip/adaptive attacks
+            if max_score > 0.1:
+                lf_threshold = 0.0  # Filter only positive outliers
+                lf_keep = lf_scores <= lf_threshold
+                keep = keep & lf_keep
+    # --- End Label-Flip Detector ---
+
     # cap magnitudes to the median survivor norm to bound attacker leverage
     cap = np.median(norms[keep, 0]) if keep.sum() > 0 else norms[:, 0].max()
     scale = np.minimum(1.0, cap / norms[:, 0])

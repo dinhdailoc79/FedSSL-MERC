@@ -1,18 +1,31 @@
 """
 ThuanPhongNhi: Fine-tune RoBERTa for Emotion Recognition
 =====================================================
-Designed to run on Kaggle T4 GPU.
+Designed to run on Kaggle T4 GPU (16 GB VRAM) OR local RTX 4050 6 GB.
 
 Strategy:
-1. Fine-tune RoBERTa-base on per-utterance emotion classification
+1. Fine-tune RoBERTa-base or RoBERTa-large on per-utterance emotion classification
 2. Extract features from fine-tuned model
 3. Save as .pt files (same format as existing features)
 4. Download and use with existing EDL/EAFA pipeline
 
-Usage (Kaggle):
-    !python finetune_roberta.py --dataset meld --epochs 5 --batch_size 16
-    !python finetune_roberta.py --dataset iemocap --epochs 5
-    !python finetune_roberta.py --dataset dailydialog --epochs 3
+Usage:
+    # Local RTX 4050 6 GB -- chay duoc, ~4-6 gio
+    python scripts/finetune_roberta.py --dataset iemocap --model_size large \
+        --epochs 5 --batch_size 2 --grad_accum 8 --gradient_checkpointing \
+        --lr 1e-5
+
+    # Kaggle T4 16 GB -- nhanh hon ~2-3x
+    python scripts/finetune_roberta.py --dataset iemocap --model_size large \
+        --epochs 5 --batch_size 8 --grad_accum 2 --lr 1e-5
+
+    # RoBERTa-Base (nhanh, 768-dim, baseline)
+    python scripts/finetune_roberta.py --dataset iemocap --model_size base \
+        --epochs 5 --batch_size 16
+
+Output filenames:
+    base:  {dataset}_text_roberta_finetuned.pt       (768-dim)
+    large: {dataset}_text_roberta_large_finetuned.pt (1024-dim)
 """
 
 import os
@@ -60,18 +73,29 @@ class EmotionUtteranceDataset(Dataset):
         }
 
 
-class RobertaEmotionClassifier(nn.Module):
-    """RoBERTa + classification head for fine-tuning."""
+# Hidden dim per model size
+MODEL_HIDDEN_DIM = {"base": 768, "large": 1024}
+MODEL_HF_NAME = {"base": "roberta-base", "large": "roberta-large"}
 
-    def __init__(self, num_classes, dropout=0.3):
+
+class RobertaEmotionClassifier(nn.Module):
+    """RoBERTa (base or large) + classification head for fine-tuning."""
+
+    def __init__(self, num_classes, model_size="base", dropout=0.3,
+                 gradient_checkpointing=False):
         super().__init__()
-        self.roberta = RobertaModel.from_pretrained("roberta-base")
+        hf_name = MODEL_HF_NAME[model_size]
+        self.hidden_dim = MODEL_HIDDEN_DIM[model_size]
+        self.roberta = RobertaModel.from_pretrained(hf_name)
+        if gradient_checkpointing:
+            # Saves ~30% VRAM at cost of ~15% slower training
+            self.roberta.gradient_checkpointing_enable()
         self.dropout = nn.Dropout(dropout)
-        self.classifier = nn.Linear(768, num_classes)
+        self.classifier = nn.Linear(self.hidden_dim, num_classes)
 
     def forward(self, input_ids, attention_mask):
         outputs = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
-        # Mean pooling
+        # Mean pooling over non-padding tokens
         mask = attention_mask.unsqueeze(-1).float()
         pooled = (outputs.last_hidden_state * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1)
         pooled = self.dropout(pooled)
@@ -168,30 +192,34 @@ def load_dailydialog_data(data_dir):
 # -------------------------------------------------------
 # Training
 # -------------------------------------------------------
-def train_epoch(model, loader, optimizer, scheduler, scaler, device):
+def train_epoch(model, loader, optimizer, scheduler, scaler, device, grad_accum=1):
+    """Train one epoch with optional gradient accumulation for large models."""
     model.train()
-    total_loss, total_correct, total_samples = 0, 0, 0
+    total_loss, total_samples = 0, 0
     all_preds, all_labels = [], []
     criterion = nn.CrossEntropyLoss()
 
-    for batch in loader:
+    optimizer.zero_grad()
+    for step, batch in enumerate(loader):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
         labels = batch["label"].to(device)
 
-        optimizer.zero_grad()
         with autocast():
             logits, _ = model(input_ids, attention_mask)
-            loss = criterion(logits, labels)
+            loss = criterion(logits, labels) / grad_accum  # scale loss
 
         scaler.scale(loss).backward()
-        scaler.unscale_(optimizer)
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-        scaler.step(optimizer)
-        scaler.update()
-        scheduler.step()
 
-        total_loss += loss.item() * labels.size(0)
+        if (step + 1) % grad_accum == 0 or (step + 1) == len(loader):
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            scaler.step(optimizer)
+            scaler.update()
+            scheduler.step()
+            optimizer.zero_grad()
+
+        total_loss += loss.item() * grad_accum * labels.size(0)  # unscale for logging
         total_samples += labels.size(0)
         preds = logits.argmax(dim=-1).cpu().numpy()
         all_preds.extend(preds)
@@ -255,10 +283,14 @@ def extract_features(model, data_splits, tokenizer, device, batch_size=32):
                 logger.info(f"  {split_name}: {i + len(batch_texts)}/{len(texts)}")
 
         features = torch.cat(all_features, dim=0)
+        dia_ids = [str(d) for d in split_data["dialogue_ids"]]
+        utt_ids = [str(u) for u in split_data["utterance_ids"]]
         results[split_name] = {
             "features": features,
-            "dialogue_ids": torch.tensor([hash(str(d)) % (2**31) for d in split_data["dialogue_ids"]]),
-            "utterance_ids": torch.tensor([hash(str(u)) % (2**31) for u in split_data["utterance_ids"]]),
+            "dialogue_ids": dia_ids,
+            "utterance_ids": utt_ids,
+            "dia_id_strs": dia_ids,
+            "utt_id_strs": utt_ids,
         }
         logger.info(f"  {split_name}: {features.shape[0]} features extracted ({features.shape[1]}-dim)")
 
@@ -322,13 +354,24 @@ def extract_all_utterances(model, tokenizer, dataset_name, data_dir, device, bat
 # Main
 # -------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="ThuanPhongNhi: Fine-tune RoBERTa")
+    parser = argparse.ArgumentParser(description="ThuanPhongNhi: Fine-tune RoBERTa (base or large)")
     parser.add_argument("--dataset", type=str, required=True,
                         choices=["meld", "iemocap", "dailydialog"])
+    parser.add_argument("--model_size", type=str, default="base",
+                        choices=["base", "large"],
+                        help="RoBERTa size: base (768-dim, 125M) or large (1024-dim, 355M)")
     parser.add_argument("--data_dir", type=str, default=None,
                         help="Path to dataset. Auto-detected if not specified.")
     parser.add_argument("--epochs", type=int, default=5)
-    parser.add_argument("--batch_size", type=int, default=16)
+    parser.add_argument("--batch_size", type=int, default=16,
+                        help="Per-step batch size. "
+                             "RTX 4050 6GB: use 2 with --grad_accum 8 --gradient_checkpointing. "
+                             "T4 16GB: use 8 with --grad_accum 2.")
+    parser.add_argument("--grad_accum", type=int, default=1,
+                        help="Gradient accumulation steps. Effective batch = batch_size * grad_accum")
+    parser.add_argument("--gradient_checkpointing", action="store_true",
+                        help="Enable gradient checkpointing to save ~30%% VRAM. "
+                             "Recommended for RTX 4050 6GB with RoBERTa-Large.")
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--warmup_ratio", type=float, default=0.1)
     parser.add_argument("--max_length", type=int, default=128)
@@ -380,11 +423,20 @@ def main():
         logger.info(f"  {split_name}: {len(data['texts'])} utterances")
 
     # 2. Tokenizer + Model
-    logger.info("Loading RoBERTa-base...")
-    tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
-    model = RobertaEmotionClassifier(num_classes=num_classes).to(args.device)
+    hf_name = MODEL_HF_NAME[args.model_size]
+    hidden_dim = MODEL_HIDDEN_DIM[args.model_size]
+    logger.info(f"Loading {hf_name} ({hidden_dim}-dim features)...")
+    tokenizer = RobertaTokenizer.from_pretrained(hf_name)
+    model = RobertaEmotionClassifier(
+        num_classes=num_classes, model_size=args.model_size,
+        gradient_checkpointing=args.gradient_checkpointing,
+    ).to(args.device)
     params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    logger.info(f"Model: {params:,} trainable params")
+    eff_batch = args.batch_size * args.grad_accum
+    gc_str = " + gradient_checkpointing" if args.gradient_checkpointing else ""
+    logger.info(f"Model: {params:,} trainable params | "
+                f"batch_size={args.batch_size} x grad_accum={args.grad_accum} "
+                f"= effective batch {eff_batch}{gc_str}")
 
     # 3. DataLoaders
     train_ds = EmotionUtteranceDataset(
@@ -414,16 +466,19 @@ def main():
 
     # 5. Train
     logger.info(f"\n{'='*60}")
-    logger.info(f"  Training: {args.epochs} epochs, {total_steps} steps")
+    logger.info(f"  Training: {args.epochs} epochs, {total_steps} steps (grad_accum={args.grad_accum})")
     logger.info(f"{'='*60}\n")
 
     best_wf1 = 0.0
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    # Checkpoint name encodes model size for clarity
+    ckpt_name = f"best_roberta_{args.model_size}_{args.dataset}.pt"
 
     for epoch in range(1, args.epochs + 1):
         train_loss, train_wf1 = train_epoch(
-            model, train_loader, optimizer, scheduler, scaler, args.device,
+            model, train_loader, optimizer, scheduler, scaler,
+            args.device, grad_accum=args.grad_accum,
         )
         dev_wf1, _ = evaluate(model, dev_loader, args.device)
 
@@ -442,35 +497,49 @@ def main():
                 "dataset": args.dataset,
                 "num_classes": num_classes,
                 "emotions": emotions,
-            }, output_dir / f"best_roberta_{args.dataset}.pt")
-            logger.info(f"  >> Saved best model! WF1={dev_wf1:.4f}")
+                "model_size": args.model_size,
+                "hidden_dim": hidden_dim,
+            }, output_dir / ckpt_name)
+            logger.info(f"  >> Saved best model ({args.model_size})! WF1={dev_wf1:.4f}")
 
     # 6. Test evaluation
-    ckpt = torch.load(output_dir / f"best_roberta_{args.dataset}.pt", weights_only=False)
+    ckpt = torch.load(output_dir / ckpt_name, weights_only=False)
     model.load_state_dict(ckpt["model_state_dict"])
     test_wf1, test_report = evaluate(model, test_loader, args.device, emotions)
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"  Fine-tuned RoBERTa — {args.dataset.upper()}")
+    logger.info(f"  Fine-tuned RoBERTa-{args.model_size.upper()} — {args.dataset.upper()}")
+    logger.info(f"  Hidden dim: {hidden_dim}")
     logger.info(f"{'='*60}")
     logger.info(f"\n{test_report}")
     logger.info(f"  Test WF1 = {test_wf1:.4f}")
     logger.info(f"{'='*60}")
 
     # 7. Extract features from fine-tuned model
-    logger.info(f"\nExtracting features from fine-tuned model...")
+    logger.info(f"\nExtracting {hidden_dim}-dim features from fine-tuned model...")
     features = extract_all_utterances(
         model, tokenizer, args.dataset, args.data_dir, args.device,
     )
 
-    feat_path = output_dir / f"{args.dataset}_text_roberta_finetuned.pt"
+    # Naming convention: base -> _finetuned.pt, large -> _large_finetuned.pt
+    if args.model_size == "large":
+        feat_fname = f"{args.dataset}_text_roberta_large_finetuned.pt"
+    else:
+        feat_fname = f"{args.dataset}_text_roberta_finetuned.pt"
+
+    feat_path = output_dir / feat_fname
     torch.save(features, str(feat_path))
     size_mb = feat_path.stat().st_size / 1e6
     logger.info(f"  Saved: {feat_path} ({size_mb:.1f} MB)")
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"  DONE! Download '{feat_path.name}' and place in data/features/")
-    logger.info(f"  Then run: python scripts/train_multi_dataset.py --dataset {args.dataset}")
+    if args.model_size == "large":
+        logger.info(f"  DONE! Download '{feat_path.name}' and place in data/features/")
+        logger.info(f"  Then run:")
+        logger.info(f"    python scripts/run_iemocap_4class_large.py")
+    else:
+        logger.info(f"  DONE! Download '{feat_path.name}' and place in data/features/")
+        logger.info(f"  Then run: python scripts/train_multi_dataset.py --dataset {args.dataset}")
     logger.info(f"{'='*60}")
 
 

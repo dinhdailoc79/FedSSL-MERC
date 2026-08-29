@@ -1,0 +1,18 @@
+{
+  "sota_reference": {
+    "DialogueRNN_GloVe": 62.57,
+    "COSMIC_RoBERTa_L": 65.28,
+    "EmoBERTa_RoBERTa_L": 68.57
+  },
+  "ours_base": {
+    "encoder": "roberta-base",
+    "feat_dim": 768,
+    "setting": "federated"
+  },
+  "ours_large": {
+    "encoder": "roberta-large",
+    "feat_dim": 1024,
+    "setting": "federated"
+  },
+  "note": "SOTA uses centralized training; comparison is context, not controlled match."
+}

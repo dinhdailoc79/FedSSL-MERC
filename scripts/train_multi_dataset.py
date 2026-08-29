@@ -90,20 +90,25 @@ def collate_dialogues(batch):
 # -------------------------------------------------------
 # Dataset loaders
 # -------------------------------------------------------
-def load_meld(finetuned=False):
+def load_meld(finetuned=False, finetuned_large=False):
     from data.datasets.meld import MELDDataset, MELD_EMOTIONS
     meld = MELDDataset(data_dir="data/raw/MELD")
     train = meld.get_dialogues("train")
     dev = meld.get_dialogues("dev")
     test = meld.get_dialogues("test")
     weights = meld.get_emotion_weights("train")
-    feat_file = "data/features/meld_text_roberta_finetuned.pt" if finetuned else "data/features/meld_text_roberta.pt"
+    if finetuned_large:
+        feat_file = "data/features/meld_text_roberta_large_finetuned.pt"
+    elif finetuned:
+        feat_file = "data/features/meld_text_roberta_finetuned.pt"
+    else:
+        feat_file = "data/features/meld_text_roberta.pt"
     logger.info(f"  Features: {feat_file}")
     cache = _load_cache(feat_file, ["train", "dev", "test"])
     return train, dev, test, MELD_EMOTIONS, weights, cache, 10
 
 
-def load_iemocap(finetuned=False, num_classes=6):
+def load_iemocap(finetuned=False, finetuned_large=False, num_classes=6):
     from data.datasets.iemocap import IEMOCAPDataset, IEMOCAP_EMOTIONS_6, IEMOCAP_EMOTIONS_4
     ds = IEMOCAPDataset(data_dir="data/raw/IEMOCAP/IEMOCAP_full_release", num_classes=num_classes)
     ds.load()
@@ -116,7 +121,11 @@ def load_iemocap(finetuned=False, num_classes=6):
 
     emotions = IEMOCAP_EMOTIONS_4 if num_classes == 4 else IEMOCAP_EMOTIONS_6
 
-    if finetuned:
+    if finetuned_large:
+        feat_file = "data/features/iemocap_text_roberta_large_finetuned.pt"
+        logger.info(f"  Features: {feat_file} [RoBERTa-Large, 1024-dim]")
+        cache = _load_iemocap_finetuned_cache(feat_file)
+    elif finetuned:
         feat_file = "data/features/iemocap_text_roberta_finetuned.pt"
         logger.info(f"  Features: {feat_file}")
         cache = _load_iemocap_finetuned_cache(feat_file)
@@ -127,14 +136,19 @@ def load_iemocap(finetuned=False, num_classes=6):
     return train_dias, dev_dias, test_dias, emotions, weights, cache, 10
 
 
-def load_dailydialog(finetuned=False):
+def load_dailydialog(finetuned=False, finetuned_large=False):
     from data.datasets.dailydialog import DailyDialogDataset, DAILYDIALOG_EMOTIONS
     ds = DailyDialogDataset(data_dir="data/raw/DailyDialog")
     train = ds.get_dialogues("train")
     dev = ds.get_dialogues("dev")
     test = ds.get_dialogues("test")
     weights = ds.get_emotion_weights("train")
-    feat_file = "data/features/dailydialog_text_roberta_finetuned.pt" if finetuned else "data/features/dailydialog_text_roberta.pt"
+    if finetuned_large:
+        feat_file = "data/features/dailydialog_text_roberta_large_finetuned.pt"
+    elif finetuned:
+        feat_file = "data/features/dailydialog_text_roberta_finetuned.pt"
+    else:
+        feat_file = "data/features/dailydialog_text_roberta.pt"
     logger.info(f"  Features: {feat_file}")
     cache = _load_cache(feat_file, ["train", "dev", "test"])
     return train, dev, test, DAILYDIALOG_EMOTIONS, weights, cache, 2
@@ -252,9 +266,9 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
 
     class_weights = torch.from_numpy(weights.astype(np.float32)).to(device)
 
-    train_ds = GenericDialogueDataset(train_dias, cache.get("train", {}))
-    dev_ds = GenericDialogueDataset(dev_dias, cache.get("dev", {}))
-    test_ds = GenericDialogueDataset(test_dias, cache.get("test", {}))
+    train_ds = GenericDialogueDataset(train_dias, cache.get("train", {}), feat_dim=args.feat_dim)
+    dev_ds = GenericDialogueDataset(dev_dias, cache.get("dev", {}), feat_dim=args.feat_dim)
+    test_ds = GenericDialogueDataset(test_dias, cache.get("test", {}), feat_dim=args.feat_dim)
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True,
                               collate_fn=collate_dialogues, num_workers=0)
@@ -267,7 +281,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
 
     if use_edl:
         model = EvidentialDialogueRNN(
-            input_dim=768, hidden_dim=args.hidden_dim,
+            input_dim=args.feat_dim, hidden_dim=args.hidden_dim,
             num_classes=num_classes, num_speakers=num_speakers,
             dropout=args.dropout,
         ).to(device)
@@ -277,7 +291,7 @@ def train_centralized(dataset_name, train_dias, dev_dias, test_dias,
         )
     else:
         model = DialogueRNN(
-            input_dim=768, hidden_dim=args.hidden_dim,
+            input_dim=args.feat_dim, hidden_dim=args.hidden_dim,
             num_classes=num_classes, num_speakers=num_speakers,
             dropout=args.dropout,
         ).to(device)
@@ -371,18 +385,18 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
     client_loaders = []
     for partition in client_partitions:
         dias = [dialogue_lookup[did] for did in partition.dialogue_ids if did in dialogue_lookup]
-        ds = GenericDialogueDataset(dias, cache.get("train", {}))
+        ds = GenericDialogueDataset(dias, cache.get("train", {}), feat_dim=args.feat_dim)
         loader = DataLoader(ds, batch_size=args.batch_size, shuffle=True,
                             collate_fn=collate_dialogues, num_workers=0)
         client_loaders.append(loader)
 
-    test_ds = GenericDialogueDataset(test_dias, cache.get("test", {}))
+    test_ds = GenericDialogueDataset(test_dias, cache.get("test", {}), feat_dim=args.feat_dim)
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False,
                              collate_fn=collate_dialogues, num_workers=0)
 
     if use_edl:
         global_model = EvidentialDialogueRNN(
-            input_dim=768, hidden_dim=args.hidden_dim,
+            input_dim=args.feat_dim, hidden_dim=args.hidden_dim,
             num_classes=num_classes, num_speakers=num_speakers, dropout=args.dropout,
         ).to(device)
         loss_fn = SupervisedEvidentialLoss(
@@ -391,7 +405,7 @@ def train_federated(dataset_name, train_dias, dev_dias, test_dias,
         )
     else:
         global_model = DialogueRNN(
-            input_dim=768, hidden_dim=args.hidden_dim,
+            input_dim=args.feat_dim, hidden_dim=args.hidden_dim,
             num_classes=num_classes, num_speakers=num_speakers, dropout=args.dropout,
         ).to(device)
         loss_fn = nn.CrossEntropyLoss(weight=class_weights)
@@ -529,6 +543,8 @@ def main():
     parser.add_argument("--mode", type=str, default="both",
                         choices=["centralized", "federated", "both"])
     parser.add_argument("--hidden_dim", type=int, default=256)
+    parser.add_argument("--feat_dim", type=int, default=768,
+                        help="Input feature dimension: 768 for RoBERTa-Base, 1024 for RoBERTa-Large")
     parser.add_argument("--dropout", type=float, default=0.3)
     parser.add_argument("--epochs", type=int, default=80)
     parser.add_argument("--batch_size", type=int, default=16)
@@ -560,11 +576,17 @@ def main():
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--save_dir", type=str, default="checkpoints")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--finetuned", action="store_true", help="Use fine-tuned RoBERTa features")
+    parser.add_argument("--finetuned", action="store_true", help="Use fine-tuned RoBERTa-Base features (768-dim)")
+    parser.add_argument("--finetuned_large", action="store_true", help="Use fine-tuned RoBERTa-Large features (1024-dim). Auto-sets --feat_dim 1024.")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
+
+    # Auto-set feat_dim when using large features
+    if args.finetuned_large:
+        args.feat_dim = 1024
+        logger.info("  [finetuned_large] Auto-set feat_dim=1024 for RoBERTa-Large")
 
     datasets_to_run = ["meld", "iemocap", "dailydialog"] if args.dataset == "all" else [args.dataset]
     loaders = {"meld": load_meld, "iemocap": load_iemocap, "dailydialog": load_dailydialog}
@@ -579,9 +601,13 @@ def main():
         load_fn = loaders[ds_name]
         if ds_name == "iemocap":
             train, dev, test, emotions, weights, cache, num_spk = load_fn(
-                finetuned=args.finetuned, num_classes=args.iemocap_classes)
+                finetuned=args.finetuned,
+                finetuned_large=args.finetuned_large,
+                num_classes=args.iemocap_classes)
         else:
-            train, dev, test, emotions, weights, cache, num_spk = load_fn(finetuned=args.finetuned)
+            train, dev, test, emotions, weights, cache, num_spk = load_fn(
+                finetuned=args.finetuned,
+                finetuned_large=args.finetuned_large)
 
         if args.mode in ("centralized", "both"):
             wf1_c, u_c, mf1_c = train_centralized(

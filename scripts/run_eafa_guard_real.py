@@ -43,7 +43,7 @@ def save_results(results):
         json.dump(results, f, indent=2)
 
 
-def run_guard_experiment(dataset, aggregation, attack, contamination, seed=42):
+def run_guard_experiment(dataset, aggregation, attack, contamination, seed=42, use_lf_guard=False):
     """Run one federated experiment with Byzantine attack + specified aggregator."""
     import logging
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -145,8 +145,10 @@ def run_guard_experiment(dataset, aggregation, attack, contamination, seed=42):
     # Setup aggregator
     guard_aggregator = None
     robust_aggregator = None
-    if aggregation == "eafa_guard":
-        guard_aggregator = EAFAGuardAggregator(beta=args_ns.beta)
+    # Check if we should use Label-Flip Guard (either explicit parameter or via naming convention)
+    use_lf_guard = use_lf_guard or aggregation.endswith("_lf")
+    if aggregation == "eafa_guard" or aggregation == "eafa_guard_lf":
+        guard_aggregator = EAFAGuardAggregator(beta=args_ns.beta, use_label_flip_guard=use_lf_guard)
     elif aggregation in ("krum", "multi_krum"):
         f_est = len(malicious_ids)
         strategy = "krum" if aggregation == "krum" else "multi_krum"
@@ -220,7 +222,7 @@ def run_guard_experiment(dataset, aggregation, attack, contamination, seed=42):
             torch.cuda.empty_cache() if torch.cuda.is_available() else None
 
         # Aggregation
-        if aggregation == "eafa_guard":
+        if aggregation in ("eafa_guard", "eafa_guard_lf"):
             server_delta = guard_aggregator.compute_server_delta(
                 global_model, root_loader, loss_fn, device
             )
@@ -314,6 +316,8 @@ def main():
     parser.add_argument("--attack", type=str, default=None, help="label_flip, sign_flip, adaptive")
     parser.add_argument("--seeds", type=int, default=5)
     parser.add_argument("--quick", action="store_true", help="Quick mode: 1 seed only")
+    parser.add_argument("--use-lf-guard", action="store_true",
+                        help="Enable Label-Flip Detector in EAFA-Guard")
     args = parser.parse_args()
 
     results = load_results()
@@ -322,7 +326,10 @@ def main():
     datasets = [args.dataset] if args.dataset else ["meld", "iemocap"]
     attacks = [args.attack] if args.attack else ["label_flip", "sign_flip", "adaptive"]
     contaminations = [0.2, 0.4]
+    use_lf_guard = args.use_lf_guard
     aggregations = ["fedavg", "eafa", "eafa_guard", "krum", "multi_krum"]
+    if use_lf_guard:
+        aggregations.append("eafa_guard_lf")
     num_seeds = 1 if args.quick else args.seeds
 
     # Build experiment list
@@ -349,7 +356,7 @@ def main():
         exp_start = time.time()
 
         try:
-            r = run_guard_experiment(ds, agg, atk, cont, seed=seed)
+            r = run_guard_experiment(ds, agg, atk, cont, seed=seed, use_lf_guard=use_lf_guard)
             r["time_seconds"] = round(time.time() - exp_start, 1)
             results[key] = r
             save_results(results)

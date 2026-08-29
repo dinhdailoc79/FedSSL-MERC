@@ -31,6 +31,72 @@ from federated.aggregation.robust_aggregation import flatten_state_dict, unflatt
 logger = logging.getLogger(__name__)
 
 
+# ---------------------------------------------------------------------------
+# Label-Flip Detector: Classifier Head Cosine Analysis
+# ---------------------------------------------------------------------------
+
+def _get_head_weight_matrix(state_dict):
+    """Extract classifier head weight matrix from a state dict.
+
+    Returns shape [C, H] where C = num_classes, H = hidden_dim.
+    Returns None if no suitable head is found.
+    """
+    for key in state_dict:
+        key_lower = key.lower()
+        if "head" in key_lower or "classifier" in key_lower or "fc" in key_lower:
+            w = state_dict[key]
+            # Output layer: shape [C, H] where C > 1 (num_classes) and H > C (hidden > classes)
+            if w.dim() == 2 and w.shape[0] > 1 and w.shape[1] > w.shape[0]:
+                return w.cpu().float().numpy()
+    return None
+
+
+def _adjacent_class_cosine_matrix(W):
+    """Compute cosine similarity for each adjacent class pair (c, c+1) % C.
+
+    Args:
+        W: weight matrix of shape [C, H]
+    Returns:
+        Array of shape [C] with cosine values. Higher = classes drifted toward
+        each other (characteristic of label-flip training).
+    """
+    W = W.astype(np.float64)
+    norms = np.linalg.norm(W, axis=1, keepdims=True) + 1e-12
+    W_norm = W / norms
+    C = W.shape[0]
+    return np.array([W_norm[c] @ W_norm[(c + 1) % C] for c in range(C)])
+
+
+def compute_label_flip_scores(client_state_dicts, global_state_dict):
+    """Compute per-client label-flip suspicion scores.
+
+    Score = mean(cos(W_c, W_{c+1}) - baseline_cos_c) over all classes.
+    Positive score = adjacent class weights drifted toward each other
+    (characteristic of label-flip attack).
+
+    Args:
+        client_state_dicts: list of client model state dicts
+        global_state_dict: global model state dict (baseline)
+
+    Returns:
+        Array of shape [K] with suspicion scores per client.
+    """
+    global_head = _get_head_weight_matrix(global_state_dict)
+    if global_head is None:
+        return np.zeros(len(client_state_dicts))
+
+    baseline = _adjacent_class_cosine_matrix(global_head)
+    scores = []
+    for state_dict in client_state_dicts:
+        client_head = _get_head_weight_matrix(state_dict)
+        if client_head is None:
+            scores.append(0.0)
+            continue
+        client_cos = _adjacent_class_cosine_matrix(client_head)
+        scores.append(float(np.mean(client_cos - baseline)))
+    return np.array(scores)
+
+
 def _compute_delta(client_state: OrderedDict, global_state: OrderedDict) -> OrderedDict:
     """Compute parameter update delta = client - global."""
     delta = OrderedDict()
@@ -46,6 +112,7 @@ def eafa_guard_aggregate(
     global_state_dict: OrderedDict,
     server_delta: Optional[OrderedDict] = None,
     beta: float = 4.0,
+    use_label_flip_guard: bool = False,
 ) -> Tuple[OrderedDict, Dict]:
     """
     EAFA-Guard aggregation.
@@ -58,6 +125,9 @@ def eafa_guard_aggregate(
         server_delta: Server-root update from one step on clean root set.
                       If None, falls back to standard EAFA (no guard).
         beta: Temperature parameter for EAFA weighting
+        use_label_flip_guard: If True, also apply the Label-Flip Detector
+                              (classifier head cosine analysis) after the direction
+                              filter to catch label-flip attacks that survive direction filtering.
 
     Returns:
         (aggregated_state_dict, stats_dict)
@@ -96,6 +166,35 @@ def eafa_guard_aggregate(
     # Median-cosine filter: keep upper half by direction alignment
     median_cos = float(np.median(cosines_np))
     keep_mask = cosines_np >= median_cos  # bool array [K]
+
+    # --- Label-Flip Detector ---
+    # After direction filter, label-flip attackers may still survive because they
+    # don't reverse gradient direction. We detect them via classifier head weight
+    # analysis: label-flip training causes adjacent class weights to drift toward
+    # each other (cos(W_c, W_{c+1}) increases).
+    lf_guard_active = False
+    lf_scores = np.zeros(K)
+    threshold = 0.0
+    lf_keep = np.ones(K, dtype=bool)
+    if use_label_flip_guard and server_delta is not None:
+        lf_scores = compute_label_flip_scores(client_state_dicts, global_state_dict)
+        surviving_scores = lf_scores[keep_mask]
+        # Only apply LF filter if we have enough survivors AND VERY CLEAR label-flip signature
+        # Label-flip creates large POSITIVE drift (> 0.1)
+        # Sign-flip/adative typically create negative or near-zero drift
+        if len(surviving_scores) >= 2:
+            max_score = float(np.max(surviving_scores))
+            # Very conservative: only filter if score > 0.1 (very clear label-flip signature)
+            if max_score > 0.1:
+                threshold = 0.0  # Filter only positive outliers
+                lf_keep = lf_scores <= threshold
+                keep_mask = keep_mask & lf_keep
+                lf_guard_active = True
+                logger.info(
+                    f"  LabelFlipGuard: filtering clients with positive drift, "
+                    f"max_score={max_score:.4f}"
+                )
+    # --- End Label-Flip Detector ---
 
     # Sharpened trust score: max(0, cos)^2
     trust = np.maximum(0.0, cosines_np) ** 2
@@ -142,6 +241,11 @@ def eafa_guard_aggregate(
         "scale_factors": scale.tolist(),
         "guard_active": True,
         "beta": beta,
+        # Label-Flip Detector stats
+        "lf_guard_active": lf_guard_active,
+        "lf_scores": lf_scores.tolist(),
+        "lf_threshold": float(threshold),
+        "lf_keep_mask": lf_keep.tolist(),
     }
 
     logger.info(
@@ -170,8 +274,9 @@ class EAFAGuardAggregator:
         )
     """
 
-    def __init__(self, beta: float = 4.0):
+    def __init__(self, beta: float = 4.0, use_label_flip_guard: bool = False):
         self.beta = beta
+        self.use_label_flip_guard = use_label_flip_guard
         self.round_history = []
 
     def compute_server_delta(
@@ -246,6 +351,7 @@ class EAFAGuardAggregator:
             global_state_dict,
             server_delta=server_delta,
             beta=self.beta,
+            use_label_flip_guard=self.use_label_flip_guard,
         )
         stats["round"] = round_num
         self.round_history.append(stats)
